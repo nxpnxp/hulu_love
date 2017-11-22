@@ -1,0 +1,30 @@
+
+<tr>
+
+<td><span class="label label-default">{$like['like_id']}</span></td>
+
+<td><img style="width:60px;height:60px;border-radius:50%;"src="<?php echo getavatar($like['openid'],$_W['uniacid']);?>"/></td>
+
+
+<td><?php echo getnickname($like['openid'],$_W['uniacid']);?></td>
+
+
+
+<td><img style="width:60px;height:60px;border-radius:50%;"src="<?php echo getavatar($like['like_openid'],$_W['uniacid']);?>"/></td>
+
+
+<td><?php echo getnickname($like['like_openid'],$_W['uniacid']);?></td>
+
+
+<td>{php echo date('Y-m-d H:i:s',$like['like_time']);}</td>
+
+<td>{$like['like_ip']}</td>
+<td>{$like['like_container']}</td>
+<td>{$like['like_os']}</td>
+
+
+
+</tr>
+
+
+

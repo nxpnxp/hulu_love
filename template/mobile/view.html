@@ -1,0 +1,229 @@
+{template 'top'}
+
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/view.css">
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/style/ui/css/amazeui.min.css">
+  <link rel="stylesheet" href="{MODULE_URL}template/mobile/style/ui/css/app.css">
+  <script src="{MODULE_URL}template/mobile/style/ui/js/jquery.min.js"></script>
+  <script src="{MODULE_URL}template/mobile/style/ui/js/amazeui.min.js"></script>
+
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>
+<!---->
+<div id="view_one">
+
+<div id="view_one_a">
+
+{if $user['upid']=='4'}
+<div class="view_one_a_vip"><img src="{MODULE_URL}public/images/vip.png"/></div>
+{else}
+<div class="view_one_a_vip"></div>
+{/if}
+
+<div class="view_one_a_avatar">
+<img src="<?php echo getavatar($user['openid'],$_W['uniacid'],$_W['attachurl']);?>"/>
+</div>
+
+</div>
+
+<div id="view_one_b">
+<p class="view_one_b_1">{$user['nickname']}</p>
+<p class="view_one_b_2">会员号：{php echo ($make['make_uid_start']+$user['uid']);}</p>
+<div class="view_one_b_3">
+
+{if $more['more_real_tel']=='2'}
+<img src="{MODULE_URL}public/images/r6.png"/>
+{else}
+<img src="{MODULE_URL}public/images/r5.png"/>
+{/if}
+
+{if $more['more_real_card']=='4'}
+<img src="{MODULE_URL}public/images/r4.png"/>
+{else}
+<img src="{MODULE_URL}public/images/r3.png"/>
+{/if}
+
+{if $more['more_real_self']=='3'}
+<img src="{MODULE_URL}public/images/r10.png"/>
+{else}
+<img src="{MODULE_URL}public/images/r9.png"/>
+{/if}
+
+</div>
+</div>
+<div id="view_one_c">
+<a href="{php echo $this->createMobileUrl('enjoy',array('openid'=>$user['openid']));}"><p class="view_one_c_1">赞赏</p></a>
+<!--喜欢开始-->
+{if (empty($_W['openid']))||($_W['container']!='wechat')}
+<p onclick="alert('请在微信打开');" class="view_one_c_2_1" id="view_one_c_2_1">喜欢</p>
+{elseif (!empty($like))}
+<p class="view_one_c_2_2" id="view_one_c_2_2">已喜欢</p>
+{elseif (empty($like))}
+<p onclick="likethis();" class="view_one_c_2_3" id="view_one_c_2_3">喜欢</p>
+{else}{/if}
+<!--喜欢结束-->
+</div>
+
+</div>
+<!---->
+<div id="view_title"><p class="view_title_1">照片（{$photos_num}张）</p></div>
+<!---->
+
+{if $photos==array()}
+<div id="view_no">这个家伙很懒！照片都没有上传！</div>
+{else}
+{template 'view_photos'}
+{/if}
+<!---->
+<div id="view_biaobai">
+
+<div id="view_biaobai_a">
+<a href="{php echo $this->createMobileUrl('news',array('news_openid'=>$user['openid']));}">
+<div class="view_biaobai_style">
+<div class="view_biaobai_a_img"><img src="{MODULE_URL}public/images/liaoyiliao.png"/></div>
+<div class="view_biaobai_a_p"><p>聊一聊</p></div>
+</div>
+</a>
+</div>
+
+<div id="view_biaobai_b">
+<a href="{php echo $this->createMobileUrl('news',array('news_openid'=>$user['openid']));}">
+<div class="view_biaobai_bstyle">
+<div class="view_biaobai_b_img"><img src="{MODULE_URL}public/images/biaobai.png"/></div>
+<div class="view_biaobai_b_p"><p>表白</p></div>
+</div>
+</a>
+</div>
+
+<div id="view_biaobai_a">
+<!--
+<a href="{php echo $this->createMobileUrl('gift',array('gift_openid'=>$user['openid']));}">
+-->
+<a onclick="gift();">
+<div class="view_biaobai_style">
+<div class="view_biaobai_a_img"><img src="{MODULE_URL}public/images/songliwu.png"/></div>
+<div class="view_biaobai_a_p"><p>送礼物</p></div>
+</div>
+</div>
+</a>
+</div>
+
+<!----------------------------------------------------------------------------------------->
+<script>
+function gift(){
+layer.open({
+  type: 1,
+  skin: 'layui-layer-demo', //样式类名
+  closeBtn: 0, //不显示关闭按钮
+  shift: 2,
+  shadeClose: false, //开启遮罩关闭
+  content: "<a href='{php echo $this->createMobileUrl('gift',array('gift_openid'=>$user['openid']));}'><div class='' style='width:100px;height:40px;margin:10px auto;border:1px solid #Fc5488;border-radius:4px;text-align:center;line-height:40px;font-size:16px;color:#000;;'>付费礼物</div></a><a href='{php echo $this->createMobileUrl('store',array('store_openid'=>$user['openid']));}'><div class='' style='width:100px;height:40px;margin:10px auto;border:1px solid #0098F0;border-radius:4px;text-align:center;line-height:40px;font-size:16px;color:#000;;'>背包礼物</div></a>"
+});
+}
+</script>
+<!---------------------------------------------------------------------------------------------->
+
+<!---->
+<div id="view_title"><p class="view_title_1">内心独白</p></div>
+<div id="view_no">
+{if $user['content']==''}
+这个家伙很懒！什么都没有留下！
+{else}
+<div id="view_content">
+<div class="view_content_a">
+{$user['content']}
+</div>
+</div>
+{/if}
+</div>
+
+<!---->
+<div id="view_contact">
+<div class="view_contact_a"><img src="{MODULE_URL}public/images/e7.png"/></div>
+<div class="view_contact_b">联系方式</div>
+<!--
+{if $contact==null}
+
+
+{if ($user['uid']=='4')&&($today_contact<=$make['make_vip_watch_oneday'])}
+<div onclick="look_contact()" class="view_contact_c">点击查看></div>
+{else}
+<a href="{php echo $this->createMobileUrl('pay_two',array('openid'=>$user['openid'],'order_num'=>$order_num,'order_price'=>$order_price));}">
+<div class="view_contact_c">付费查看></div>
+</a>
+{/if}
+
+{else}
+
+<div onclick="look_contact()" class="view_contact_c">点击查看></div>
+{/if}
+-->
+
+
+	<script type="text/javascript" src="{MODULE_URL}template/mobile/style/contact_use.js"></script>
+
+{if (empty($viewer))}<div onclick="alert('你还没有注册哦！')" class="view_contact_c">点击查看></div>;
+
+{elseif ((empty($contact))&&($viewer['upid']!='4'))}
+<a href="{php echo $this->createMobileUrl('pay_two',array('openid'=>$user['openid'],'order_num'=>$order_num,'order_price'=>$order_price));}"><div class="view_contact_c">付费查看></div></a>
+
+{elseif ((empty($contact))&&($viewer['upid']=='4')&&($today_contact<$make['make_vip_watch_oneday']))}
+
+<div onclick="contact_use('{php echo $this->createMobileUrl('contact_use',array('openid'=>$user['openid']));}');look_contact()" class="view_contact_c">点击查看></div>
+
+{elseif ((empty($contact))&&($viewer['upid']=='4')&&($today_contact>=$make['make_vip_watch_oneday']))}
+<a href="{php echo $this->createMobileUrl('pay_two',array('openid'=>$user['openid'],'order_num'=>$order_num,'order_price'=>$order_price));}"><div class="view_contact_c">付费查看></div></a>
+
+{elseif (!empty($contact))}
+<div onclick="look_contact()" class="view_contact_c">点击查看></div>
+{else}
+{/if}
+
+
+</div>
+
+<!---->
+<script>
+function look_contact(){
+	alert("{php echo '\n\t微信：'.$user['wechat'].'\n\t手机：'.$user['tel']}");
+
+}
+</script>
+<!---->
+<!---->
+<div id="view_title"><p class="view_title_1">收到的礼物（{$gift_num}份）</p></div>
+{if $gift==array()}
+<div id="view_no">没有收到礼物</div>
+{else}
+{template 'view_gift'}
+{/if}
+<!---->
+<div id="view_title"><p class="view_title_1">基本资料</p></div>
+
+<!---->
+<div id="view_update">
+<div class="view_update_a">性别<span><?php echo getsex($user['sex']);?></span></div>
+<div class="view_update_a">年龄<span><?php echo getage($user['age'],$user['bornyear']);?>岁</span></div>
+<div class="view_update_a">出生日期<span>{php echo date('Y-m-d',$user['bornyear']);}</span></div>
+<div class="view_update_a">身高<span>{$user['height']}厘米</span></div>
+<div class="view_update_a">体重<span>{$user['weight']}千克</span></div>
+<div class="view_update_a">交友目的<span><?php echo getpurpose($user['purpose']);?></span></div>
+<div class="view_update_a">感情状态<span><?php echo getfeeling($user['feeling']);?></span></div>
+<div class="view_update_a">婚姻状态<span><?php echo getmarried($user['married']);?></span></div>
+<div class="view_update_a">城市<span><?php echo getcityname($user['city'],$_W['uniacid']);?></span></div>
+<div class="view_update_a">地址<span>{$user['address']}</span></div>
+</div>
+
+<!---->
+<div id="view_title"><p class="view_title_1">择偶要求</p></div>
+
+<div id="view_request">
+<div class="view_update_a">年龄范围<span>{$request['request_age_small']}→{$request['request_age_big']}岁</span></div>
+<div class="view_update_a">身高范围<span>{$request['request_height_small']}→{$request['request_height_big']}厘米</span></div>
+<div class="view_update_a">体重范围<span>{$request['request_weight_small']}→{$request['request_weight_big']}千克</span></div>
+<div class="view_update_a">薪资范围<span><?php echo getsalary($request['request_salary']);?></span></div>
+<div class="view_update_a">学历<span><?php echo geteducation($request['request_education']);?></span></div>
+<div class="view_update_a">地域<span><?php echo getarea($request['request_area']);?></span></div>
+</div>
+{template 'bottom'}
+{template 'view_share'}

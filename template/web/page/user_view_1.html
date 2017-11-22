@@ -1,0 +1,173 @@
+<div class="panel panel-info">
+<div class="panel-heading">基本资料</div>
+<div id="love_two">
+
+<div id="love_two_style">
+<div class="love_two_a">操作：</div>
+<div class="love_two_b">
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('user_view_upid_update',array('openid'=>$_GPC['openid'],'upid'=>'1'));}" role="button">屏蔽</a>
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('user_view_upid_update',array('openid'=>$_GPC['openid'],'upid'=>'2'));}" role="button">待审核</a>
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('user_view_upid_update',array('openid'=>$_GPC['openid'],'upid'=>'3'));}" role="button">普通会员</a>
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('user_view_upid_update',array('openid'=>$_GPC['openid'],'upid'=>'4','vip'=>'31'));}" role="button">+1月VIP</a>
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('user_view_upid_update',array('openid'=>$_GPC['openid'],'upid'=>'4','vip'=>'92'));}" role="button">+1季度VIP</a>
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('user_view_upid_update',array('openid'=>$_GPC['openid'],'upid'=>'4','vip'=>'365'));}" role="button">+1年VIP</a>
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('user_view_ureal_update',array('openid'=>$_GPC['openid'],'type'=>'tel'));}" role="button">手机认证</a>
+
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('user_view_ureal_update',array('openid'=>$_GPC['openid'],'type'=>'card'));}" role="button">身份证认证</a>
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('user_view_ureal_update',array('openid'=>$_GPC['openid'],'type'=>'self'));}" role="button">实地认证</a>
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('user_view_sex_update',array('openid'=>$_GPC['openid'],'sex'=>'1'));}" role="button">男</a>
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('user_view_sex_update',array('openid'=>$_GPC['openid'],'sex'=>'2'));}" role="button">女</a>
+
+</div>
+</div>
+
+<div id="love_two_style2">
+<div class="love_two_c">头像：</div>
+<div class="love_two_d"><img style="width:100px;height:100px;border-radius:50%;" src="{$user['avatar']}"/></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">昵称：</div>
+<div class="love_two_b">{$user['nickname']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">等级：</div>
+<div class="love_two_b"><?php echo getupid($user['upid']);?> {if $user['upid']=='4'}<span class="label label-danger">VIP结束时间：{php echo date('Y-m-d H:i:s',$user['vip_endtime']);}</span>{else}{/if}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">OPENID：</div>
+<div class="love_two_b">{$user['openid']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">性别：</div>
+<div class="love_two_b"><?php echo getsex($user['sex']);?></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">年龄：</div>
+<div class="love_two_b"><?php echo getage($user['age'],$user['bornyear']);?>岁</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">出生日期：</div>
+<div class="love_two_b">{php echo date('Y-m-d',$user['bornyear']);}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">身高：</div>
+<div class="love_two_b">{$user['height']}厘米</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">体重：</div>
+<div class="love_two_b">{$user['weight']}千克</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">交友目的：</div>
+<div class="love_two_b"><?php echo getpurpose($user['purpose']);?></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">感情状态：</div>
+<div class="love_two_b"><?php echo getfeeling($user['feeling']);?></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">婚姻状态：</div>
+<div class="love_two_b"><?php echo getmarried($user['married']);?></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">所在城市：</div>
+<div class="love_two_b"><?php echo getcityname($user['city'],$_W['uniacid']);?></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">地址：</div>
+<div class="love_two_b">{$user['address']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">微信：</div>
+<div class="love_two_b">{$user['wechat']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">手机：</div>
+<div class="love_two_b">{$user['tel']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">交友宣言：</div>
+<div class="love_two_b">{$user['content']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">经纬度：</div>
+<div class="love_two_b">{$user['lon']}，{$user['lat']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">访问次数：</div>
+<div class="love_two_b">{$user['view']}次</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">最近登录时间：</div>
+<div class="love_two_b">{php echo date('Y-m-d H;i:s',$user['logintime']);}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">最近登录IP：</div>
+<div class="love_two_b">{$user['loginip']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">最近登录平台：</div>
+<div class="love_two_b">{$user['logincontainer']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">最近登录设备：</div>
+<div class="love_two_b">{$user['loginos']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">注册时间：</div>
+<div class="love_two_b">{php echo date('Y-m-d H:i:s',$user['regtime']);}</div>
+</div>
+
+
+<div id="love_two_style">
+<div class="love_two_a">注册IP：</div>
+<div class="love_two_b">{$user['regip']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">邀请人电话：</div>
+<div style="color:red;" class="love_two_b">{$more['yaoqing_tel']}</div>
+</div>
+
+
+<div id="love_two_style">
+<div class="love_two_a">邀请人姓名：</div>
+<div style="color:red;" class="love_two_b">{$more['yaoqing_name']}</div>
+</div>
+
+</div>
+</div>

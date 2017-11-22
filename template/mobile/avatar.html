@@ -1,0 +1,46 @@
+
+
+{template 'top'}
+
+{template 'common/header'}
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/public.css">
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/avatar.css">
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">修改头像</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+
+
+{php echo tpl_app_form_field_avatar('avatar',$member['avatar']);}
+<!--
+{php echo tpl_app_form_field_avatar('avatar',$member['avatar']);}
+-->
+
+<form action="" method="POST">
+<div id="avatar_one">
+
+<div id="avatar_one_style">
+<div class="avatar_one_a">我的昵称：</div>
+<div class="avatar_one_b"><input type="text" name="nickname" value="{$user['nickname']}" placeholder="请输入会员昵称" required="required"/></div>
+</div>
+
+
+
+<div id="avatar_one_style2">
+<div class="avatar_one_c"><input type="submit" name="submit" value="提交"/></div>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</div>
+
+</div>
+</form>
+
+{template 'bottom'}

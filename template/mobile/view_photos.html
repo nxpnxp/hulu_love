@@ -1,0 +1,30 @@
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>
+
+  <div id="layer-photos-demo" data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{"animation":"slide","animationLoop":false,"itemWidth":100,"itemMargin":5}' >
+  <ul class="am-slides">
+
+  {loop $photos $key $photos}
+      <li>
+        	<img style="width:100px;height:150px;" layer-src="{$_W['attachurl']}{$photos['pic_url']}" src="{$_W['attachurl']}{$photos['pic_url']}">
+         
+      </li>
+	  {/loop}
+      
+      <!--
+      <li data-thumb="http://s.amazeui.org/media/i/demos/bing-2.jpg">
+        	<img src="http://s.amazeui.org/media/i/demos/bing-2.jpg">
+         
+      </li>
+      -->
+  </ul>
+</div>
+
+<script>
+
+layer.ready(function(){ //为了layer.ext.js加载完毕再执行
+  layer.photos({
+    photos: '#layer-photos-demo'
+  });
+});   
+</script>

@@ -1,0 +1,68 @@
+<style type="text/css">
+#real_1{width:100%;height:90px;margin:0px auto;}
+#real_1_1{width:100%;height:40px;margin:0px auto;}
+#real_1_1 input{width:98%;height:38px;margin:1px 1%;
+text-align:left;line-height:38px;font-size:16px;color:#000;}
+
+#real_1_2{float:left;width:50%;height:40px;margin:0px auto 0px;}
+#real_1_2 input{width:98%;height:38px;margin:1px 1%;
+text-align:left;line-height:38px;font-size:16px;color:#000;}
+
+#real_1_3{float:right;width:50%;height:40px;margin:0px auto 0px;
+text-align:center;line-height:40px;font-size:16px;color:#000;}
+
+
+#real_1_4{width:80%;height:40px;margin:10px auto 0px;}
+#real_1_4 input{width:98%;height:38px;margin:1px 1%;border:none;background-color:#FC5488;
+text-align:center;line-height:38px;font-size:16px;color:#FFF;}
+</style>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>
+
+
+{if $more['more_real_tel']=='1'}
+
+<form action="" method="POST">
+
+<div id="real_1">
+<div id="real_1_1"><input type="number" name="more_real_tel_num" placeholder="请输入手机号" required="required"/></div>
+<div id="real_1_2"><input type="text" name="more_real_tel_authcode" placeholder="请输入验证码" required="required"/></div>
+<div id="real_1_3" onclick="tel_receive()">获取验证码</div>
+<div id="real_1_4"><input type="submit" name="submit" value="发送"/></div>
+</div>
+
+<input type="hidden" name="token" value="{$_W['token']}"/>
+<input type="hidden" name="authcode" value="{$authcode}"/>
+
+</form>
+
+
+
+
+
+
+
+{elseif $more['more_real_tel']=='2'}
+<p>手机实名认证成功</p>
+{else}{/if}
+
+
+
+<script type="text/javascript">
+function tel_receive(){
+	
+	var fm=document.getElementsByTagName('form')[0];
+	var fd=new FormData(fm);
+
+	var xhr=new XMLHttpRequest();
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4){
+			//document.getElementById('real_1_3').value="已发送";
+			document.getElementById("real_1_3").innerHTML="已发送";
+			//alert(xhr.responseText);
+		}
+	}
+	xhr.open('post',"{php echo $this->createMobileUrl('tel_receive');}");
+	xhr.send(fd);
+	
+}
+</script>

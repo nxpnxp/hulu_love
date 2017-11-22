@@ -1,0 +1,28 @@
+
+<tr>
+
+<td><span class="label label-default">{$vip['order_id']}</span></td>
+
+<td><?php echo getorderpid($vip['order_pid']);?></td>
+
+
+
+<td><img style="width:60px;height:60px;border-radius:50%;"src="<?php echo getavatar($vip['order_openid'],$_W['uniacid']);?>"/></td>
+<td><?php echo getnickname($vip['order_openid'],$_W['uniacid']);?></td>
+
+<td><span class="label label-success">{$vip['order_price']}</span></td>
+
+<td><span class="label label-success">{$vip['order_one']}天</span></td>
+
+
+<td><?php echo date('Y-m-d H:i:s',getvipendtime($vip['order_openid'],$_W['uniacid']));?></td>
+
+<td>{php echo date('Y-m-d H:i:s',$vip['order_endtime']);}</td>
+
+
+
+
+</tr>
+
+
+

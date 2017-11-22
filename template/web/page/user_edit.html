@@ -1,0 +1,170 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+
+<div class="panel panel-info">
+<div class="panel-heading">会员编辑</div>
+<div id="love_one">
+
+<form action="" method="POST">
+<div id="love_one_style">
+<div class="love_one_a">会员昵称</div>
+<div class="love_one_b"><input type="text" name="nickname" value="{$user['nickname']}" placeholder="请输入会员昵称" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">会员等级</div>
+<div class="love_one_b">
+<select name="upid">
+<option value="1" {if $user['upid']=='1'}selected="selected"{else}{/if}>黑名单</option>
+<option value="2" {if $user['upid']=='2'}selected="selected"{else}{/if}>待审核</option>
+<option value="3" {if $user['upid']=='3'}selected="selected"{else}{/if}>普通会员</option>
+<option value="4" {if $user['upid']=='4'}selected="selected"{else}{/if}>VIP</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">VIP到期时间</div>
+<div class="love_one_b">{php echo tpl_form_field_date('vip_endtime',$user['vip_endtime'],true);}</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">查看联系方式价格</div>
+<div class="love_one_b"><input type="number" name="contact_money" value="{$user['contact_money']}" placeholder="请输入查看会员联系方式价格" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">实名认证</div>
+<div class="love_one_b">
+<select name="ureal">
+<option value="1" {if $user['ureal']=='1'}selected="selected"{else}{/if}>未认证</option>
+<option value="2" {if $user['ureal']=='2'}selected="selected"{else}{/if}>已认证</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">性别</div>
+<div class="love_one_b">
+<select name="ureal">
+<option value="0" {if $user['sex']=='0'}selected="selected"{else}{/if}>未填写</option>
+<option value="1" {if $user['sex']=='1'}selected="selected"{else}{/if}>男</option>
+<option value="2" {if $user['sex']=='2'}selected="selected"{else}{/if}>女</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">年龄</div>
+<div class="love_one_b"><input type="number" name="age" value="{$user['age']}" placeholder="请输入会员年龄" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">出生日期</div>
+<div class="love_one_b">{php echo tpl_form_field_date('bornyear',$user['bornyear']);}</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">身高</div>
+<div class="love_one_b"><input type="number" name="height" value="{$user['height']}" placeholder="请输入会员身高" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">体重</div>
+<div class="love_one_b"><input type="number" name="weight" value="{$user['weight']}" placeholder="请输入会员体重" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">交友目的</div>
+<div class="love_one_b">
+<select name="purpose">
+<option value="1" {if $user['purpose']=='1'}selected="selected"{else}{/if}>交友</option>
+<option value="2" {if $user['purpose']=='2'}selected="selected"{else}{/if}>相亲</option>
+<option value="3" {if $user['purpose']=='3'}selected="selected"{else}{/if}>约会</option>
+<option value="4" {if $user['purpose']=='4'}selected="selected"{else}{/if}>交流学习</option>
+<option value="5" {if $user['purpose']=='5'}selected="selected"{else}{/if}>其他</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">感情状态</div>
+<div class="love_one_b">
+<select name="feeling">
+<option value="1" {if $user['feeling']=='1'}selected="selected"{else}{/if}>单身中</option>
+<option value="2" {if $user['feeling']=='2'}selected="selected"{else}{/if}>约会中</option>
+<option value="3" {if $user['feeling']=='3'}selected="selected"{else}{/if}>交往中</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">婚姻状态</div>
+<div class="love_one_b">
+<select name="married">
+<option value="1" {if $user['married']=='1'}selected="selected"{else}{/if}>未婚</option>
+<option value="2" {if $user['married']=='2'}selected="selected"{else}{/if}>已婚</option>
+<option value="3" {if $user['married']=='3'}selected="selected"{else}{/if}>离异</option>
+<option value="4" {if $user['married']=='4'}selected="selected"{else}{/if}>丧偶</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">微信</div>
+<div class="love_one_b"><input type="text" name="wechat" value="{$user['wechat']}" placeholder="请输入会员微信" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">手机</div>
+<div class="love_one_b"><input type="text" name="tel" value="{$user['tel']}" placeholder="请输入会员手机" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">交友宣言</div>
+<div class="love_one_b"><input type="text" name="content" value="{$user['content']}" placeholder="请输入会员交友宣言" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">城市</div>
+<div class="love_one_b">
+<select name="married">
+{loop $city $key $city}
+<option value="{$city['city_id']}" {if $user['city']==$city['city_id']}selected="selected"{else}{/if}>{$city['city_name']}</option>
+{/loop}
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">地址</div>
+<div class="love_one_b"><input type="text" name="address" value="{$user['address']}" placeholder="请输入会员地址" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">经度</div>
+<div class="love_one_b"><input type="number" name="lon" value="{$user['lon']}" placeholder="请输入会员位置经度" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">纬度</div>
+<div class="love_one_b"><input type="number" name="lat" value="{$user['lat']}" placeholder="请输入会员位置纬度" required="required"/></div>
+</div>
+
+<!--
+<div id="love_one_pic">
+<div class="love_one_c">会员头像</div>
+<div class="love_one_d">{php echo tpl_form_field_image('avatar',$ads['avatar']);}</div>
+</div>
+-->
+
+<div id="love_one_ok">
+<input type="submit" name="submit" value="修 改"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</div>
+
+</form>
+</div>
+</div>
+
+{template 'common/footer'}

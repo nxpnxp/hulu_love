@@ -1,0 +1,47 @@
+
+<tr>
+
+<td><span class="label label-default">{$join['join_id']}</span> <?php echo getjoinpid($join['join_pid']);?></td>
+
+<td><span class="label label-default">{$join['active_id']}</span> <?php echo getjoinactivepid($join['active_id'],$_W['uniacid']);?></td>
+
+<td><?php echo getnickname($join['openid'],$_W['uniacid']);?></td>
+
+
+<td><img style="width:60px;height:60px;border-radius:50%;"src="<?php echo getavatar($join['openid'],$_W['uniacid']);?>"/></td>
+
+<td><span class="label label-primary"><?php echo getactivetitle($join['active_id'],$_W['uniacid']);?></span></td>
+
+
+
+
+<td><span class="label label-success"><?php echo getactivemoney($join['active_id'],$_W['uniacid']);?></span></td>
+
+<td><span class="label label-info"><?php echo getsex($join['join_sex']);?></span></td>
+<td>{$join['join_name']}</td>
+<td>{$join['join_wechat']}</td>
+<td>{$join['join_tel']}</td>
+
+
+<td>{php echo date('Y-m-d H:i:s',$join['join_time']);}</td>
+
+
+
+<td>
+
+
+
+
+
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('join_update',array('join_id'=>$join['join_id'],'join_pid'=>'3'));}" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('join_update',array('join_id'=>$join['join_id'],'join_pid'=>'1'));}" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+
+
+</td>
+</tr>
+
+
+

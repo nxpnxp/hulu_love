@@ -1,0 +1,31 @@
+{template 'top'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/talk.css">
+
+<div id="talk_top" style="background-image:url('{$_W['attachurl']}{$moreads1['moreads_pic']}');">
+
+<a href="{php echo $this->createMobileUrl('talk_add');}">
+<div class="talk_top_a"><img src="{MODULE_URL}public/images/xiangji.png"/></div>
+</a>
+<div class="talk_top_b">{$user['nickname']}</div>
+<div class="talk_top_c"><img src="<?php echo getavatar($user['openid'],$_W['uniacid'],$_W['attachurl']);?>"/></div>
+
+</div>
+
+<div id="talk_list">
+{loop $talk2 $key $talk}
+{template 'talk_list'}
+{/loop}
+
+{loop $talk1 $key $talk}
+{template 'talk_list'}
+
+
+
+{/loop}
+
+</div>
+
+
+
+
+{template 'bottom'}

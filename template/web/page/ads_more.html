@@ -1,0 +1,62 @@
+<div class="panel panel-info">
+<div class="panel-heading">同城圈顶部背景广告</div>
+<div id="love_one">
+
+<form action="{php echo $this->createWebUrl('ads_more');}" method="POST">
+<div id="love_one_style">
+<div class="love_one_a">广告名称</div>
+<div class="love_one_b"><input type="text" name="moreads_title" value="{$moreads1['moreads_title']}" placeholder="请输入广告名称" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">广告链接</div>
+<div class="love_one_b">{php echo tpl_form_field_link('moreads_link',$moreads1['moreads_link']);}</div>
+</div>
+
+<div id="love_one_pic">
+<div class="love_one_c">广告图片</div>
+<div class="love_one_d">{php echo tpl_form_field_image('moreads_pic',$moreads1['moreads_pic']);}</div>
+</div>
+
+<div id="love_one_ok">
+<input type="submit" name="submit" value="修 改"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+<input type="hidden" name="moreads_page" value="1"/>
+
+</div>
+
+</form>
+</div>
+</div>
+
+
+<div class="panel panel-info">
+<div class="panel-heading">聊天界面顶部广告</div>
+<div id="love_one">
+
+<form action="{php echo $this->createWebUrl('ads_more');}" method="POST">
+<div id="love_one_style">
+<div class="love_one_a">广告名称</div>
+<div class="love_one_b"><input type="text" name="moreads_title" value="{$moreads2['moreads_title']}" placeholder="请输入广告名称" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">广告链接</div>
+<div class="love_one_b">{php echo tpl_form_field_link('moreads_link',$moreads2['moreads_link']);}</div>
+</div>
+
+<div id="love_one_pic">
+<div class="love_one_c">广告图片</div>
+<div class="love_one_d">{php echo tpl_form_field_image('moreads_pic',$moreads2['moreads_pic']);}</div>
+</div>
+
+<div id="love_one_ok">
+<input type="submit" name="submit" value="修 改"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+<input type="hidden" name="moreads_page" value="2"/>
+
+</div>
+
+</form>
+</div>
+</div>

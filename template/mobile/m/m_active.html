@@ -1,0 +1,74 @@
+{template 'm/m_header'}
+  <link rel="stylesheet" href="{MODULE_URL}template/mobile/m/style/active.css">
+
+
+<div id="m_active_one">
+{loop $active $key $active}
+<div id="m_active_one_style">
+
+<div class="m_active_one_a">操作：</div>
+<div class="m_active_one_b">
+{if $active['active_pid']=='3'}
+<a href="{php echo $this->createMobileUrl('m_active_update',array('active_id'=>$active['active_id'],'active_pid'=>'4'));}">通过</a>
+<a href="{php echo $this->createMobileUrl('m_active_update',array('active_id'=>$active['active_id'],'active_pid'=>'2'));}">不通过</a>
+{elseif $active['active_pid']=='4'}
+<a href="{php echo $this->createMobileUrl('m_active_update',array('active_id'=>$active['active_id'],'active_pid'=>'2'));}">不通过</a>
+{elseif $active['active_pid']=='2'}
+<a href="{php echo $this->createMobileUrl('m_active_update',array('active_id'=>$active['active_id'],'active_pid'=>'4'));}">通过</a>
+{else}{/if}
+</div>
+
+<div class="m_active_one_a">活动标题：</div>
+<div class="m_active_one_b">{$active['active_title']}</div>
+
+<div class="m_active_one_a">发布者：</div>
+<div class="m_active_one_b">{php echo getnickname($active['openid'],$_W['uniacid']);}</div>
+
+<div class="m_active_one_a">活动状态：</div>
+<div class="m_active_one_b"><?php echo getactivepid($active['active_pid']);?></div>
+
+<div class="m_active_one_a">发布类型：</div>
+<div class="m_active_one_b"><?php echo getactivetype($active['active_type']);?></div>
+
+<div class="m_active_one_a">男生人数：</div>
+<div class="m_active_one_b">{$active['active_boy']}人</div>
+
+<div class="m_active_one_a">女生人数：</div>
+<div class="m_active_one_b">{$active['active_girl']}人</div>
+
+<div class="m_active_one_a">活动费用：</div>
+<div class="m_active_one_b">￥：{$active['active_money']}</div>
+
+<div class="m_active_one_a">活动地点：</div>
+<div class="m_active_one_b">{$active['active_address']}</div>
+
+<div class="m_active_one_a">开始时间：</div>
+<div class="m_active_one_b">{php echo date('Y-m-d H:i:s',$active['active_starttime']);}</div>
+
+<div class="m_active_one_a">结束时间：</div>
+<div class="m_active_one_b">{php echo date('Y-m-d H:i:s',$active['active_endtime']);}</div>
+
+<div class="m_active_one_a">联系电话：</div>
+<div class="m_active_one_b">{$active['active_tel']}</div>
+
+<div class="m_active_one_a">详细内容：</div>
+<div class="m_active_one_b">{$active['active_content']}</div>
+
+<div class="m_active_one_a">发布时间：</div>
+<div class="m_active_one_b">{php echo date('Y-m-d H:i:s',$active['active_active_time']);}</div>
+
+<div class="m_active_one_a">发布IP：</div>
+<div class="m_active_one_b">{$active['active_ip']}</div>
+
+<div class="m_active_one_a">发布平台：</div>
+<div class="m_active_one_b">{$active['active_container']}</div>
+
+<div class="m_active_one_a">发布设备：</div>
+<div class="m_active_one_b">{$active['active_os']}</div>
+
+</div>
+{/loop}
+</div>
+
+{template 'm/m_footer'}
+

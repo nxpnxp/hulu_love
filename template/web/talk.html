@@ -1,0 +1,104 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+<script type="text/javascript" src="{MODULE_URL}template/web/js.js"></script>
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">所有动态</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">未审核动态</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">已通过动态</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">已屏蔽动态</a></li>
+	<li role="presentation"><a href="#one" aria-controls="one" role="tab" data-toggle="tab">添加</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+
+		<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">所有动态</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/talk'}
+<thead>
+<tbody>
+{loop $talk $key $talk}
+{template 'web/page/talk_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+
+			<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">待审核动态</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/talk'}
+<thead>
+<tbody>
+{loop $talk2 $key $talk}
+{template 'web/page/talk_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+    <div role="tabpanel" class="tab-pane" id="messages">
+
+			<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">已通过动态</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/talk'}
+<thead>
+<tbody>
+{loop $talk3 $key $talk}
+{template 'web/page/talk_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+    <div role="tabpanel" class="tab-pane" id="settings">
+
+			<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">已屏蔽动态</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/talk'}
+<thead>
+<tbody>
+{loop $talk1 $key $talk}
+{template 'web/page/talk_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+
+	    <div role="tabpanel" class="tab-pane" id="one">{template 'web/page/talk_add'}</div>
+
+  </div>
+
+</div>
+
+{template 'common/footer'}

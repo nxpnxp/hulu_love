@@ -1,0 +1,94 @@
+{template 'top'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/active_view.css">
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">活动详情</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+<div id="active_view">
+
+<div id="active_view_style">
+<div class="active_view_a">活动标题</div>
+<div class="active_view_b">{$active['active_title']}</div>
+</div>
+
+<div id="active_view_style">
+<div class="active_view_a">活动类型</div>
+<div class="active_view_b"><?php echo getactivetype($active['active_type']);?></div>
+</div>
+
+<div id="active_view_style">
+<div class="active_view_a">男生人数</div>
+<div class="active_view_b">{$join_boy_num}/{$active['active_boy']}人</div>
+</div>
+
+<div id="active_view_style">
+<div class="active_view_a">女生人数</div>
+<div class="active_view_b">{$join_girl_num}/{$active['active_girl']}人</div>
+</div>
+
+<div id="active_view_style">
+<div class="active_view_a">每人费用</div>
+<div class="active_view_b">{$active['active_money']}元</div>
+</div>
+
+<div id="active_view_style">
+<div class="active_view_a">活动地址</div>
+<div class="active_view_b">{$active['active_address']}</div>
+</div>
+
+<div id="active_view_style">
+<div class="active_view_a">开始时间</div>
+<div class="active_view_b">{php echo date('Y-m-d H:i:s',$active['active_starttime']);}</div>
+</div>
+
+<div id="active_view_style">
+<div class="active_view_a">结束时间</div>
+<div class="active_view_b">{php echo date('Y-m-d H:i:s',$active['active_endtime']);}</div>
+</div>
+
+<div id="active_view_style">
+<div class="active_view_a">联系电话</div>
+<div class="active_view_b">{$active['active_tel']}</div>
+</div>
+
+
+<div id="active_view_textarea">
+<div class="active_view_c">详细说明</div>
+<div class="active_view_d">{$active['active_content']}</div>
+</div>
+
+</div>
+
+<div class="active_view_join_title">已报名的小伙伴：</div>
+<div id="active_view_join">
+{loop $join $key $join}
+<div class="active_view_join_a"><img src="<?php echo getavatar($join['openid'],$_W['uniacid'],$_W['attachurl']);?>"/></div>
+{/loop}
+</div>
+
+{if $my_join==array()}
+<a href="{php echo $this->createMobileUrl('active_join',array('vid'=>$active['active_id']));}">
+<div id="active_view_ok">报 名</div>
+</a>
+{elseif $my_join['join_pid']=='1'}
+
+<div id="active_view_ok">已取消参加活动资格</div>
+
+{elseif $my_join['join_pid']=='2'}
+<a href="{php echo $this->createMobileUrl('pay_seven',array('join_id'=>$my_join['join_id'],'order_num'=>$order_num,'order_price'=>$order_price));}">
+<div id="active_view_ok">报名成功，只差支付{$order_price}元活动定金</div>
+</a>
+{elseif $my_join['join_pid']=='3'}
+
+<div id="active_view_ok">报名成功并完成支付，请等待活动开始！</div>
+
+{else}{/if}
+{template 'foot'}

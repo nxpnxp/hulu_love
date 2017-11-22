@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>请关注微信公众号“{$_W['account']['name']}”“{$_W['account']['account']}”</title>
+<script src="{MODULE_URL}public/jquery.js"></script>
+
+
+  <script src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>
+
+
+ </head>
+ <body>
+<script>
+
+layer.open({
+  type: 1,
+  //skin: 'layui-layer-rim', //加上边框
+  area: ['300px', '300px'], //宽高
+  content: "<div style='width:200px;height:200px;margin:10px auto 0px;'><img style='width:200px;height:200px;' src='{$_W['account']['qrcode']}'/></div><p style='width:200px;height:40px;margin:10px auto;text-align:center;line-height:40px;font-size:12px;color:#000;overflow:hidden;'>扫描上面二维码，回复“同城”</p>",
+});
+  </script>
+
+ </body>
+</html>

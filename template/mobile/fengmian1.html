@@ -1,0 +1,81 @@
+{template 'top'}
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/style/fengmian.css">
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		{php echo register_jssdk(false);}
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=WTUugkM1127r9GhyxmzjwGjDh1LAlvan"></script>
+
+		
+		
+	</head>
+		<div id="allmap"></div>
+
+
+
+<div id="fengmian_one">
+{loop $user $key $user}
+<a href="{php echo $this->createMobileUrl('view',array('uid'=>$user['uid']));}">
+<div id="fengmian_one_style">
+
+<div class="fengmian_one_img">
+<img src="{$user['avatar']}"/>
+{if $user['sex']=='1'}
+<div class="fengmian_one_a" style="background-color:#0098F0;"><img src="{MODULE_URL}public/images/boy.png"/></div>
+{elseif $user['sex']=='2'}
+<div class="fengmian_one_a" style="background-color:#FC5488;"><img src="{MODULE_URL}public/images/girl.png"/></div>
+{else}
+{/if}
+
+<div class="distince" style="display:none;">{$user['lon']},{$user['lat']},{$user['uid']}</div>
+<div class="fengmian_one_b" id="distince_{$user['uid']}">0.00KM</div>
+
+</div>
+
+</div>
+</a>
+{/loop}
+</div>
+
+</html>
+
+
+<script type="text/javascript">
+
+		wx.ready(function(){
+
+
+
+		
+
+			wx.getLocation({
+				type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+				success: function (res) {
+					var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+					var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+					var speed = res.speed; // 速度，以米/每秒计
+					var accuracy = res.accuracy; // 位置精度
+					
+			 var map = new BMap.Map("allmap");
+					map.centerAndZoom("重庆",12);  //重庆看你需要改
+					var pointA=new BMap.Point(longitude,latitude);  
+						//var pointA=new BMap.Point(30.123456,115.123456);  			
+				var divArr=document.getElementsByClassName('distince');
+					
+					for(var i=0;i<divArr.length;i++){
+						var str=divArr[i].innerText.split(',');
+						var pointB=new BMap.Point(eval(str[0]),eval(str[1])); 
+						var distince=(map.getDistance(pointA,pointB)).toFixed(2);
+						//divArr[i].innerText=distince;
+distince=(distince/1000.00).toFixed(2);
+
+			 var id="distince_"+str[2];
+						document.getElementById(id).innerText=distince+"KM";
+
+						//divArr[i].nextSibling.innerText=distince+"KM";
+						//alert('从大渡口区到江北区的距离是：'+(map.getDistance(pointA,pointB)).toFixed(2)+' 米。');  
+					}		
+              }
+		});	
+		});
+		</script>

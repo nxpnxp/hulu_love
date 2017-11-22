@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+
+  <title>管理中心</title>
+  <link rel="stylesheet" href="{MODULE_URL}template/mobile/m/style/public.css">
+
+ </head>
+ <body>
+  
+  {if $_GPC['do']!='m_home'}
+ <div id="m_top_menu">
+
+<a href="javascript:history.go(-1);">
+<div class="m_top_menu_a"><div class="m_top_menu_a_img"><img src="{MODULE_URL}public/images/top_1.png"/></div></div>
+</a>
+
+<div class="m_top_menu_b">管理详情</div>
+
+<a href="{php echo $this->createMobileUrl('m_home');}">
+<div class="m_top_menu_a"><div class="m_top_menu_a_img"><img src="{MODULE_URL}public/images/top_2.png"/></div></div>
+</a>
+
+</div>
+{else}{/if}

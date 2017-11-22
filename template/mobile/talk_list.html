@@ -1,0 +1,128 @@
+{php echo register_jssdk(false);}
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/talk.js"></script>
+
+<div id="talk_list_style">
+
+<div class="talk_list_a">
+<div class="talk_list_a_1"><a href="{php echo $this->createMobileUrl('view',array('uid'=>getuid($talk['openid'],$_W['uniacid'])));}"><img src="<?php echo getavatar($talk['openid'],$_W['uniacid'],$_W['attachurl']);?>"/></a></div>
+<div class="talk_list_a_2">
+<a href="{php echo $this->createMobileUrl('view',array('uid'=>getuid($talk['openid'],$_W['uniacid'])));}"><p class="talk_list_a_2_1"><?php echo getnickname($talk['openid'],$_W['uniacid']);?></p></a>
+<p class="talk_list_a_2_2"><?php echo getuserinfo($talk['openid'],$_W['uniacid']);?></p>
+</div>
+</div>
+
+<div class="talk_list_b">
+
+{$talk['talk_content']}
+</div>
+
+{if $talk['talk_pic1']==null&&$talk['talk_pic2']==null&&$talk['talk_pic3']==null}
+{else}
+<!--
+<div id="talk_list_c_c_{$talk['talk_id']}" class="talk_list_c c_{$talk['talk_id']}">
+{if $talk['talk_pic1']!=null}<img layer-src="{$_W['attachurl']}{$talk['talk_pic1']}" src="{$_W['attachurl']}{$talk['talk_pic1']}"/>{else}{/if}
+{if $talk['talk_pic2']!=null}<img layer-src="{$_W['attachurl']}{$talk['talk_pic2']}" src="{$_W['attachurl']}{$talk['talk_pic2']}"/>{else}{/if}
+{if $talk['talk_pic3']!=null}<img layer-src="{$_W['attachurl']}{$talk['talk_pic3']}" src="{$_W['attachurl']}{$talk['talk_pic3']}"/>{else}{/if}
+</div>
+-->
+
+
+<div id="talk_list_c_c_{$talk['talk_id']}" class="talk_list_c c_{$talk['talk_id']}">
+{if $talk['talk_pic1']!=null}<img src="{$_W['attachurl']}{$talk['talk_pic1']}"/>{else}{/if}
+{if $talk['talk_pic2']!=null}<img src="{$_W['attachurl']}{$talk['talk_pic2']}"/>{else}{/if}
+{if $talk['talk_pic3']!=null}<img src="{$_W['attachurl']}{$talk['talk_pic3']}"/>{else}{/if}
+</div>
+
+
+{/if}
+
+<div class="talk_list_d">
+<div class="talk_list_d_1"><?php echo gettimegap($talk['talk_time']);?></div>
+
+<div class="talk_list_d_2">
+<div class="talk_list_d_2_img">
+<a href="{php echo $this->createMobileUrl('talk_enjoy',array('talk_id'=>$talk['talk_id'],'talk_openid'=>$talk['openid']));}">
+<img src="{MODULE_URL}public/images/shang.png"/>
+</a>
+</div></div>
+
+<div id="talk_list_d_3_{$talk['talk_id']}" class="talk_list_d_3">
+<div class="talk_list_d_3_img"><img src="{MODULE_URL}public/images/zan.png"/></div>
+赞 <div id="talk_list_d_3_zan_{$talk['talk_id']}" class="talk_list_d_3_zan">{php echo getzannum($talk['talk_id'],$_W['uniacid']);}</div>
+</div>
+
+<div class="talk_list_d_4">
+<a href="{php echo $this->createMobileUrl('talk_view',array('talk_id'=>$talk['talk_id']));}">
+<div class="talk_list_d_4_img"><img src="{MODULE_URL}public/images/pinglun.png"/></div>
+评论 {php echo getpinglunnum($talk['talk_id'],$_W['uniacid']);}
+</a>
+</div>
+
+</div>
+
+<div id="talk_list_e_{$talk['talk_id']}" class="talk_list_e">
+<div class="talk_list_e_img">
+<img src="{MODULE_URL}public/images/zan1.png"/>
+</div>
+<?php $zannickname=getzanuser($talk['talk_id'],$_W['uniacid']);foreach($zannickname as $key=>$zannickname){echo '，'.$zannickname;}?>
+</div>
+
+
+</div>
+<!---->
+<!--
+<script>
+layer.ready(function(){ //为了layer.ext.js加载完毕再执行
+  layer.photos({
+    photos: "#talk_list_c_c_{$talk['talk_id']}"
+  });
+});   
+</script>
+-->
+
+<script>
+wx.ready(function(){
+document.querySelector('#talk_list_c_c_{$talk['talk_id']}').onclick = function () {
+    wx.previewImage({
+      current:         '{$_W['attachurl']}{$talk['talk_pic1']}',
+
+      urls: [
+        
+		{if (!empty($talk['talk_pic1']))}        '{$_W['attachurl']}{$talk['talk_pic1']}',{else}{/if}
+{if (!empty($talk['talk_pic2']))}        '{$_W['attachurl']}{$talk['talk_pic2']}',{else}{/if}
+{if (!empty($talk['talk_pic3']))}        '{$_W['attachurl']}{$talk['talk_pic3']}',{else}{/if}
+
+      ]
+    });
+  };
+});
+</script>
+
+<script>
+
+$(document).ready(function(){
+$("#talk_list_d_3_{$talk['talk_id']}").click(function(){
+$.post("{php echo $this->createMobileUrl('zan');}",
+	{
+	'talk_id':"{$talk['talk_id']}"
+	},
+		function(data,status){
+		      //alert("" + data + "");
+			  $("#talk_list_e_{$talk['talk_id']}").append(data);
+//talk_list_d_3_zan_{$talk['talk_id']}
+ //var finger = parseInt($("#talk_list_d_3_zan_{$talk['talk_id']}").html()+1;
+	// $("#talk_list_d_3_zan_{$talk['talk_id']}").html(finger);
+if(data.length!=0){
+	 	 var finger=$("#talk_list_d_3_zan_{$talk['talk_id']}");
+	 finger.html(parseInt(finger.html())+1);
+}
+	});
+//$(this).html("已赞");
+
+});
+});
+</script>
+
+

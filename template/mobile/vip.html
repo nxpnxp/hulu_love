@@ -1,0 +1,57 @@
+{template 'top'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/vip.css">
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">升级VIP</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+<form action="{php echo $this->createMobileUrl('pay_one',array('order_num'=>$order_num))}" method="POST">
+
+<div id="vip_one">
+
+<div id="vip_one_style">
+<div class="vip_one_a">12个月</div>
+<div class="vip_one_b">
+<p class="vip_one_b_1">{$make['make_vip_year']}元</p>
+<p class="vip_one_b_2">日均：{php echo round(($make['make_vip_year']/365),2);}元</p>
+</div>
+<div class="vip_one_a"><input type="radio" name="up_vip" value="{$make['make_vip_year']}" required="required"/></div>
+</div>
+
+<div id="vip_one_style">
+<div class="vip_one_a">3个月</div>
+<div class="vip_one_b">
+<p class="vip_one_b_1">{$make['make_vip_quarter']}元</p>
+<p class="vip_one_b_2">日均：{php echo round(($make['make_vip_quarter']/92),2);}元</p>
+</div>
+<div class="vip_one_a"><input type="radio" name="up_vip" value="{$make['make_vip_quarter']}" required="required"/></div>
+</div>
+
+<div id="vip_one_style">
+<div class="vip_one_a">1个月</div>
+<div class="vip_one_b">
+<p class="vip_one_b_1">{$make['make_vip_month']}元</p>
+<p class="vip_one_b_2">日均：{php echo round(($make['make_vip_month']/31),2);}元</p>
+</div>
+<div class="vip_one_a"><input type="radio" name="up_vip" value="{$make['make_vip_month']}" required="required"/></div>
+</div>
+
+</div>
+
+<div id="vip_two"><input type="submit" name="submit" value="确认购买"></div>
+
+</form>
+
+<p class="vip_three_a">特权说明：</p>
+<p class="vip_three_b">①：解锁表白信箱</p>
+<p class="vip_three_b">②：查看喜欢你的会员</p>
+<p class="vip_three_b">③：查看访问你的会员</p>
+<p class="vip_three_b">④：VIP标识</p>
+{template 'foot'}

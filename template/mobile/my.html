@@ -1,0 +1,185 @@
+{template 'top'}
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/my.css">
+
+<div id="my_one">
+<a href="{php echo $this->createMobileUrl('avatar');}">
+<div id="my_one_left"><img src="{$avatar}"/></div>
+</a>
+
+<div id="my_one_right">
+<div class="my_one_right_a">{$user['nickname']}<span> [<?php echo getupid($user['upid']);?>]</span></div>
+<div class="my_one_right_b">会员号：{php echo ($make['make_uid_start']+$user['uid']);}</div>
+<div class="my_one_right_c">
+
+{if $more['more_real_tel']=='2'}
+<img src="{MODULE_URL}public/images/r6.png"/>
+{else}
+<img src="{MODULE_URL}public/images/r5.png"/>
+{/if}
+
+{if $more['more_real_card']=='4'}
+<img src="{MODULE_URL}public/images/r4.png"/>
+{else}
+<img src="{MODULE_URL}public/images/r3.png"/>
+{/if}
+
+{if $more['more_real_self']=='2'}
+<img src="{MODULE_URL}public/images/r10.png"/>
+{else}
+<img src="{MODULE_URL}public/images/r9.png"/>
+{/if}
+
+
+</div>
+</div>
+</div>
+
+
+<div id="my_love">
+
+<div class="my_love_a">
+{if $user['upid']=='4'}
+<a href="{php echo $this->createMobileUrl('likeuser',array('liketype'=>'likeme'));}">
+<p class="my_love_a_1">{$likeme_num}</p><p class="my_love_a_2">暗恋我的</p>
+</a>
+{else}
+<p onclick="alert('只有VIP才能查看暗恋自己的人！请开通VIP！');" class="my_love_a_1">{$likeme_num}</p><p class="my_love_a_2">暗恋我的</p>
+{/if}
+</div>
+
+
+<div class="my_love_b">
+<a href="{php echo $this->createMobileUrl('likeuser',array('liketype'=>'ilike'));}">
+<p class="my_love_a_1">{$ilike_num}</p><p class="my_love_a_2">我暗恋的</p>
+</a>
+</div>
+
+
+<div class="my_love_a">
+{if $user['upid']=='4'}
+<a href="{php echo $this->createMobileUrl('visitor');}">
+<p class="my_love_a_1">{$visitor_num}</p><p class="my_love_a_2">访客</p>
+</a>
+{else}
+<p onclick="alert('只有VIP才能查看访问自己的人！请开通VIP！');" class="my_love_a_1">{$visitor_num}</p><p class="my_love_a_2">访客</p>
+{/if}
+</div>
+
+</div>
+
+
+<div id="my_two">
+<div class="my_two_a"><a href="{php echo $this->createMobileUrl('store');}"><p>我的背包</p></a></div>
+<div class="my_two_b">￥：{$money}</div>
+<div class="my_two_c">
+
+
+{if (!empty($withdraw))}<a href="{php echo $this->createMobileUrl('withdraw');}"><p>提现记录</p></a>
+
+{elseif (empty($withdraw))&&$money>=$make['make_withdraw_money']&&$user['ureal']=='2'}<a href="{php echo $this->createMobileUrl('withdraw');}"><p>申请提现</p></a>
+{elseif (empty($withdraw))&&$money>=$make['make_withdraw_money']&&$user['ureal']=='1'}<p onclick="alert('请先完成任意一项实名认证才可提现！');">申请提现</p>
+{elseif (empty($withdraw))&&$money<$make['make_withdraw_money']}<p onclick="alert('你的余额还未达到最低提现额度！');">申请提现</p>
+{else}{/if}
+
+
+
+</div>
+</div>
+
+<div id="my_three">
+
+<div id="my_three_style">
+<!--A为有底开始-->
+<a href="{php echo $this->createMobileUrl('update');}">
+<div id="my_three_a">
+<div class="my_three_a_1"><img src="{MODULE_URL}public/images/e1.png"/></div>
+<div class="my_three_a_2">基本资料</div>
+<div class="my_three_a_3">></div>
+</div>
+</a>
+<!--A为无底结束-->
+<!--A为有底开始-->
+<a href="{php echo $this->createMobileUrl('request');}">
+<div id="my_three_a">
+<div class="my_three_a_1"><img src="{MODULE_URL}public/images/e2.png"/></div>
+<div class="my_three_a_2">择偶要求</div>
+<div class="my_three_a_3">></div>
+</div>
+</a>
+<!--A为无底结束-->
+<!--A为有底开始-->
+<a href="{php echo $this->createMobileUrl('photos');}">
+<div id="my_three_b">
+<div class="my_three_a_1"><img src="{MODULE_URL}public/images/e3.png"/></div>
+<div class="my_three_a_2">上传照片</div>
+<div class="my_three_a_3">></div>
+</div>
+</a>
+<!--A为无底结束-->
+</div>
+
+<div id="my_three_style">
+<!--A为有底开始-->
+<a href="{php echo $this->createMobileUrl('vip');}">
+<div id="my_three_a">
+<div class="my_three_a_1"><img src="{MODULE_URL}public/images/e4.png"/></div>
+<div class="my_three_a_2">升级VIP</div>
+<div class="my_three_a_3">></div>
+</div>
+</a>
+<!--A为无底结束-->
+<!--A为有底开始-->
+<a href="{php echo $this->createMobileUrl('getmoney');}">
+<div id="my_three_a">
+<div class="my_three_a_1"><img src="{MODULE_URL}public/images/e5.png"/></div>
+<div class="my_three_a_2">收益记录</div>
+<div class="my_three_a_3">></div>
+</div>
+</a>
+<!--A为无底结束-->
+<!--A为有底开始-->
+<a href="{php echo $this->createMobileUrl('paymoney');}">
+<div id="my_three_b">
+<div class="my_three_a_1"><img src="{MODULE_URL}public/images/e6.png"/></div>
+<div class="my_three_a_2">消费记录</div>
+<div class="my_three_a_3">></div>
+</div>
+</a>
+<!--A为无底结束-->
+</div>
+
+<div id="my_three_style">
+<!--A为有底开始-->
+<a href="{php echo $this->createMobileUrl('real');}">
+<div id="my_three_a">
+<div class="my_three_a_1"><img src="{MODULE_URL}public/images/e7.png"/></div>
+<div class="my_three_a_2">实名认证</div>
+<div class="my_three_a_3">></div>
+</div>
+</a>
+<!--A为无底结束-->
+<!--A为有底开始-->
+<a href="{php echo $this->createMobileUrl('my_gift');}">
+<div id="my_three_a">
+<div class="my_three_a_1"><img src="{MODULE_URL}public/images/e8.png"/></div>
+<div class="my_three_a_2">我的礼物</div>
+<div class="my_three_a_3">></div>
+</div>
+</a>
+<!--A为无底结束-->
+<!--A为有底开始-->
+<a href="{php echo $this->createMobileUrl('share');}">
+<div id="my_three_b">
+<div class="my_three_a_1"><img src="{MODULE_URL}public/images/e9.png"/></div>
+<div class="my_three_a_2">分享推广</div>
+<div class="my_three_a_3">></div>
+</div>
+</a>
+<!--A为无底结束-->
+</div>
+
+</div>
+
+{template 'test'}
+{template 'bottom'}

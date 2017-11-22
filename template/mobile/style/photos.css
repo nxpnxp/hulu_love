@@ -1,0 +1,17 @@
+/*photos_one*/
+.photos_one{width:100%;height:100px;margin:0px auto;}
+.photos_one img{width:100px;height:100px;}
+
+/*photos_title*/
+#photos_title{width:96%;height:30px;margin:20px 2%;border-bottom:1px solid #FC5488;}
+.photos_title_left{float:left;width:25%;height:30px;background-color:#FC5488;
+text-align:center;line-height:30px;font-size:16px;color:#FFF;overflow:hidden;}
+
+.photos_title_right{float:right;width:25%;height:30px;}
+.photos_title_right input{width:98%;height:28px;margin:1px 1%;border:none;background-color:#FFF;
+text-align:center;line-height:30px;font-size:16px;color:#999;overflow:hidden;}
+
+/*photos_list*/
+#photos_list{width:100%;height:auto;margin:0px auto 60px;}
+.photos_list_a{float:left;width:25%;height:80px;}
+.photos_list_a img{width:80px;height:80px;display:block;margin:0px auto;}

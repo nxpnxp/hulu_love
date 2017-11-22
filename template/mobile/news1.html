@@ -1,0 +1,514 @@
+{template 'header'}
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/style/public.css">
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/style/news.css?v={TIMESTAMP}">
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/style/swiper.css?v={TIMESTAMP}">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="{MODULE_URL}template/mobile/style/news.js?v={TIMESTAMP}"></script>
+<script src="{MODULE_URL}template/mobile/style/jquery-browser.js"></script>
+<script src="{MODULE_URL}template/mobile/style/jquery.qqFace.js"></script>
+<script>
+window.onload = function(){
+   var h =  document.body.scrollHeight||document.documentElement.scrollHeight ;
+   console.log(h);
+   window.scrollTo(h,h);
+}
+</script>
+<script type="text/javascript">
+$(function(){
+    $('.emotion').qqFace({
+        id : 'facebox', 
+        assign:'news_add_a_a', 
+        path:'{MODULE_URL}template/mobile/style/arclist/' //表情存放的路径
+    });
+});
+//查看结果
+function replace_em(str){
+    str = str.replace(/\</g,'&lt;');
+    str = str.replace(/\>/g,'&gt;');
+    str = str.replace(/\n/g,'<br/>');
+    str = str.replace(/\[em_([0-9]*)\]/g,"<img src='{MODULE_URL}template/mobile/style/arclist//$1.gif' border='0' />");
+    return str;
+}
+</script>
+<div id="news_top">
+	<a href="javascript:history.go(-1);">
+		<div class="news_top_a">
+			<img src="{MODULE_URL}public/images/top_1.png"/>
+		</div>
+	</a>
+	<div class="news_top_b">
+		与“{$news_user['nickname']}”聊天
+	</div>
+	<a href="{php echo $this->createMobileUrl('fengmian');}">
+		<div class="news_top_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+	</a>
+</div>
+<a href="{$moreads2['moreads_link']}">
+	<div id="news_ads1">
+		<img src="{$_W['attachurl']}{$moreads2['moreads_pic']}"/>
+	</div>
+</a>
+
+<div id="news_content">
+</div>
+
+<div class="tan" id="tan">
+    <i class="fa fa-circle-o-notch fa-spin" ></i>  
+</div>
+<div id="news_bottom">
+	<div id="news_bottom_top">
+        {if ($user['upid']=='4')||($today_num < $make['make_news_oneday'])}
+        <div id="news_bottom_left_0" class="text">
+            <i class="glyphicon glyphicon-volume-up border"></i>
+        </div>
+        {/if}
+        <div id="news_bottom_left">
+            <input id="news_add_a_a" type="text" name="news_content" placeholder="我想对你说..." required="required" />
+            <div class="press start" style="display:none;">开始说话</div>
+        </div>
+        <div id="news_bottom_right" class="plus">
+        {if ($user['upid']=='4')||($today_num < $make['make_news_oneday'])}
+            <i class="glyphicon glyphicon-plus border"></i>
+            <!-- <div class="news_bottom_right_a" onclick="sendmsg()">发送</div> -->
+        {else}
+        <div class="news_bottom_right_a" onclick="alert('想与Ta有更多消息来往吗？赶快去开通VIP吧！');">发送
+        </div>
+        {/if}
+        </div>
+        <div id="news_bottom_right" class="plus">
+            <span class="emotion"></span>
+        </div>
+        <input type="hidden" name="news_openid" value="{$_GPC['news_openid']}"/>
+    </div>
+	<div class="new_menu_panel img">
+		<ul>
+			<li>
+				<div class="box camera">
+					<i class="glyphicon glyphicon-picture" ></i>
+				</div>
+			</li>
+		</ul>
+	</div>
+    <div class="new_menu_panel emotion_panel">
+        <div class="swiper-container ">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide ">111</div>
+                <div class="swiper-slide ">222</div>
+                <div class="swiper-slide ">333</div>
+                <div class="swiper-slide ">444</div>
+                <div class="swiper-slide ">555</div>
+            </div>
+            <!-- 如果需要滚动条 -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
+<div id="news_right">
+	<a href="{php echo $this->createMobileUrl('gift',array('gift_openid'=>$ta['openid']));}">	<div id="news_right_a">礼</div>
+	</a>
+	<a href="{php echo $this->createMobileUrl('view',array('uid'=>$ta['uid']));}">
+		<div id="news_right_b">Ta</div>
+	</a>
+</div>
+
+{template 'foot'}
+<script src="{MODULE_URL}template/mobile/style/swiper.js"></script>
+<script> 
+    $(document).ready(function () {
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true
+        });
+        $(".new_menu_panel").hide();
+    });           
+</script>
+<script>	
+// 连接服务端
+function connect() {
+   // 创建websocket
+   ws = new WebSocket("ws://"+document.domain+":7272");
+   // 当socket连接打开时，输入用户名
+   ws.onopen = onopen;
+   // 当有消息时根据消息类型显示不同信息
+   ws.onmessage = onmessage; 
+   ws.onclose = function() {
+	  console.log("连接关闭，定时重连");
+      connect();
+   };
+   ws.onerror = function() {
+ 	  console.log("出现错误");
+   };
+}
+
+// 连接建立时发送登录信息
+function onopen()
+{
+    name = '{$user['nickname']}';
+    // 登录
+    var login_data = '{"type":"login","client_name":"'+name.replace(/"/g, '\\"')+'","room_id":"<?php echo $room_id;?>","openid":"<?php echo $_W['openid'];?>","news_openid":"<?php echo $_GPC['news_openid'];?>","avatar":"<?php echo $user['avatar'];?>","uniacid":"<?php echo $_W['uniacid'];?>","os":"<?php echo $_W['os'];?>","container":"<?php echo $_W['container'];?>"}';
+    console.log("websocket握手成功，发送登录数据:"+login_data);
+    ws.send(login_data);
+}
+
+// 服务端发来消息时
+function onmessage(e)
+    {
+    console.log(e.data);
+    var data = eval("("+e.data+")");
+    switch(data['type']){
+        // 服务端ping客户端
+        case 'ping':
+            ws.send('{"type":"pong"}');
+            break;;
+        case 'login':
+            if(data['news_list'])
+            {
+                news_list = data['news_list'];
+                $.each(news_list, function(name, value) {
+                    var Cts = value['news_content'];
+                    var audio = 0;
+                    if(Cts.indexOf("audio.png") > 0 ){
+                        audio = 1;
+                    }
+
+                	if(value['openid'] == '{$_W["openid"]}'){
+                        if(audio==1){
+                            value['news_content'] = '<div class="audio_1">'+value['news_content']+'</div>';
+                        }else{
+                            value['news_content'] = htmlspecialchars_decode(value['news_content']);
+                        }
+                		html = '<div id="news_content_style"><div class="news_content_a right"><img src="'+value['avatar']+'"/></div><div class="news_content_b right">'+value['news_content']+'</div></div>';
+                	}else{
+                        if(audio==1){
+                            value['news_content'] = '<div class="audio_2">'+value['news_content']+'</div>';
+                        }else{
+                            value['news_content'] = htmlspecialchars_decode(value['news_content']);
+                        }
+                		html = '<div id="news_content_style"><div class="news_content_a"><img src="'+value['avatar']+'"/></div><div class="news_content_b">'+value['news_content']+'</div></div>';
+                	}
+
+	                $("#news_content").append(html);
+
+				});
+                scrollTobottom();
+            }
+            console.log(data['client_name']+"登录成功");
+            break;
+        // 发言
+        case 'say':
+            say(data['openid'], data['avatar'],data['client_name'], data['content'], data['time']);
+            break;
+        // 用户退出 更新用户列表
+        case 'logout':
+            break;
+    }
+}
+
+// 发言
+function say(openid, avatar,client_name, content, time){
+    var Cts = content;
+    var audio = 0;
+    if(Cts.indexOf("audio.png") > 0 ){
+        audio = 1;
+    }
+	if(openid == '{$_W["openid"]}'){
+        if(audio==1){
+            content = '<div class="audio_1">'+content+'</div>';
+        }else{
+            content = htmlspecialchars_decode(content);
+        }
+		html = '<div id="news_content_style"><div class="news_content_a right"><img src="'+avatar+'"/></div><div class="news_content_b right">'+content+'</div></div>';
+	}else{
+        if(audio==1){
+            content = '<div class="audio_2">'+content+'</div>';
+        }else{
+            content = htmlspecialchars_decode(content);
+        }
+		html = '<div id="news_content_style"><div class="news_content_a"><img src="'+avatar+'"/></div><div class="news_content_b">'+content+'</div></div>';
+	}
+	$("#news_content").append(html);
+    scrollTobottom();
+}
+
+// 提交对话
+function send() {
+	var input = document.getElementById("news_add_a_a");
+	input.value  = $.trim(input.value );
+	if(input.value !=''){
+        val = input.value.replace(/"/g, '\\"').replace(/\n/g,'\\n').replace(/\r/g, '\\r');
+        val = replace_em(val);
+
+		ws.send('{"type":"say","content":"'+val+'"}');
+		input.value = "";
+	}
+    $("#news_bottom_right").html("<i class='glyphicon glyphicon-plus border'></i>");
+	
+}
+
+$(function(){
+	connect();
+});
+
+wx.config({
+    debug: false,
+    appId: "{php echo $_W['account']['jssdkconfig']['appId']}",
+    timestamp: "{php echo $_W['account']['jssdkconfig']['timestamp']}",
+    nonceStr: "{php echo $_W['account']['jssdkconfig']['nonceStr']}",
+    signature: "{php echo $_W['account']['jssdkconfig']['signature']}",
+    jsApiList: [
+      'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+        'hideMenuItems',
+        'showMenuItems',
+        'hideAllNonBaseMenuItem',
+        'showAllNonBaseMenuItem',
+        'translateVoice',
+        'startRecord',
+        'stopRecord',
+        'onRecordEnd',
+        'playVoice',
+        'pauseVoice',
+        'stopVoice',
+        'uploadVoice',
+        'downloadVoice',
+        'chooseImage',
+        'previewImage',
+        'uploadImage',
+        'downloadImage',
+        'getNetworkType',
+        'openLocation',
+        'getLocation',
+        'hideOptionMenu',
+        'showOptionMenu',
+        'closeWindow',
+        'scanQRCode',
+        'chooseWXPay',
+        'openProductSpecificView',
+        'addCard',
+        'chooseCard',
+        'openCard'
+    ]
+});
+wx.ready(function () {
+    // 5 图片接口
+    // 5.1 拍照、本地选图
+    var images = {
+        localId: [],
+         serverId: []
+    };
+    $('.camera').click(function(){
+        wx.chooseImage({
+            sizeType: ['original'], // 可以指定是原图还是压缩图，默认二者都有
+            sourceType: ['album'], // 可以指定来源是相册还是相机，默认二者都有
+            success: function (res) {
+                    images.localId = res.localIds;
+                   if(images.localId.length <= 0){
+                        alert("请选择照片");
+                        return false;
+                    }
+                    if((images.localId.length)>9){ 
+                    	alert('只能上传9张图片'); return ;
+                    }
+                    var i = 0, len = images.localId.length;
+                    for(i;i<len;i++){
+                        wx.uploadImage({
+                            localId: images.localId[i],
+                            isShowProgressTips:1,
+                            success : function(res){
+                                var serverId = res.serverId;
+                                $.post("{php echo $this->createMobileUrl('Uploadimg', array());}",{media_id:serverId},function(data){
+                                	sendImg(data);
+                                });
+                            },
+                            fail: function(res){
+                                alert(JSON.stringify(res));
+                            }
+                        })
+                    }
+            }
+        });
+    });
+
+
+    //音频
+    $(".press").on('touchstart',function(obj) { 
+        console.log(obj);
+        _this = $(this);
+        if($(_this).hasClass("start")){
+            i = 0;
+            $(_this).removeClass("start");
+            $(_this).addClass("stop");
+            $(".press").text('停止录音');
+            $(".tan").show();
+            wx.startRecord({
+                cancel: function () {
+                alert('用户拒绝授权录音');
+                }
+            });
+
+            Interval = setInterval(function(){
+                i += 1;
+                if(i>='55'){
+                    $(".tan").hide();
+                    $(".press").text('开始说话');
+                    $(_this).removeClass("stop");
+                    $(_this).addClass("start");
+                    clearInterval(Interval);
+                    
+                    wx.stopRecord({
+                        success: function (res) {
+                            localId  = res.localId;
+                            wx.uploadVoice({
+                                localId:localId,
+                                success: function (res) {
+                                    //alert('上传语音成功，serverId 为' + res.serverId);
+                                    serverId = res.serverId;
+                                    $(".press").text('开始说话');
+                                    $(_this).removeClass("uploading");
+                                    $(_this).addClass("start");
+
+                                    sendAudio(serverId);
+                                }
+                            });
+                        },
+                        fail: function (res) {
+                            alert(JSON.stringify(res));
+                        }
+                    });
+                    if (localId  == '') {
+                        alert('请先使用 startRecord 接口录制一段声音');
+                        return;
+                    }
+               }
+            }, 1000); 
+        }else if($(_this).hasClass("stop")){
+            if (i<2) {
+                $(".tan").html('<i class="fa fa-exclamation" ></i><p>时间太短</p>');
+                clearInterval(Interval);
+                $(".press").text('开始说话');
+                $(_this).removeClass("stop");
+                $(_this).addClass("start");
+
+                wx.stopRecord({
+                    success: function (res) {
+                        var localId  = res.localId;
+                        //alert('停止');
+                    },
+                    fail: function (res) {
+                        alert(JSON.stringify(res));
+                    }
+                });
+
+                timeout = setTimeout(function() {  
+                   $(".tan").hide();
+                   $(".tan").html('<i class="fa fa-circle-o-notch fa-spin" ></i>');
+                }, 2000);  
+            }else{
+                $(".tan").hide();
+                clearInterval(Interval);
+                $(".press").text('点击说话');
+                $(_this).removeClass("stop");
+                $(_this).addClass("start");
+                wx.stopRecord({
+                    success: function (res) { 
+                        localId  = res.localId;
+                        wx.uploadVoice({
+                            localId:localId,
+                            success: function (res) {
+                                //alert('上传语音成功，serverId 为' + res.serverId);
+                                serverId = res.serverId;
+                                $(".press").text('开始说话');
+                                $(_this).removeClass("uploading");
+                                $(_this).addClass("start");
+
+                                sendAudio(serverId);
+                            }
+                        });
+                    },
+                    fail: function (res) {
+                        alert(JSON.stringify(res));
+                    }
+                });
+            }
+        }
+    });  
+
+    $(document).on("click",".audio",function(){
+        localId     = $(this).attr("localId");
+        serverId    = $(this).attr("serverId");
+        _this = $(this);
+        
+        
+        if($(this).hasClass('start')){
+            wx.stopVoice({
+                localId: localId // 需要停止的音频的本地ID，由stopRecord接口获得
+            });
+            $(_this).removeClass('start'); 
+            var src = '{MODULE_URL}public/images/audio.png';
+            $('img',_this).attr('src',src);
+        }else{
+            if(localId==undefined){
+                wx.downloadVoice({
+                    serverId: serverId, // 需要下载的音频的服务器端ID，由uploadVoice接口获得
+                    success: function (res) {
+                        localId = res.localId; // 返回音频的本地ID
+                        $(_this).attr('localId',localId);
+                        wx.playVoice({
+                            localId: localId
+                        });
+                    $(_this).addClass('start'); 
+                    }
+                });
+            }else{
+                wx.playVoice({
+                    localId: localId
+                });
+                $(_this).addClass('start'); 
+            }
+
+            var src = '{MODULE_URL}public/images/audio.png';
+            $('.audio img').attr('src',src);
+            var src = '{MODULE_URL}public/images/audio.gif';
+            $('img',_this).attr('src',src);
+            wx.onVoicePlayEnd({
+                complete: function (res) {
+                    var src = '{MODULE_URL}public/images/audio.png';
+                    $('img',_this).attr('src',src);
+                    $(_this).removeClass('start'); 
+                }
+            });
+        }
+    });
+});
+
+function sendImg(src){
+	html = '{"type":"say","mtype":"img","content":"'+src+'"}';
+	ws.send(html);
+	$(".open").removeClass('open');
+	$(".new_menu_panel").hide();
+    scrollTobottom();
+}
+
+function sendAudio(serverId){
+    html = '{"type":"say","mtype":"voice","content":"'+serverId+'"}';
+    ws.send(html);
+    scrollTobottom();
+}
+
+function scrollTobottom(){
+    window.scrollTo(0,10000);
+}
+
+function htmlspecialchars_decode(str){           
+  str = str.replace(/&amp;/g, '&'); 
+  str = str.replace(/&lt;/g, '<');
+  str = str.replace(/&gt;/g, '>');
+  str = str.replace(/&quot;/g, "''");  
+  str = str.replace(/&#039;/g, "'");  
+  return str;  
+}
+</script>

@@ -1,0 +1,43 @@
+<div class="panel panel-info">
+<div class="panel-heading">礼物添加</div>
+<div id="love_one">
+
+<form action="" method="POST">
+<div id="love_one_style">
+<div class="love_one_a">礼物名称</div>
+<div class="love_one_b"><input type="text" name="gift_name" placeholder="请输入礼物名称" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">礼物状态</div>
+<div class="love_one_b">
+<select name="gift_pid">
+<option value="1">显示</option>
+<option value="2">隐藏</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">礼物排序</div>
+<div class="love_one_b"><input type="number" name="gift_did" placeholder="请输入礼物排序" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">礼物价格</div>
+<div class="love_one_b"><input type="number" name="gift_price" placeholder="请输入礼物价格" required="required"/></div>
+</div>
+
+<div id="love_one_pic">
+<div class="love_one_c">礼物图片</div>
+<div class="love_one_d">{php echo tpl_form_field_image('gift_pic');}</div>
+</div>
+
+<div id="love_one_ok">
+<input type="submit" name="submit" value="添 加"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</div>
+
+</form>
+</div>
+</div>

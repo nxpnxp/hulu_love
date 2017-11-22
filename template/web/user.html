@@ -1,0 +1,124 @@
+{template 'common/header'}
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">所有会员</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">待审核会员</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">普通会员</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">VIP会员</a></li>
+	<li role="presentation"><a href="#one" aria-controls="one" role="tab" data-toggle="tab">黑名单</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+
+	
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">所有会员</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/user'}
+<thead>
+<tbody>
+{loop $user $key $user}
+{template 'web/page/user_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">待审核会员</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/user'}
+<thead>
+<tbody>
+{loop $usertwo $key $user}
+{template 'web/page/user_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+    <div role="tabpanel" class="tab-pane" id="messages">
+
+	
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">普通会员</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/user'}
+<thead>
+<tbody>
+{loop $userthree $key $user}
+{template 'web/page/user_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+    <div role="tabpanel" class="tab-pane" id="settings">
+
+	
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">VIP会员</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/user'}
+<thead>
+<tbody>
+{loop $userfour $key $user}
+{template 'web/page/user_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+	<div role="tabpanel" class="tab-pane" id="one">
+
+	
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">黑名单</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/user'}
+<thead>
+<tbody>
+{loop $userone $key $user}
+{template 'web/page/user_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+  </div>
+
+</div>
+
+{template 'common/footer'}

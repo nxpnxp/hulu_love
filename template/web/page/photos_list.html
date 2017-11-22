@@ -1,0 +1,17 @@
+
+<div id="love_pic_style">
+
+<div class="love_pic_b">
+<img src="{$_W['attachurl']}{$photos['pic_url']}"/>
+<div class="love_pic_a"><?php echo getpicpid($photos['pic_pid']);?></div>
+</div>
+<div class="love_pic_c">
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('photos_update',array('openid'=>$photos['openid'],'pic_id'=>$photos['pic_id'],'pic_pid'=>'3','photos_type'=>'photos'));}" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('photos_update',array('openid'=>$photos['openid'],'pic_id'=>$photos['pic_id'],'pic_pid'=>'1','photos_type'=>'photos'));}" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+
+<a onclick="delcfm()" class="btn btn-default" href="{php echo $this->createWebUrl('photos_del',array('openid'=>$photos['openid'],'pic_id'=>$photos['pic_id'],'photos_type'=>'photos'));}" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+
+</div>
+</div>

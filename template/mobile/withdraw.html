@@ -1,0 +1,71 @@
+{template 'top'}
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/withdraw.css">
+
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">提现记录</div>
+
+<!--
+<div onclick="withdraw_add()" class="top_banner_a"><img src="{MODULE_URL}public/images/add.png"/></div>
+-->
+
+{if $money>=$make['make_withdraw_money']&&$user['ureal']=='2'}<div onclick="withdraw_add()" class="top_banner_a"><img src="{MODULE_URL}public/images/add.png"/></div>
+{elseif $money<$make['make_withdraw_money']}<div onclick="alert('你的账户余额少于最低提现金额，暂不支持提现！');" class="top_banner_a"><img src="{MODULE_URL}public/images/add.png"/></div>
+
+{else}{/if}
+
+
+</div>
+<!--top_banner结束-->
+
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>
+<!---->
+
+<script>
+
+function withdraw_add(){
+layer.open({
+  type: 2,
+  title: '申请提现',
+  shadeClose: true,
+  shade: 0.3,
+  area: ['300px', '200px'],
+  content: "{php echo $this->createMobileUrl('withdraw_add');}" //iframe的url
+}); 
+}
+</script>
+
+
+<div id="withdraw_one">
+<!---->
+{loop $with $key $with}
+<div id="withdraw_one_style">
+
+<div class="withdraw_one_a">
+<p class="withdraw_one_a_1">{php echo date('m-d',$with['with_time']);}</p>
+<p class="withdraw_one_a_2">{php echo date('H:i',$with['with_time']);}</p>
+</div>
+
+<div class="withdraw_one_b">
+<a href="{php echo $this->createMobileUrl('view',array('uid'=>getuid($with['openid'],$_W['uniacid'])));}">
+<img src="<?php echo getavatar($with['openid'],$_W['uniacid']);?>"/>
+</a>
+</div>
+
+<div class="withdraw_one_c">
+<p class="withdraw_one_c_1"><?php echo getwithdrawpid($with['with_pid']);?> {$with['with_content']}</p>
+<p class="withdraw_one_c_2">{$with['with_money']}</p>
+</div>
+
+</div>
+{/loop}
+<!---->
+
+
+</div>
+{template 'bottom'}

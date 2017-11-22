@@ -1,0 +1,13 @@
+/*avatar_one*/
+body{background-color:#FFF;}
+#avatar_one{width:96%;height:101px;margin:0px auto;}
+#avatar_one_style{width:100%;height:50px;border-bottom:1px solid #EEE;}
+.avatar_one_a{float:left;width:30%;height:50px;text-align:center;line-height:50px;font-size:16px;color:#000;overflow:hidden;}
+.avatar_one_b{float:right;width:70%;height:50px;}
+.avatar_one_b input{width:98%;height:30px;margin:10px auto;border:none;
+text-align:left;line-height:30px;font-size:14px;color:#999;overflow:hidden;}
+
+.avatar_one_style2{width:100%;height:50px;}
+.avatar_one_c{float:right;width:25%;height:50px;}
+.avatar_one_c input{width:98%;height:30px;margin:10px auto;background-color:#FC5488;border:none;
+text-align:center;line-height:30px;font-size:16px;color:#FFF;overflow:hidden;}

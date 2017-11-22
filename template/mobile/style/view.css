@@ -1,0 +1,71 @@
+/*view_one*/
+#view_one{width:100%;height:110px;margin:0px auto;
+background-image:url('http://img.bizhi.sogou.com/images/2012/08/01/21015.jpg');background-size:100% 100%;}
+#view_one_a{float:left;width:25%;height:100%;}
+.view_one_a_avatar{width:70px;height:70px;margin:0px auto 20px;border-radius:50%;}
+.view_one_a_avatar img{width:70px;height:70px;border-radius:50%;}
+
+.view_one_a_vip{width:20px;height:20px;margin:0px auto;}
+.view_one_a_vip img{width:20px;height:20px;}
+
+#view_one_b{float:left;width:50%;height:100%;}
+#view_one_b p.view_one_b_1{width:100%;height:30px;margin:20px auto 0px auto;
+text-align:left;line-height:30px;font-size:16px;color:#000;overflow:hidden;}
+#view_one_b p.view_one_b_2{width:100%;height:20px;margin:0px auto;
+text-align:left;line-height:20px;font-size:12px;color:#999;overflow:hidden;}
+
+#view_one_b .view_one_b_3{width:100%;height:20px;margin-bottom:20px;}
+#view_one_b .view_one_b_3 img{float:left;width:20px;height:20px;}
+
+#view_one_c{float:left;width:25%;height:100%;}
+#view_one_c .view_one_c_1{width:64px;height:30px;margin:20px auto 10px auto;background-color:#FFB459;border-radius:10px;
+text-align:center;line-height:30px;font-size:16px;color:#FFF;overflow:hidden;}
+#view_one_c .view_one_c_2_1,#view_one_c .view_one_c_2_2,#view_one_c .view_one_c_2_3{width:64px;height:30px;margin:10px auto 20px auto;background-color:#FC5488;border-radius:10px;
+text-align:center;line-height:30px;font-size:16px;color:#FFF;overflow:hidden;}
+
+/*view_title*/
+#view_title{width:100%;height:50px;margin:0px auto;background-color:#F5F3F8;border-bottom:1px solid #D5D5D5;}
+#view_title p.view_title_1{width:96%;height:100%;margin:0px 2%;text-align:left;line-height:50px;font-size:16px;color:#000;overflow:hidden;}
+
+/*view_photos*/
+#view_photos{width:100%;height:150px;margin:0px auto;}
+/*view_no*/
+#view_no{width:100%;height:70px;margin:0px auto;
+text-align:center;line-height:70px;font-size:16px;color:#000;overflow:hidden;}
+#view_content{width:100%;height:auto;border-top:10px solid #FFF;border-bottom:10px solid #FFF;}
+.view_content_a{width:96%;height:auto;margin:0px auto;text-align:left;line-height:30px;font-size:16px;color:#999;overflow:hidden;}
+
+/*view_biaobai*/
+#view_biaobai{width:100%;height:50px;margin:0px auto;border-top:1px solid #D5D5D5;border-bottom:1px solid #D5D5D5;}
+#view_biaobai_a{float:left;width:33%;height:50px;}
+.view_biaobai_style{width:75px;height:22px;margin:14px auto;}
+.view_biaobai_a_img{float:left;width:22px;height:22px;}
+.view_biaobai_a_img img{width:22px;height:22px;}
+.view_biaobai_a_p{float:right;width:48px;height:22px;}
+.view_biaobai_a_p p{text-align:center;line-height:22px;font-size:16px;color:#000;overflow:hidden;}
+
+#view_biaobai_b{float:left;width:33%;height:50px;border-left:1px solid #D5D5D5;border-right:1px solid #D5D5D5;}
+.view_biaobai_bstyle{width:59px;height:22px;margin:14px auto;}
+.view_biaobai_b_img{float:left;width:22px;height:22px;}
+.view_biaobai_b_img img{width:22px;height:22px;}
+.view_biaobai_b_p{float:right;width:32px;height:22px;}
+.view_biaobai_b_p img{text-align:center;line-height:22px;font-size:16px;color:#000;overflow:hidden;}
+
+/*view_contact*/
+#view_contact{width:100%;height:70px;margin:0px auto;border-top:1px solid #D5D5D5;border-bottom:1px solid #D5D5D5;}
+.view_contact_a{float:left;width:25%;height:100%;}
+.view_contact_a img{width:30px;height:30px;display:block;margin:20px auto;}
+.view_contact_b{float:left;width:50%;height:100%;
+text-align:left;line-height:70px;font-size:16px;color:#000;overflow:hidden;}
+.view_contact_c{float:left;width:25%;height:100%;
+text-align:left;line-height:70px;font-size:16px;color:#999;overflow:hidden;}
+
+/*view_update*/
+#view_update{width:100%;height:500px;margin:0px auto;}
+.view_update_a{float:right;width:96%;height:50px;border-bottom:1px solid #D5D5D5;
+text-align:left;line-height:50px;font-size:16px;color:#000;overflow:hidden;}
+.view_update_a span{float:right;margin-right:2%;
+text-align:right;line-height:50px;font-size:16px;color:#999;overflow:hidden;}
+
+/*view_request*/
+#view_request{width:100%;height:300px;margin:0px auto 60px;}

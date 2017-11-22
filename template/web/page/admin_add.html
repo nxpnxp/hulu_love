@@ -1,0 +1,55 @@
+<div class="panel panel-info">
+<div class="panel-heading">管理员添加</div>
+<div id="love_one">
+
+<form action="" method="POST">
+
+<div id="love_one_style">
+<div class="love_one_a">选择管理员</div>
+<div class="love_one_b">
+<select name="openid">
+{loop $user $key $user}
+<option value="{$user['openid']}" {if $admin['openid']==$user['openid']}selected="selected"{else}{/if}>{$user['nickname']}</option>
+{/loop}
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">管理员状态</div>
+<div class="love_one_b">
+<select name="admin_pid">
+<option value="1">启用</option>
+<option value="2">停用</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">总管理员</div>
+<div class="love_one_b">
+<select name="admin_did">
+<option value="1">是</option>
+<option value="2">否</option>
+</select>
+</div>
+</div>
+
+<!--
+
+<div id="love_one_style">
+<div class="love_one_a">密码</div>
+<div class="love_one_b"><input type="text" name="admin_pwd" placeholder="请输入管理员" required="required"/></div>
+</div>
+
+-->
+
+<div id="love_one_ok">
+<input type="submit" name="submit" value="添 加"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</div>
+
+</form>
+
+</div>
+</div>

@@ -1,0 +1,105 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+<script type="text/javascript" src="{MODULE_URL}template/web/js.js"></script>
+
+
+<form action="" method="POST">
+<div class="panel panel-info">
+<div class="panel-heading">网站设置</div>
+<div id="love_one">
+
+<div id="love_one_style">
+<div class="love_one_a">网站授权码：</div>
+<div class="love_one_b"><input type="text" name="guanli_authcode" value="{$guanli['guanli_authcode']}" placeholder="请输入网站授权码" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">网站标题：</div>
+<div class="love_one_b"><input type="text" name="guanli_title" value="{$guanli['guanli_title']}" placeholder="请输入网站标题" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">首页风格：</div>
+<div class="love_one_b">
+<select name="guanli_template">
+<option value="1" {if $guanli['guanli_template']=='1'}selected="selected"{else}{/if}>宫格模式</option>
+<option value="2" {if $guanli['guanli_template']=='2'}selected="selected"{else}{/if}>列表模式</option>
+
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">客服微信：</div>
+<div class="love_one_b"><input type="text" name="guanli_kefu_wechat" value="{$guanli['guanli_kefu_wechat']}" placeholder="请输入客服微信" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">初次总管理员OPENID：</div>
+<div class="love_one_b"><input type="text" name="guanli_openid" value="{$guanli['guanli_openid']}" placeholder="请输入初次管理员OPENID" required="required"/></div>
+</div>
+
+</div>
+</div>
+
+<div class="panel panel-info">
+<div class="panel-heading">分享设置</div>
+<div id="love_one">
+
+<div id="love_one_style">
+<div class="love_one_a">首页顶部滚动广告：</div>
+<div class="love_one_b"><input type="text" name="guanli_fengmian_marquee" value="{$guanli['guanli_fengmian_marquee']}" placeholder="请输入首页顶部广告"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">分享标题：</div>
+<div class="love_one_b"><input type="text" name="guanli_share_title" value="{$guanli['guanli_share_title']}" placeholder="请输入分享标题" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">分享内容：</div>
+<div class="love_one_b"><input type="text" name="guanli_share_content" value="{$guanli['guanli_share_content']}" placeholder="请输入分享内容" required="required"/></div>
+</div>
+
+<div id="love_one_pic">
+<div class="love_one_c">分享主图：</div>
+<div class="love_one_d">{php echo tpl_form_field_image('guanli_share_pic',$guanli['guanli_share_pic']);}</div>
+</div>
+
+</div>
+</div>
+
+<div class="panel panel-info">
+<div class="panel-heading">阿里大于短信验证码设置</div>
+<div id="love_one">
+
+<div id="love_one_style">
+<div class="love_one_a">应用APP KEY：</div>
+<div class="love_one_b"><input type="text" name="guanli_key" value="{$guanli['guanli_key']}" placeholder="请输入应用APP KEY"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">应用APP SECRET：</div>
+<div class="love_one_b"><input type="text" name="guanli_secret" value="{$guanli['guanli_secret']}" placeholder="请输入应用APP SECRET"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">签名：</div>
+<div class="love_one_b"><input type="text" name="guanli_sign" value="{$guanli['guanli_sign']}" placeholder="请输入短信验证码签名"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">模板ID：</div>
+<div class="love_one_b"><input type="text" name="guanli_msgtemplate" value="{$guanli['guanli_msgtemplate']}" placeholder="请输短信验证码模板ID"/></div>
+</div>
+
+<div id="love_one_ok">
+<input type="submit" name="submit" value="修 改"/>
+</div>
+
+</div>
+</div>
+
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</form>
+{template 'common/footer'}

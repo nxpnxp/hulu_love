@@ -1,0 +1,43 @@
+<div class="panel panel-info">
+<div class="panel-heading">广告添加</div>
+<div id="love_one">
+
+<form action="" method="POST">
+<div id="love_one_style">
+<div class="love_one_a">广告名称</div>
+<div class="love_one_b"><input type="text" name="ads_title" placeholder="请输入广告名称" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">广告状态</div>
+<div class="love_one_b">
+<select name="ads_pid">
+<option value="1">显示</option>
+<option value="2">隐藏</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">广告排序</div>
+<div class="love_one_b"><input type="number" name="ads_did" placeholder="请输入广告排序" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">广告链接</div>
+<div class="love_one_b">{php echo tpl_form_field_link('ads_link');}</div>
+</div>
+
+<div id="love_one_pic">
+<div class="love_one_c">广告图片</div>
+<div class="love_one_d">{php echo tpl_form_field_image('ads_pic');}</div>
+</div>
+
+<div id="love_one_ok">
+<input type="submit" name="submit" value="添 加"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</div>
+
+</form>
+</div>
+</div>

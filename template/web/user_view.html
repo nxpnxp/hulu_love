@@ -1,0 +1,183 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+<script type="text/javascript" src="{MODULE_URL}template/web/js.js"></script>
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">基本资料</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">择偶要求</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">照片</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">付费查看他的联系方式</a></li>
+	<li role="presentation"><a href="#one" aria-controls="one" role="tab" data-toggle="tab">收到的打赏</a></li>
+	<li role="presentation"><a href="#two" aria-controls="two" role="tab" data-toggle="tab">收到的礼物</a></li>
+	<li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab">实名认证</a></li>
+	<li role="presentation"><a href="#four" aria-controls="four" role="tab" data-toggle="tab">发布的活动</a></li>
+	<li role="presentation"><a href="#five" aria-controls="five" role="tab" data-toggle="tab">参加的活动</a></li>
+		<li role="presentation"><a href="#six" aria-controls="six" role="tab" data-toggle="tab">提现资料</a></li>
+		<li role="presentation"><a href="#seven" aria-controls="seven" role="tab" data-toggle="tab">提现记录</a></li>
+		<li role="presentation"><a href="#eight" aria-controls="eight" role="tab" data-toggle="tab">同城圈动态</a></li>
+		<!--
+		<li role="presentation"><a href="#nine" aria-controls="nine" role="tab" data-toggle="tab">3</a></li>
+		<li role="presentation"><a href="#ten" aria-controls="ten" role="tab" data-toggle="tab">4</a></li>
+		<li role="presentation"><a href="#eleven" aria-controls="eleven" role="tab" data-toggle="tab">5</a></li>
+-->
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">{template 'web/page/user_view_1'}</div>
+    <div role="tabpanel" class="tab-pane" id="profile">{template 'web/page/user_view_2'}</div>
+    <div role="tabpanel" class="tab-pane" id="messages">{template 'web/page/user_view_3'}</div>
+    <div role="tabpanel" class="tab-pane" id="settings">
+
+		<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">查看联系方式记录</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/contact'}
+<thead>
+<tbody>
+{loop $contact $key $contact}
+{template 'web/page/contact_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+	
+	</div>
+	<div role="tabpanel" class="tab-pane" id="one">
+
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">收到的打赏</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/enjoy'}
+<thead>
+<tbody>
+{loop $enjoy $key $enjoy}
+{template 'web/page/enjoy_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+	<div role="tabpanel" class="tab-pane" id="two">
+
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">礼物赠送记录</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/receive'}
+<thead>
+<tbody>
+{loop $receive $key $receive}
+{template 'web/page/receive_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+
+  <div role="tabpanel" class="tab-pane" id="three">{template 'web/page/user_view_7'}</div>
+  <div role="tabpanel" class="tab-pane" id="four">
+
+  	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">发起的活动</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/active'}
+<thead>
+<tbody>
+{loop $active $key $active}
+{template 'web/page/active_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+  </div>
+  <div role="tabpanel" class="tab-pane" id="five">
+
+  				<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">参加的活动</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/join'}
+<thead>
+<tbody>
+{loop $join $key $join}
+{template 'web/page/join_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+  </div>
+  <div role="tabpanel" class="tab-pane" id="six">{template 'web/page/user_view_10'}</div>
+  <div role="tabpanel" class="tab-pane" id="seven">
+
+  	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">提现管理</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/withdraw'}
+<thead>
+<tbody>
+{loop $withdraw $key $withdraw}
+{template 'web/page/withdraw_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+  </div>
+  <div role="tabpanel" class="tab-pane" id="eight">
+
+  		<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">所有动态</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/talk'}
+<thead>
+<tbody>
+{loop $talk $key $talk}
+{template 'web/page/talk_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+  </div>
+  <!--
+  <div role="tabpanel" class="tab-pane" id="nine">9</div>
+  <div role="tabpanel" class="tab-pane" id="ten">10</div>
+  <div role="tabpanel" class="tab-pane" id="eleven">11</div>
+-->
+</div>
+  </div>
+
+{template 'common/footer'}

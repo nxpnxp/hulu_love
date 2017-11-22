@@ -1,0 +1,184 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+
+<form action="" method="POST">
+<div class="panel panel-info">
+<div class="panel-heading">模板消息</div>
+<div id="love_one">
+
+<div id="love_one_style">
+<div class="love_one_a">模板广告内容：</div>
+<div class="love_one_b"><input type="text" name="notice_ads" value="{$notice['notice_ads']}" placeholder="请输入模板广告内容" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">是否开启推送聊天消息模板：</div>
+<div class="love_one_b">
+<select name="notice_news_if">
+<option value="1" {if $notice['notice_news_if']=='1'}selected="selected"{else}{/if}>开启</option>
+<option value="2" {if $notice['notice_news_if']=='2'}selected="selected"{else}{/if}>关闭</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">推送聊天消息模板ID：</div>
+<div class="love_one_b"><input type="text" name="notice_news_num" value="{$notice['notice_news_num']}" placeholder="请输入推送聊天消息模板ID" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">推送聊天消息模板冷却时间：</div>
+<div class="love_one_b">
+<select name="notice_news_timegap">
+<option value="0.5" {if $notice['notice_news_timegap']=='0.5'}selected="selected"{else}{/if}>30分钟</option>
+<option value="1" {if $notice['notice_news_timegap']=='1'}selected="selected"{else}{/if}>1小时</option>
+<option value="3" {if $notice['notice_news_timegap']=='3'}selected="selected"{else}{/if}>3小时</option>
+<option value="6" {if $notice['notice_news_timegap']=='6'}selected="selected"{else}{/if}>6小时</option>
+<option value="9" {if $notice['notice_news_timegap']=='9'}selected="selected"{else}{/if}>9小时</option>
+<option value="12" {if $notice['notice_news_timegap']=='12'}selected="selected"{else}{/if}>12小时</option>
+<option value="15" {if $notice['notice_news_timegap']=='15'}selected="selected"{else}{/if}>15小时</option>
+<option value="18" {if $notice['notice_news_timegap']=='18'}selected="selected"{else}{/if}>18小时</option>
+<option value="21" {if $notice['notice_news_timegap']=='21'}selected="selected"{else}{/if}>21小时</option>
+<option value="24" {if $notice['notice_news_timegap']=='24'}selected="selected"{else}{/if}>24小时</option>
+<option value="30" {if $notice['notice_news_timegap']=='30'}selected="selected"{else}{/if}>30小时</option>
+<option value="36" {if $notice['notice_news_timegap']=='36'}selected="selected"{else}{/if}>36小时</option>
+<option value="42" {if $notice['notice_news_timegap']=='42'}selected="selected"{else}{/if}>42小时</option>
+<option value="48" {if $notice['notice_news_timegap']=='48'}selected="selected"{else}{/if}>48小时</option>
+<option value="60" {if $notice['notice_news_timegap']=='60'}selected="selected"{else}{/if}>60小时</option>
+<option value="72" {if $notice['notice_news_timegap']=='72'}selected="selected"{else}{/if}>72小时</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">是否开启注册消息模板：</div>
+<div class="love_one_b">
+<select name="notice_reg_if">
+<option value="1" {if $notice['notice_reg_if']=='1'}selected="selected"{else}{/if}>开启</option>
+<option value="2" {if $notice['notice_reg_if']=='2'}selected="selected"{else}{/if}>关闭</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">注册消息模板ID：</div>
+<div class="love_one_b"><input type="text" name="notice_reg_num" value="{$notice['notice_reg_num']}" placeholder="请输入注册消息模板ID" required="required"/></div>
+</div>
+
+<!--
+<div id="love_one_style">
+<div class="love_one_a">是否开启升级VIP成功消息模板：</div>
+<div class="love_one_b">
+<select name="notice_vip_if">
+<option value="1" {if $notice['notice_vip_if']=='1'}selected="selected"{else}{/if}>开启</option>
+<option value="2" {if $notice['notice_vip_if']=='2'}selected="selected"{else}{/if}>关闭</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">开通VIP成功消息模板ID：</div>
+<div class="love_one_b"><input type="text" name="notice_vip_num" value="{$notice['notice_vip_num']}" placeholder="请输入升级VIP成功消息模板ID" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">是否开启查看联系方式消息模板：</div>
+<div class="love_one_b">
+<select name="notice_contact_if">
+<option value="1" {if $notice['notice_contact_if']=='1'}selected="selected"{else}{/if}>开启</option>
+<option value="2" {if $notice['notice_contact_if']=='2'}selected="selected"{else}{/if}>关闭</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">查看联系方式消息模板ID：</div>
+<div class="love_one_b"><input type="text" name="notice_contact_num" value="{$notice['notice_contact_num']}" placeholder="请输入查看联系方式消息模板ID" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">是否开始打赏消息模板：</div>
+<div class="love_one_b">
+<select name="notice_enjoy_if">
+<option value="1" {if $notice['noticeenjoy_if']=='1'}selected="selected"{else}{/if}>开启</option>
+<option value="2" {if $notice['notice_enjoy_if']=='2'}selected="selected"{else}{/if}>关闭</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">打赏消息模板ID：</div>
+<div class="love_one_b"><input type="text" name="notice_enjoy_num" value="{$notice['notice_enjoy_num']}" placeholder="请输入打赏消息模板ID" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">是否开始接收礼物消息模板：</div>
+<div class="love_one_b">
+<select name="notice_gift_if">
+<option value="1" {if $notice['notice_gift_if']=='1'}selected="selected"{else}{/if}>开启</option>
+<option value="2" {if $notice['notice_gift_if']=='2'}selected="selected"{else}{/if}>关闭</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">接收礼物消息模板ID：</div>
+<div class="love_one_b"><input type="text" name="notice_gift_num" value="{$notice['notice_gift_num']}" placeholder="请输入接收礼物消息模板ID" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">是否开始推广成功消息模板：</div>
+<div class="love_one_b">
+<select name="notice_share_if">
+<option value="1" {if $notice['notice_share_if']=='1'}selected="selected"{else}{/if}>开启</option>
+<option value="2" {if $notice['notice_share_if']=='2'}selected="selected"{else}{/if}>关闭</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">推广成功消息模板ID：</div>
+<div class="love_one_b"><input type="text" name="notice_share_num" value="{$notice['notice_share_num']}" placeholder="请输入推广成功消息模板ID" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">是否开启活动报名成功消息模板：</div>
+<div class="love_one_b">
+<select name="notice_active_if">
+<option value="1" {if $notice['notice_active_if']=='1'}selected="selected"{else}{/if}>开启</option>
+<option value="2" {if $notice['notice_active_if']=='2'}selected="selected"{else}{/if}>关闭</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">活动报名成功消息模板ID：</div>
+<div class="love_one_b"><input type="text" name="notice_active_num" value="{$notice['notice_active_num']}" placeholder="请输入活动报名成功消息模板ID" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">是否开启提现成功消息模板：</div>
+<div class="love_one_b">
+<select name="notice_withdraw_if">
+<option value="1" {if $notice['notice_withdraw_if']=='1'}selected="selected"{else}{/if}>开启</option>
+<option value="2" {if $notice['notice_withdraw_if']=='2'}selected="selected"{else}{/if}>关闭</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">提现成功消息模板ID：</div>
+<div class="love_one_b"><input type="text" name="notice_withdraw_num" value="{$notice['notice_withdraw_num']}" placeholder="请输入提现成功消息模板ID" required="required"/></div>
+</div>
+-->
+<div id="love_one_ok">
+<input type="submit" name="submit" value="修 改"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</div>
+
+</div>
+</div>
+
+
+</form>
+{template 'common/footer'}

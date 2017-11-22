@@ -1,0 +1,141 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+<script type="text/javascript" src="{MODULE_URL}template/web/js.js"></script>
+
+<div class="panel panel-info">
+<div class="panel-heading">提现编辑</div>
+<div id="love_one">
+
+<form action="" method="POST">
+
+
+<div id="love_one_style">
+<div class="love_one_a">提现状态（确保金钱已经转账，才能编辑此处）</div>
+<div class="love_one_b">
+<select name="with_pid">
+<option value="1" {if $withdraw['with_pid']=='1'}selected="selected"{else}{/if}>未成功</option>
+<option value="2" {if $withdraw['with_pid']=='2'}selected="selected"{else}{/if}>待处理</option>
+<option value="3" {if $withdraw['with_pid']=='3'}selected="selected"{else}{/if}>已成功</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">处理留言（展示到前端，建议处理失败填写）</div>
+<div class="love_one_b"><input type="text" name="with_content" value="{$withdraw['with_content']}" placeholder="请输入处理留言"/></div>
+</div>
+
+
+
+<div id="love_one_ok">
+<input onclick="noticecfm()" type="submit" name="submit" value="修 改"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</div>
+
+</form>
+</div>
+</div>
+
+<div class="panel panel-info">
+<div class="panel-heading">提现信息</div>
+<div id="love_two">
+
+<div id="love_two_style2">
+<div class="love_two_c">会员头像：</div>
+<div class="love_two_d"><img style="width:100px;height:100px;border-radius:50%;" src="<?php echo getavatar($withdraw['openid'],$_W['uniacid']);?>"/></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">会员昵称：</div>
+<div class="love_two_b"><?php echo getnickname($withdraw['openid'],$_W['uniacid']);?></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">状态：</div>
+<div class="love_two_b"><?php echo getwithdrawpid($withdraw['with_pid']);?></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">提现金额：</div>
+<div class="love_two_b"><span class="label label-danger">{$withdraw['with_money']}</span></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">留言备注：</div>
+<div class="love_two_b">{$withdraw['with_content']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">申请时间：</div>
+<div class="love_two_b">{php echo date('Y-m-d H:i:s',$withdraw['with_time']);}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">IP：</div>
+<div class="love_two_b">{$withdraw['with_ip']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">平台：</div>
+<div class="love_two_b">{$withdraw['with_container']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">设备：</div>
+<div class="love_two_b">{$withdraw['with_os']}</div>
+</div>
+
+</div>
+</div>
+
+<div class="panel panel-info">
+<div class="panel-heading">账户资料</div>
+<div id="love_two">
+
+<div id="love_two_style">
+<div class="love_two_a">微信：</div>
+<div class="love_two_b">{$more['more_withdraw_wechat']}</div>
+</div>
+
+<div id="love_two_style2">
+<div class="love_two_c">微信收款码：</div>
+<div class="love_two_d"><img style="width:100px;height:100px;" src="{$_W['attachurl']}{$more['more_withdraw_wechat_qrcode']}"/></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">支付宝：</div>
+<div class="love_two_b">{$more['more_withdraw_alipay']}</div>
+</div>
+
+<div id="love_two_style2">
+<div class="love_two_c">支付宝收款码：</div>
+<div class="love_two_d"><img style="width:100px;height:100px;" src="{$_W['attachurl']}{$more['more_withdraw_alipay_qrcode']}"/></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">实名认证手机号：</div>
+<div class="love_two_b">{$more['more_real_tel_num']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">实名认证姓名：</div>
+<div class="love_two_b">{$more['more_real_card_name']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">实名认证身份证号码：</div>
+<div class="love_two_b">{$more['more_real_card_num']}</div>
+</div>
+
+<div id="love_two_style2">
+<div class="love_two_c">实名认证身份证：</div>
+<div class="love_two_d">
+<img style="width:100px;height:100px;" src="{$_W['attachurl']}{$more['more_real_card_pic1']}"/>
+<img style="width:100px;height:100px;" src="{$_W['attachurl']}{$more['more_real_card_pic2']}"/>
+<img style="width:100px;height:100px;" src="{$_W['attachurl']}{$more['more_real_card_pic3']}"/>
+</div>
+</div>
+
+</div>
+</div>
+{template 'common/footer'}

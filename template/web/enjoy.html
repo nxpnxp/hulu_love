@@ -1,0 +1,20 @@
+{template 'common/header'}
+
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">打赏记录</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/enjoy'}
+<thead>
+<tbody>
+{loop $enjoy $key $enjoy}
+{template 'web/page/enjoy_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+{template 'common/footer'}

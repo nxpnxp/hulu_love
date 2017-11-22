@@ -1,0 +1,31 @@
+{template 'top'}
+
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/store.css">
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">我的背包</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+<div id="store_one">
+
+{loop $store $key $store}
+<a href="{php echo $this->createMobileUrl('store_update',array('store_id'=>$store['store_id'],'gift_id'=>$store['gift_id'],'store_openid'=>$_GPC['store_openid']));}">
+<div id="store_one_style">
+<div class="store_one_img"><img src="<?php echo getgiftpic($store['gift_id'],$_W['uniacid'],$_W['attachurl']);?>"/></div>
+<div class="store_one_p"><?php echo getgiftname($store['gift_id'],$_W['uniacid']);?></div>
+</div>
+</a>
+{/loop}
+
+</div>
+
+{template 'bottom'}
+

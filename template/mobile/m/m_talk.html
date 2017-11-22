@@ -1,0 +1,42 @@
+{template 'm/m_header'}
+  <link rel="stylesheet" href="{MODULE_URL}template/mobile/m/style/talk.css">
+
+
+<div id="m_talk_one">
+
+{loop $talk $key $talk}
+<a href="{php echo $this->createMobileUrl($m_list['url']);}">
+<div id="m_talk_one_style">
+
+<div id="m_talk_one_style_style">
+<div class="m_talk_one_a"><div class="m_talk_one_a_img"><img src="{php echo getavatar($talk['openid'],$_W['uniacid'],$_W['attachurl']);}"/></div></div>
+<div class="m_talk_one_b">
+<div class="m_talk_one_b_1">{php echo getnickname($talk['openid'],$_W['uniacid']);}</div>
+<div class="m_talk_one_b_2">{php echo date('Y-m-d H:i:s',$talk['talk_time']);}</div>
+</div>
+<div class="m_talk_one_c">
+{if $talk['talk_pid']=='2'||$talk['talk_pid']=='1'}
+<a href="{php echo $this->createMobileUrl('m_talk_update',array('talk_id'=>$talk['talk_id'],'talk_pid'=>'3'));}"><div style="background-color:green;" class="m_talk_one_c_p">通过</div></a>
+{elseif $talk['talk_pid']=='3'}
+<a href="{php echo $this->createMobileUrl('m_talk_update',array('talk_id'=>$talk['talk_id'],'talk_pid'=>'1'));}"><div style="background-color:red;" class="m_talk_one_c_p">不通过</div></a>
+{else}{/if}
+</div>
+
+</div>
+
+<div id="m_talk_one_content">
+{$talk['talk_content']}
+</div>
+
+<div id="m_talk_one_pic">
+<div class="m_talk_one_pic_a"><img src="{$_W['attachurl']}{$talk['talk_pic1']}"/></div>
+<div class="m_talk_one_pic_a"><img src="{$_W['attachurl']}{$talk['talk_pic2']}"/></div>
+<div class="m_talk_one_pic_a"><img src="{$_W['attachurl']}{$talk['talk_pic3']}"/></div>
+</div>
+
+</div>
+</a>
+{/loop}
+</div>
+
+{template 'm/m_footer'}

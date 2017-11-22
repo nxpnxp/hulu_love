@@ -1,0 +1,19 @@
+{template 'top'}
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/style/enjoy.css">
+
+<div id="enjoy_one">
+
+<div class="enjoy_one_a"><?php echo getnickname($_GPC['openid'],$_W['uniacid']);?></div>
+<div class="enjoy_one_b"><img src="<?php echo getavatar($_GPC['openid'],$_W['uniacid']);?>"/></div>
+</div>
+
+<div id="enjoy_two">
+<form action="{php echo $this->createMobileUrl('pay_three');}" method="post">
+<div class="enjoy_two_a">喜欢是赞，爱是打赏！</div>
+<div class="enjoy_two_b"><input type="number" name="order_price" min="1" placeholder="请输入打赏金额" required="required"/></div>
+<div class="enjoy_two_c"><input type="submit" name="submit" value="微信支付"/></div>
+<input type="hidden" name="openid" value="{$_GPC['openid']}"/>
+<input type="hidden" name="order_num" value="{$order_num}"/>
+</form>
+</div>
+{template 'bottom'}

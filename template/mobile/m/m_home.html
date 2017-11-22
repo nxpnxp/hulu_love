@@ -1,0 +1,15 @@
+{template 'm/m_header'}
+
+<div id="m_home_one">
+
+{loop $m_list $key $m_list}
+<a href="{php echo $this->createMobileUrl($m_list['url']);}">
+<div id="m_home_one_style">
+<div class="m_home_one_img"><img src="{MODULE_URL}public/m/{$m_list['pic']}"/>{if (getneeddeal($m_list['url'],$_W['uniacid']))!='0'}<div class="m_home_one_tag">{php echo getneeddeal($m_list['url'],$_W['uniacid']);}</div>{else}{/if}</div>
+<div class="m_home_one_p">{$m_list['title']}</div>
+</div>
+</a>
+{/loop}
+</div>
+
+{template 'm/m_footer'}

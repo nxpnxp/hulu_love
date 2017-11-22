@@ -1,0 +1,28 @@
+
+<tr>
+
+<td><span class="label label-default">{$city['city_id']}</span></td>
+<td><?php echo gettrueorfalse($city['city_pid']);?></td>
+
+<td><span class="label label-primary">{$city['city_name']}</span></td>
+<td><?php echo getcitytype($city['city_type']);?></td>
+<td><span class="label label-info">{$city['city_value']}</span></td>
+
+<td>{php echo date('Y-m-d H:i:s',$city['city_time']);}</td>
+
+
+
+<td>
+{if $city['city_pid']=='1'}
+<a class="btn btn-default" href="{php echo $this->createWebUrl('city_update',array('city_id'=>$city['city_id'],'city_pid'=>'2'));}" role="button">隐藏</a>
+{elseif $city['city_pid']=='2'}
+<a class="btn btn-default" href="{php echo $this->createWebUrl('city_update',array('city_id'=>$city['city_id'],'city_pid'=>'1'));}" role="button">显示</a>
+{else}{/if}
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('city_edit',array('city_id'=>$city['city_id']));}" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+
+<a onclick="delcfm()" class="btn btn-default" href="{php echo $this->createWebUrl('city_del',array('city_id'=>$city['city_id']));}" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+
+</td>
+
+</tr>

@@ -1,0 +1,25 @@
+<tr>
+<td><img style="width:80px;height:80px;border-radius:50%;"src="<?php echo getavatar($system['openid'],$_W['uniacid']);?>"/></td>
+
+
+
+
+<td><?php echo getnickname($system['openid'],$_W['uniacid']);?></td>
+
+<td><?php echo getnickname($system['system_openid'],$_W['uniacid']);?></td>
+
+<td>
+<span class="label label-default">{$system['system_id']}</span>
+<span class="label label-info"><?php echo getmoneytype($system['system_type'],$_W['uniacid']);?></span>
+</td>
+
+<td>
+{if $system['system_pid']=='1'}
+<span class="label label-success">{$system['system_price']}</span>
+{elseif $system['system_pid']=='2'}
+<span class="label label-danger">{$system['system_price']}</span>
+{else}{/if}
+</td>
+
+<td>{php echo date('Y-m-d H:i:s',$system['system_time']);}</td>
+</tr>

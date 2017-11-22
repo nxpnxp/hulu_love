@@ -1,0 +1,62 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+
+
+
+<div class="panel panel-info">
+<div class="panel-heading">推广分享</div>
+
+<table class="table table-hover">
+
+<thead>
+<tr>
+
+<th>注册者头像</th>
+<th>注册者昵称</th>
+<th>推广者头像</th>
+<th>推广者昵称</th>
+<th>推广收益</th>
+<th>时间</th>
+<th>IP</th>
+<th>平台</th>
+<th>设备</th>
+
+</tr>
+</thead>
+
+<tbody>
+
+
+{loop $share $key $share}
+
+<tr>
+
+<td><img style="width:60px;height:60px;border-radius:50%;"src="<?php echo getavatar($share['openid'],$_W['uniacid']);?>"/></td>
+
+
+
+
+<td><?php echo getnickname($share['openid'],$_W['uniacid']);?></td>
+
+<td><img style="width:60px;height:60px;border-radius:50%;"src="<?php echo getavatar($share['share_openid'],$_W['uniacid']);?>"/></td>
+
+<td><?php echo getnickname($share['share_openid'],$_W['uniacid']);?></td>
+
+
+
+<td><span class="label label-danger">{$share['share_money']}</span></td>
+
+<td>{php echo date('Y-m-d H:i:s',$share['share_time']);}</td>
+<td>{$share['share_ip']}</td>
+<td>{$share['share_container']}</td>
+<td>{$share['share_os']}</td>
+</tr>
+{/loop}
+
+
+</tbody>
+
+</table>
+</div>
+
+{template 'common/footer'}

@@ -1,0 +1,86 @@
+{template 'top'}
+{php echo register_jssdk(false);}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/talk_view.css">
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>
+<!--说说开始-->
+
+<div id="talk_view_one">
+
+<div id="talk_view_one_style">
+
+<div class="talk_view_one_a">
+<div class="talk_view_one_a_img"><img src="{php echo getavatar($talk['openid'],$_W['uniacid'],$_W['attachurl']);}"/></div>
+</div>
+<div class="talk_view_one_b">
+<div class="talk_view_one_b_1">{php echo getnickname($talk['openid'],$_W['uniacid']);}</div>
+<div class="talk_view_one_b_2">{php echo date('Y-m-d H:i:s',$talk['talk_time']);}</div>
+</div>
+
+</div>
+
+<div id="talk_view_one_content">
+{$talk['talk_content']}
+</div>
+
+<div id="talk_view_one_pic">
+<div class="talk_view_one_pic_a"><img src="{$_W['attachurl']}{$talk['talk_pic1']}"/></div>
+<div class="talk_view_one_pic_a"><img src="{$_W['attachurl']}{$talk['talk_pic2']}"/></div>
+<div class="talk_view_one_pic_a"><img src="{$_W['attachurl']}{$talk['talk_pic3']}"/></div>
+</div>
+
+</div>
+
+<!--说说结束-->
+
+
+
+<script>
+wx.ready(function () {
+document.querySelector('#talk_view_one_pic').onclick = function () {
+	
+	
+    wx.previewImage({
+      current: '{$_W['attachurl']}{$talk['talk_pic1']}',
+      urls: [
+  
+		{if (!empty($talk['talk_pic1']))}        '{$_W['attachurl']}{$talk['talk_pic1']}',{else}{/if}
+{if (!empty($talk['talk_pic2']))}        '{$_W['attachurl']}{$talk['talk_pic2']}',{else}{/if}
+{if (!empty($talk['talk_pic3']))}        '{$_W['attachurl']}{$talk['talk_pic3']}',{else}{/if}
+
+      ]
+    });
+	
+  };
+});
+</script>
+
+<!--评论开始-->
+<form action="{php echo $this->createMobileUrl('talk_view_pinglun');}" method="POST">
+<div id="talk_view_two">
+<div class="talk_view_two_text"><textarea name="pinglun_content" placeholder="请输入你的神回复..."></textarea></div>
+<div class="talk_view_two_ok"><input type="submit" name="submit" value="发 布"/></div>
+</div>
+<input type="hidden" name="talk_id" value="{$talk['talk_id']}"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</form>
+<!--评论结束-->
+
+<!--评论列表开始-->
+<div id="talk_view_pinglun">
+{loop $pinglun $key $pinglun}
+<div id="talk_view_pinglun_style">
+
+<div class="talk_view_pinglun_style_style">
+<div class="talk_view_pinglun_img"><div class="talk_view_pinglun_img_img"><img src="{php echo getavatar($pinglun['openid'],$_W['uniacid'],$_W['attachurl']);}"/></div></div>
+<div class="talk_view_pinglun_p"><div class="talk_view_pinglun_p_1">{php echo getnickname($pinglun['openid'],$_W['uniacid']);}</div><div class="talk_view_pinglun_p_2">{php echo date('Y-m-d H:i:s',$pinglun['pinglun_time']);}</div></div>
+</div>
+
+<div class="talk_view_pinglun_content">
+{$pinglun['pinglun_content']}
+</div>
+
+</div>
+{/loop}
+</div>
+<!--评论列表结束-->
+{template 'bottom'}

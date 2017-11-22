@@ -1,0 +1,83 @@
+{template 'top'}
+
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/home.css">
+	<script type="text/javascript" src="{MODULE_URL}public/jquery.js"></script>
+
+	<script type="text/javascript" src="{MODULE_URL}template/mobile/style/userlist.js"></script>
+
+{if (!empty($guanli['guanli_fengmian_marquee']))}
+<div id="home_marquee">
+<marquee>{$guanli['guanli_fengmian_marquee']}</marquee>
+</div>
+{else}{/if}
+
+<div id="home_top">
+
+<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'1'));}')">
+<div id="home_top_style">
+<div class="home_top_a"><img src="{MODULE_URL}public/images/d1.png"/></div>
+<div class="home_top_b">最新</div>
+</div>
+</a>
+
+<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'2'));}')">
+<div id="home_top_style">
+<div class="home_top_a"><img src="{MODULE_URL}public/images/d2.png"/></div>
+<div class="home_top_b">找女友</div>
+</div>
+</a>
+
+<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'3'));}')">
+<div id="home_top_style">
+<div class="home_top_a"><img src="{MODULE_URL}public/images/d3.png"/></div>
+<div class="home_top_b">找男友</div>
+</div>
+</a>
+
+<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'4'));}')">
+<div id="home_top_style">
+<div class="home_top_a"><img src="{MODULE_URL}public/images/d4.png"/></div>
+<div class="home_top_b">认证会员</div>
+</div>
+</a>
+
+<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'5'));}')">
+<div id="home_top_style">
+<div class="home_top_a"><img src="{MODULE_URL}public/images/d5.png"/></div>
+<div class="home_top_b">VIP</div>
+</div>
+</a>
+
+<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'6'));}')">
+<div id="home_top_style">
+<div class="home_top_a"><img src="{MODULE_URL}public/images/d6.png"/></div>
+<div class="home_top_b">排行榜</div>
+</div>
+</a>
+
+<a href="{php echo $this->createMobileUrl('talk');}">
+<div id="home_top_style">
+<div class="home_top_a"><img src="{MODULE_URL}public/images/d7.png"/></div>
+<div class="home_top_b">说说</div>
+</div>
+</a>
+
+<a href="{php echo $this->createMobileUrl('my');}">
+<div id="home_top_style">
+<div class="home_top_a"><img src="{MODULE_URL}public/images/d8.png"/></div>
+<div class="home_top_b">个人中心</div>
+</div>
+</a>
+
+</div>
+
+{template 'ads'}
+
+
+<div id="home_user">
+
+{template 'userlist'}
+
+</div>
+{template 'bottom'}

@@ -1,0 +1,85 @@
+{template 'top'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/active_add.css">
+
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">发布活动</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+<form action="" method="POST">
+
+<div id="active_add_one">
+
+<div id="active_add_one_style">
+<div class="active_add_one_a">活动标题</div>
+<div class="active_add_one_b"><input type="text" name="active_title" placeholder="请输入活动标题" required="required"/></div>
+</div>
+
+<div id="active_add_one_style">
+<div class="active_add_one_a">发起类型</div>
+<div class="active_add_one_b">
+<select name="active_type">
+<option value="1">个人发布</option>
+<option value="2">商家发布</option>
+<option value="3">官方发布</option>
+</select>
+</div>
+</div>
+
+<div id="active_add_one_style">
+<div class="active_add_one_a">男生人数</div>
+<div class="active_add_one_b"><input type="number" name="active_boy" placeholder="请输入男生人数" required="required"/></div>
+</div>
+
+<div id="active_add_one_style">
+<div class="active_add_one_a">女生人数</div>
+<div class="active_add_one_b"><input type="number" name="active_girl" placeholder="请输入女生人数" required="required"/></div>
+</div>
+
+<div id="active_add_one_style">
+<div class="active_add_one_a">每人费用</div>
+<div class="active_add_one_b"><input type="number" name="active_money" placeholder="请输入每人费用" required="required"/></div>
+</div>
+
+<div id="active_add_one_style">
+<div class="active_add_one_a">活动地址</div>
+<div class="active_add_one_b"><input type="text" name="active_address" placeholder="请输入活动地址" required="required"/></div>
+</div>
+
+<div id="active_add_one_style">
+<div class="active_add_one_a">开始时间</div>
+<div class="active_add_one_b"><input type="datetime-local" name="active_starttime" placeholder="请输入开始时间" required="required"/></div>
+</div>
+
+<div id="active_add_one_style">
+<div class="active_add_one_a">结束时间</div>
+<div class="active_add_one_b"><input type="datetime-local" name="active_endtime" placeholder="请输入结束时间" required="required"/></div>
+</div>
+
+<div id="active_add_one_style">
+<div class="active_add_one_a">联系电话</div>
+<div class="active_add_one_b"><input type="number" name="active_tel" placeholder="请输入联系电话" required="required"/></div>
+</div>
+
+<div id="active_add_one_textarea">
+<div class="active_add_one_c">详细说明</div>
+<div class="active_add_one_d"><textarea name="active_content" placeholder="请输入活动详细说明" required="required"></textarea></div>
+</div>
+
+</div>
+
+<div id="active_add_ok">
+<input type="submit" name="submit" value="添 加"/>
+</div>
+
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</form>
+
+{template 'foot'}

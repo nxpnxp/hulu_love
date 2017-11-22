@@ -1,0 +1,33 @@
+{template 'm/m_header'}
+  <link rel="stylesheet" href="{MODULE_URL}template/mobile/m/style/pic.css">
+
+
+<div id="m_pic_one">
+
+{loop $pic $key $pic}
+<div id="m_pic_one_style">
+
+<div class="m_pic_one_img"><img src="{$_W['attachurl']}{$pic['pic_url']}"/></div>
+<div class="m_pic_one_p">
+{if $pic['pic_pid']=='2'}
+<a href="{php echo $this->createMobileUrl('m_pic_update',array('pic_id'=>$pic['pic_id'],'pic_pid'=>'3'));}"><div class="m_pic_one_p_1">通过</div></a>
+
+<a href="{php echo $this->createMobileUrl('m_pic_update',array('pic_id'=>$pic['pic_id'],'pic_pid'=>'1'));}"><div class="m_pic_one_p_1">不通过</div></a>
+
+{elseif $pic['pic_pid']=='3'}
+<a href="{php echo $this->createMobileUrl('m_pic_update',array('pic_id'=>$pic['pic_id'],'pic_pid'=>'1'));}"><div class="m_pic_one_p_1">改为不通过</div></a>
+
+{elseif $pic['pic_pid']=='1'}
+<a href="{php echo $this->createMobileUrl('m_pic_update',array('pic_id'=>$pic['pic_id'],'pic_pid'=>'3'));}"><div class="m_pic_one_p_1">改为通过</div></a>
+
+{else}{/if}
+<a href="{php echo $this->createMobileUrl('m_pic_del',array('pic_id'=>$pic['pic_id']));}">
+<div class="m_pic_one_p_2">删除</div></a>
+</div>
+
+</div>
+{/loop}
+</div>
+
+{template 'm/m_footer'}
+

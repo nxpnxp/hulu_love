@@ -1,0 +1,109 @@
+
+{template 'top'}
+
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/news.css">
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>
+
+<script>
+
+window.onload = function(){
+   var h =  document.body.scrollHeight||document.documentElement.scrollHeight ;
+   window.scrollTo(h,h);
+   //alert(document.getElementById('news_content').scrollHeight);
+ }
+ 
+</script>
+
+<div id="news_top">
+<a href="javascript:history.go(-1);">
+<div class="news_top_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="news_top_b">与“<?php echo getnickname($_GPC['news_openid'],$_W['uniacid']);?>”聊天</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="news_top_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+
+<a href="{$moreads2['moreads_link']}">
+<div id="news_ads1"><img src="{$_W['attachurl']}{$moreads2['moreads_pic']}"/></div>
+</a>
+
+<div id="news_content">
+</div>
+
+<div id="news_bottom">
+<form action="" method="POST">
+<div id="news_bottom_left"><input id="news_add_a_a" type="text" name="news_content" placeholder="我想对你说..." required="required"/></div>
+<div id="news_bottom_right">
+{if ($user['upid']=='4')||($today_num=$make['make_news_oneday'])}<div class="news_bottom_right_a" onclick="sendmsg()">发送</div>
+{else}<div class="news_bottom_right_a" onclick="alert('想与Ta有更多消息来往吗？赶快去开通VIP吧！');">发送</div>
+{/if}
+</div>
+<input type="hidden" name="news_openid" value="{$_GPC['news_openid']}"/>
+</form>
+</div>
+
+<div id="news_right">
+<a href="{php echo $this->createMobileUrl('gift',array('gift_openid'=>$ta['openid']));}"><div id="news_right_a">礼</div></a>
+<a href="{php echo $this->createMobileUrl('view',array('uid'=>$ta['uid']));}"><div id="news_right_b">Ta</div></a>
+</div>
+
+{template 'foot'}
+
+ <script type="text/javascript">
+  function loadXMLDoc(){ 
+	  var xmlhttp;
+	  if (window.XMLHttpRequest)  {
+		  xmlhttp=new XMLHttpRequest();  
+		  } else {
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");  } 
+			  xmlhttp.onreadystatechange=function(){ 
+				  if (xmlhttp.readyState==4 && xmlhttp.status==200){   
+					  document.getElementById("news_content").innerHTML=xmlhttp.responseText;  
+
+
+					  	  //var showmsg = document.getElementById('news_content');
+//showmsg.innerHTML = xmlhttp.responseText;  
+ document.body.scrollTop =  document.body.scrollHeight;
+
+					  }  
+					  } 
+					  xmlhttp.open("GET","{php echo $this->createMobileUrl('news_list',array('news_openid'=>$_GPC['news_openid']));}",true); 
+					  xmlhttp.send(); setTimeout("loadXMLDoc()",2000);
+					  } 
+					  loadXMLDoc();
+
+
+					  </script> 
+
+		
+
+<script type="text/javascript">
+function sendmsg(){
+	var fm=document.getElementsByTagName('form')[0];
+	var fd=new FormData(fm);
+
+	var xhr=new XMLHttpRequest();
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4){
+			document.getElementById('news_add_a_a').value="";
+			//alert(xhr.responseText);
+		}
+	}
+	xhr.open('post',"{php echo $this->createMobileUrl('send');}");
+	xhr.send(fd);
+
+
+
+}
+
+
+
+
+ 
+
+</script>
+
+
+{template 'foot'}

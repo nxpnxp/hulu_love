@@ -1,0 +1,28 @@
+{template 'top'}
+<style type="text/css">
+#widthdraw_add{width:80%;height:120px;margin:0px auto;}
+.withdraw_add_a{width:90%;height:50px;margin:0px 5%;}
+.withdraw_add_a input{width:98%;height:40px;margin:5px 1%;
+text-align:center;line-height:40px;font-size:16px;color:#000;overflow:hidden;}
+
+.withdraw_add_b{width:90%;height:50px;margin:10px 5%;}
+.withdraw_add_b input{width:98%;height:40px;margin:5px 1%;border:none;background-color:#FC5488;
+text-align:center;line-height:40px;font-size:16px;color:#FFF;overflow:hidden;}
+</style>
+
+<form action="" method="POST">
+<div id="withdraw_add">
+
+<div class="withdraw_add_a">
+<input type="number" name="with_money" min="1" placeholder="请输入提现金额" required="required"/>
+</div>
+
+<div class="withdraw_add_b">
+<input type="submit" name="submit" value="提 交"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+
+</div>
+
+</div>
+</div>
+{template 'foot'}

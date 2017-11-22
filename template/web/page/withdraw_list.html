@@ -1,0 +1,39 @@
+
+<tr>
+
+<td><span class="label label-default">{$withdraw['with_id']}</span></td>
+
+<td><?php echo getwithdrawpid($withdraw['with_pid']);?></td>
+
+
+
+<td><img style="width:60px;height:60px;border-radius:50%;"src="<?php echo getavatar($withdraw['openid'],$_W['uniacid']);?>"/></td>
+
+<td><?php echo getnickname($withdraw['openid'],$_W['uniacid']);?></td>
+
+
+<td><span class="label label-danger">{$withdraw['with_money']}</span></td>
+
+
+
+<td>{php echo date('Y-m-d H:i:s',$withdraw['with_time']);}</td>
+
+
+
+<td>
+
+
+
+
+
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('withdraw_edit',array('with_id'=>$withdraw['with_id']));}" role="button">处理</a>
+
+<!--
+<a onclick="delcfm()" class="btn btn-default" href="{php echo $this->createWebUrl('active_del',array('active_id'=>$active['active_id']));}" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+-->
+</td>
+</tr>
+
+
+

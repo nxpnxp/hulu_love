@@ -1,0 +1,32 @@
+
+<tr>
+
+<td><span class="label label-default">{$chat['news_id']}</span> <?php echo gettrueorfalse($chat['news_pid']);?> <?php echo getread($chat['news_type']);?></td>
+
+<td><?php echo getnickname($chat['openid'],$_W['uniacid']);?></td>
+
+<td><img style="width:40px;height:40px;border-radius:50%;" src="<?php echo getavatar($chat['openid'],$_W['uniacid']);?>"/></td>
+
+<td><?php echo getnickname($chat['news_openid'],$_W['uniacid']);?></td>
+
+<td><img style="width:40px;height:40px;border-radius:50%;" src="<?php echo getavatar($chat['news_openid'],$_W['uniacid']);?>"/></td>
+
+<td onclick="alert('{$chat['news_content']}');"><span class="label label-info">{$chat['news_content']}</span></td>
+
+
+
+<td>{php echo date('Y-m-d H:i:s',$chat['news_time']);}</td>
+
+
+
+<td>
+{if $chat['news_pid']=='1'}
+<a class="btn btn-default" href="{php echo $this->createWebUrl('chat_update',array('chat_id'=>$chat['news_id'],'chat_pid'=>'2'));}" role="button">隐藏</a>
+{elseif $chat['news_pid']=='2'}
+<a class="btn btn-default" href="{php echo $this->createWebUrl('chat_update',array('chat_id'=>$chat['news_id'],'chat_pid'=>'1'));}" role="button">显示</a>
+{else}{/if}
+
+
+</td>
+
+</tr>

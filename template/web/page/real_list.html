@@ -1,0 +1,43 @@
+
+<tr>
+
+<td><span class="label label-default">{$real['more_id']}</span></td>
+<td><?php echo getrealcardpid($real['more_real_card']);?></td>
+
+
+
+<td><img style="width:60px;height:60px;border-radius:50%;"src="<?php echo getavatar($real['openid'],$_W['uniacid']);?>"/></td>
+
+<td><?php echo getnickname($real['openid'],$_W['uniacid']);?></td>
+
+
+<td><span class="label label-info">{$real['more_real_card_name']}</span></td>
+
+<td><span class="label label-info">{$real['more_real_card_num']}</span></td>
+
+<td><img style="width:100px;height:100px;"src="{$_W['attachurl']}{$real['more_real_card_pic1']}"/></td>
+
+<td><img style="width:100px;height:100px;"src="{$_W['attachurl']}{$real['more_real_card_pic2']}"/></td>
+<td><img style="width:100px;height:100px;"src="{$_W['attachurl']}{$real['more_real_card_pic3']}"/></td>
+
+
+
+
+
+<td>
+
+
+
+
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('real_update',array('real_openid'=>$real['openid'],'real_pid'=>'4'));}" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('real_update',array('real_id'=>$real['more_id'],'real_pid'=>'2'));}" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+
+
+
+</td>
+</tr>
+
+
+

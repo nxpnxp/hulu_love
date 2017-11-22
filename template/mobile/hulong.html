@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  
+
+  <script src="{MODULE_URL}public/jquery.js">
+</script>
+
+<script>
+$(document).ready(function(){
+  $("#view_one_c_2").click(function(){
+    $.post("{php echo $this->createMobileUrl('hulong');}",
+    {
+      openid:"胡龙",
+      city:"武汉市"
+    },
+    function likethis(){
+      //alert("数据：" + data + "\n状态：" + status);
+	  document.getElementById("view_one_c_2").innerHTML="已喜欢";
+
+    });
+  });
+});
+</script>
+
+<div id="view_one_c_2" onclick="likethis()">关注</div>
+
+ </body>
+</html>

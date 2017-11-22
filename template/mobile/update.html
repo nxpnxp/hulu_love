@@ -1,0 +1,153 @@
+{template 'top'}
+
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/update.css">
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">基本资料</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+<form action="" method="POST">
+<div id="update_one">
+
+<!--开始-->
+{if $user['sex']=='1'||$user['sex']=='2'}
+{else}
+<div id="update_one_style">
+<div class="update_one_a">性别</div>
+<div class="update_one_b">
+<select name="sex">
+<option value="1" {if $user['sex']=='1'}selected="selected"{else}{/if}>男</option>
+<option value="2" {if $user['sex']=='2'}selected="selected"{else}{/if}>女</option>
+</select>
+</div>
+</div>
+{/if}
+<!--结束-->
+
+<!--开始-->
+<div id="update_one_style">
+<div class="update_one_a">出生日期</div>
+<div class="update_one_b">
+<input type="date" name="bornyear" placeholder="请输入出生日期" required="required" value="{php echo date('Y-m-d',$user['bornyear']);}"/></div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="update_one_style">
+<div class="update_one_a">身高</div>
+<div class="update_one_b">
+<input type="number" min="120" max="220" name="height" placeholder="请输入身高（厘米）" required="required" value="{$user['height']}"/></div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="update_one_style">
+<div class="update_one_a">体重</div>
+<div class="update_one_b">
+<input type="number" min="30" max="230" name="weight" placeholder="请输入体重（千克）" required="required" value="{$user['weight']}"/></div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="update_one_style">
+<div class="update_one_a">交友目的</div>
+<div class="update_one_b">
+<select name="purpose">
+<option value="1" {if $user['purpose']=='1'}selected="selected"{else}{/if}>交友</option>
+<option value="2" {if $user['purpose']=='2'}selected="selected"{else}{/if}>相亲</option>
+<option value="3" {if $user['purpose']=='3'}selected="selected"{else}{/if}>约会</option>
+<option value="4" {if $user['purpose']=='4'}selected="selected"{else}{/if}>学习交流</option>
+<option value="5" {if $user['purpose']=='5'}selected="selected"{else}{/if}>其他</option>
+</select>
+</div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="update_one_style">
+<div class="update_one_a">感情状态</div>
+<div class="update_one_b">
+<select name="feeling">
+<option value="1" {if $user['feeling']=='1'}selected="selected"{else}{/if}>单身中</option>
+<option value="2" {if $user['feeling']=='2'}selected="selected"{else}{/if}>约会中</option>
+<option value="3" {if $user['feeling']=='3'}selected="selected"{else}{/if}>交往中</option>
+</select>
+</div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="update_one_style">
+<div class="update_one_a">婚姻状态</div>
+<div class="update_one_b">
+<select name="married">
+<option value="1" {if $user['married']=='1'}selected="selected"{else}{/if}>未婚</option>
+<option value="2" {if $user['married']=='2'}selected="selected"{else}{/if}>已婚</option>
+<option value="3" {if $user['married']=='3'}selected="selected"{else}{/if}>离异</option>
+<option value="4" {if $user['married']=='4'}selected="selected"{else}{/if}>丧偶</option>
+</select>
+</div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="update_one_style">
+<div class="update_one_a">微信号</div>
+<div class="update_one_b">
+<input type="text" name="wechat" placeholder="请输入微信号" required="required" value="{$user['wechat']}"/></div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="update_one_style">
+<div class="update_one_a">手机号</div>
+<div class="update_one_b">
+<input type="number" name="tel" placeholder="请输入手机号" required="required" value="{$user['tel']}"/></div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="update_one_style">
+<div class="update_one_a">所在城市</div>
+<div class="update_one_b">
+<select name="city">
+{loop $city $key $city}
+<option value="{$city['city_id']}" {if $user['city']==$city['city_id']}selected="selected"{else}{/if}>{$city['city_name']}</option>
+{/loop}
+</select>
+</div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="update_one_style">
+<div class="update_one_a">地址</div>
+<div class="update_one_b">
+<input type="text" name="address" placeholder="请输入地址" required="required" value="{$user['address']}"/></div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="update_one_textarea">
+<div class="update_one_c">交友宣言</div>
+<div class="update_one_d">
+<textarea name="content" placeholder="请输入交友宣言" required="required">{$user['content']}</textarea>
+</div>
+</div>
+<!--结束-->
+
+</div>
+
+<div id="update_bottom">
+<input type="submit" name="submit" value="修 改"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</div>
+</form>
+{template 'foot'}

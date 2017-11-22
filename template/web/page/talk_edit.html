@@ -1,0 +1,72 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+
+<div class="panel panel-info">
+<div class="panel-heading">动态编辑</div>
+<div id="love_one">
+
+<form action="" method="POST">
+
+
+<div id="love_one_style">
+<div class="love_one_a">动态状态</div>
+<div class="love_one_b">
+<select name="talk_pid">
+<option value="1" {if $talk['talk_pid']=='1'}selected="selected"{else}{/if}>已屏蔽</option>
+<option value="2" {if $talk['talk_pid']=='2'}selected="selected"{else}{/if}>待审核</option>
+<option value="3" {if $talk['talk_pid']=='3'}selected="selected"{else}{/if}>已通过</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">动态置顶</div>
+<div class="love_one_b">
+<select name="talk_did">
+<option value="1" {if $talk['talk_did']=='1'}selected="selected"{else}{/if}>不置顶</option>
+<option value="2" {if $talk['talk_did']=='2'}selected="selected"{else}{/if}>置顶</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">发布者</div>
+<div class="love_one_b">
+<select name="openid">
+{loop $user $key $user}
+<option value="{$user['openid']}" {if $talk['openid']==$user['openid']}selected="selected"{else}{/if}>{$user['nickname']}</option>
+{/loop}
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">动态内容</div>
+<div class="love_one_b"><input type="text" name="talk_content" value="{$talk['talk_content']}" placeholder="请输入动态内容" required="required"/></div>
+</div>
+
+<div id="love_one_pic">
+<div class="love_one_c">图片一</div>
+<div class="love_one_d">{php echo tpl_form_field_image('talk_pic1',$talk['talk_pic1']);}</div>
+</div>
+
+<div id="love_one_pic">
+<div class="love_one_c">图片二</div>
+<div class="love_one_d">{php echo tpl_form_field_image('talk_pic2',$talk['talk_pic2']);}</div>
+</div>
+
+<div id="love_one_pic">
+<div class="love_one_c">图片三</div>
+<div class="love_one_d">{php echo tpl_form_field_image('talk_pic3',$talk['talk_pic3']);}</div>
+</div>
+
+<div id="love_one_ok">
+<input type="submit" name="submit" value="修 改"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</div>
+
+</form>
+</div>
+</div>
+
+{template 'common/footer'}

@@ -1,0 +1,24 @@
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/chat.css">
+
+<a href="{php echo $this->createMobileUrl('news',array('news_openid'=>$chat['openid']));}">
+
+<div id="chat_two_style">
+
+<div class="chat_two_a"><img src="<?php echo getavatar($chat['openid'],$_W['uniacid'],$_W['attachurl']);?>"/></div>
+
+<div class="chat_two_b">
+<p class="chat_two_b_1"><?php echo getnickname($chat['openid'],$_W['uniacid']);?></p>
+<p class="chat_two_b_2">{$chat['news_content']}</p>
+</div>
+
+<div class="chat_two_c">
+<div class="chat_two_c_1"><?php echo getweidunews($chat['news_openid'],$chat['openid'],$_W['uniacid']);?></div>
+<div class="chat_two_c_2"><?php echo gettimegap($chat['news_time']);?></div>
+</div>
+
+</div>
+
+</a>
+
+
+

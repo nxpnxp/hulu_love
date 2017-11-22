@@ -1,0 +1,86 @@
+{php echo register_jssdk(false);}
+
+<script>
+	wx.ready(function () {
+		sharedata = {
+			title: "{$guanli['guanli_share_title']}",
+
+			desc: "{$guanli['guanli_share_content']}",
+
+			link: "",
+
+			imgUrl: "{$_W['attachurl']}{$guanli['guanli_share_pic']}",
+			
+		};
+		wx.onMenuShareAppMessage(sharedata);
+		wx.onMenuShareTimeline(sharedata);
+		wx.onMenuShareQQ(sharedata);
+		wx.onMenuShareWeibo(sharedata);
+		wx.onMenuShareQZone(sharedata);
+	});
+	</script>
+
+
+<div id="bottom_one">
+
+<!--菜单开始-->
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div id="bottom_one_a"><img src="{MODULE_URL}public/images/bottom2.png"/>附近</div>
+</a>
+<!--菜单结束-->
+
+<!--菜单开始-->
+<a href="{php echo $this->createMobileUrl('chat');}">
+<div id="bottom_one_a"><img src="{MODULE_URL}public/images/bottom4.png"/>聊天</div>
+</a>
+<!--菜单结束-->
+
+
+<a href="{php echo $this->createMobileUrl('active');}">
+<div id="bottom_one_a"><img src="{MODULE_URL}public/images/bottom6.png"/>活动</div>
+</a>
+
+
+
+<a href="{php echo $this->createMobileUrl('talk');}">
+<div id="bottom_one_a"><img src="{MODULE_URL}public/images/bottom8.png"/>同城圈</div>
+</a>
+
+
+<!--菜单开始-->
+<a href="{php echo $this->createMobileUrl('my');}">
+<div id="bottom_one_a"><img src="{MODULE_URL}public/images/bottom10.png"/>我</div>
+</a>
+<!--菜单结束-->
+
+</div>
+  
+ </body>
+
+ <script type="text/javascript">
+
+
+$(document).ready(function(){
+  $("#view_one_c_2_3").click(function(){
+    $.post("{php echo $this->createMobileUrl('like');}",
+    {
+      //name:"Donald Duck",
+      //city:"Duckburg"
+	  openid:"{$user['openid']}",
+    },
+    function likethis(){
+		document.getElementById("view_one_c_2_3").innerHTML="已喜欢";
+
+      alert("数据：" + data + "\n状态：" + status);
+    });
+  });
+});
+
+
+
+
+
+ </script>
+
+
+</html>

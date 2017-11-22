@@ -1,0 +1,45 @@
+{template 'top'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/getmoney.css">
+
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">消费记录</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+
+<div id="money_one">
+<!---->
+{loop $pay $key $pay}
+<div id="money_one_style">
+
+<div class="money_one_a">
+<p class="money_one_a_1">{php echo date('m-d',$pay['pay_time']);}</p>
+<p class="money_one_a_2">{php echo date('H:i',$pay['pay_time']);}</p>
+</div>
+
+<div class="money_one_b">
+<a href="{php echo $this->createMobileUrl('view',array('uid'=>getuid($pay['pay_openid'],$_W['uniacid'])));}">
+<img src="<?php echo getavatar($pay['pay_openid'],$_W['uniacid'],$_W['attachurl']);?>"/>
+</a>
+</div>
+
+<div class="money_one_c">
+<p class="money_one_c_1"><?php echo getmoneytype($pay['pay_type']);?></p>
+<p class="money_one_c_2">-{$pay['pay_price']}</p>
+</div>
+
+</div>
+{/loop}
+<!---->
+
+
+</div>
+
+{template 'top'}

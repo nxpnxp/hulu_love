@@ -1,0 +1,168 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+<script type="text/javascript" src="{MODULE_URL}template/web/js.js"></script>
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">所有活动</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">待审核活动</a></li>
+	<li role="presentation"><a href="#four" aria-controls="four" role="tab" data-toggle="tab">报名中活动</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">进行中活动</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">已结束活动</a></li>
+	<li role="presentation"><a href="#one" aria-controls="one" role="tab" data-toggle="tab">已屏蔽活动</a></li>
+	<li role="presentation"><a href="#two" aria-controls="two" role="tab" data-toggle="tab">已取消活动</a></li>
+	<li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab">添加</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">所有活动</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/active'}
+<thead>
+<tbody>
+{loop $active $key $active}
+{template 'web/page/active_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+	
+	</div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">待审核活动</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/active'}
+<thead>
+<tbody>
+{loop $active3 $key $active}
+{template 'web/page/active_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+	
+	</div>
+    <div role="tabpanel" class="tab-pane" id="four">
+
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">报名中活动</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/active'}
+<thead>
+<tbody>
+{loop $active4 $key $active}
+{template 'web/page/active_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+	
+	</div>
+    <div role="tabpanel" class="tab-pane" id="messages">
+
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">进行中活动</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/active'}
+<thead>
+<tbody>
+{loop $active5 $key $active}
+{template 'web/page/active_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+	<div role="tabpanel" class="tab-pane" id="settings">
+
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">已结束活动</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/active'}
+<thead>
+<tbody>
+{loop $active6 $key $active}
+{template 'web/page/active_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+	
+	</div>
+	<div role="tabpanel" class="tab-pane" id="one">
+
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">已屏蔽活动</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/active'}
+<thead>
+<tbody>
+{loop $active1 $key $active}
+{template 'web/page/active_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+	<div role="tabpanel" class="tab-pane" id="two">
+
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">已取消活动</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/active'}
+<thead>
+<tbody>
+{loop $active2 $key $active}
+{template 'web/page/active_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+
+	<div role="tabpanel" class="tab-pane" id="three">{template 'web/page/active_add'}</div>
+
+  </div>
+
+</div>
+
+{template 'common/footer'}

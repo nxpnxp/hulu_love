@@ -1,0 +1,13 @@
+/*m_pic_one*/
+#m_pic_one{width:100%;height:auto;margin:10px auto;}
+#m_pic_one_style{float:left;width:50%;height:150px;margin-bottom:10px;}
+.m_pic_one_img{width:120px;height:120px;margin:0px auto;}
+.m_pic_one_img img{width:100%;height:100%;}
+
+.m_pic_one_p{width:100%;height:20px;margin:0px auto;}
+.m_pic_one_p_1{float:left;width:40%;height:20px;margin:0px auto;
+text-align:center;line-height:20px;font-size:12px;background-color:#FFF;color:#999;overflow:hidden;}
+
+.m_pic_one_p_2{float:right;width:20%;height:20px;margin:0px auto;
+text-align:center;line-height:20px;font-size:12px;background-color:#FFF;color:#999;overflow:hidden;}
+

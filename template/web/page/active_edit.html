@@ -1,0 +1,88 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+
+<div class="panel panel-info">
+<div class="panel-heading">活动编辑</div>
+<div id="love_one">
+
+<form action="" method="POST">
+<div id="love_one_style">
+<div class="love_one_a">活动标题</div>
+<div class="love_one_b"><input type="text" name="active_title" value="{$active['active_title']}" placeholder="请输入活动标题" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">活动状态</div>
+<div class="love_one_b">
+<select name="active_pid">
+<option value="1" {if $active['active_pid']=='1'}selected="selected"{else}{/if}>已屏蔽</option>
+<option value="2" {if $active['active_pid']=='2'}selected="selected"{else}{/if}>已取消</option>
+<option value="3" {if $active['active_pid']=='3'}selected="selected"{else}{/if}>待审核</option>
+<option value="4" {if $active['active_pid']=='4'}selected="selected"{else}{/if}>报名中</option>
+<option value="5" {if $active['active_pid']=='5'}selected="selected"{else}{/if}>进行中</option>
+<option value="6" {if $active['active_pid']=='6'}selected="selected"{else}{/if}>已结束</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">发起类型</div>
+<div class="love_one_b">
+<select name="active_type">
+<option value="1" {if $active['active_type']=='1'}selected="selected"{else}{/if}>个人发布</option>
+<option value="2" {if $active['active_type']=='2'}selected="selected"{else}{/if}>商家发布</option>
+<option value="3" {if $active['active_type']=='3'}selected="selected"{else}{/if}>官方发布</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">男生人数</div>
+<div class="love_one_b"><input type="number" name="active_boy" value="{$active['active_boy']}" placeholder="请输入男生人数" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">女生人数</div>
+<div class="love_one_b"><input type="number" name="active_girl" value="{$active['active_girl']}" placeholder="请输入女生人数" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">每人费用</div>
+<div class="love_one_b"><input type="number" name="active_money" value="{$active['active_money']}" placeholder="请输入每人费用" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">活动地址</div>
+<div class="love_one_b"><input type="text" name="active_address" value="{$active['active_address']}" placeholder="请输入活动地址" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">开始时间</div>
+<div class="love_one_b">{php echo tpl_form_field_date('active_starttime',$active['active_starttime'],true);}</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">结束时间</div>
+<div class="love_one_b">{php echo tpl_form_field_date('active_endtime',$active['active_endtime'],true);}</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">联系电话</div>
+<div class="love_one_b"><input type="number" name="active_tel" value="{$active['active_tel']}" placeholder="请输入联系电话" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">详细说明</div>
+<div class="love_one_b"><input type="text" name="active_content" value="{$active['active_content']}" placeholder="请输入详细说明" required="required"/></div>
+</div>
+
+<div id="love_one_ok">
+<input type="submit" name="submit" value="修 改"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</div>
+
+</form>
+</div>
+</div>
+
+{template 'common/footer'}

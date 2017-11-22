@@ -1,0 +1,11 @@
+/*m_active_one*/
+#m_active_one{width:100%;height:auto;margin:0px auto;}
+
+#m_active_one_style{width:96%;height:867px;margin:50px auto;background-color:#EEE;}
+
+.m_active_one_a{float:left;width:25%;height:50px;border-bottom:1px solid #FFF;
+text-align:center;line-height:50px;font-size:16px;color:#000;overflow:hidden;}
+
+
+.m_active_one_b{float:left;width:75%;height:50px;border-bottom:1px solid #FFF;
+text-align:right;line-height:50px;font-size:14px;color:#666;overflow:hidden;}

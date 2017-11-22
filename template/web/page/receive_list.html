@@ -1,0 +1,33 @@
+
+<tr>
+
+<td><span class="label label-default">{$receive['receive_id']}</span></td>
+
+
+
+<td><?php echo getnickname($receive['openid'],$_W['uniacid']);?></td>
+
+
+<td><img style="width:60px;height:60px;border-radius:50%;"src="<?php echo getavatar($receive['openid'],$_W['uniacid']);?>"/></td>
+
+
+<td><?php echo getnickname($receive['receive_openid'],$_W['uniacid']);?></td>
+
+
+<td><img style="width:60px;height:60px;border-radius:50%;"src="<?php echo getavatar($receive['receive_openid'],$_W['uniacid']);?>"/></td>
+
+
+
+<td><span class="label label-primary"><?php echo getgiftname($receive['gift_id'],$_W['uniacid']);?></span></td>
+
+<td><span class="label label-success">{$receive['gift_price']}</span></td>
+
+
+<td>{php echo date('Y-m-d H:i:s',$receive['receive_time']);}</td>
+
+
+
+</tr>
+
+
+

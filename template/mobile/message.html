@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ 
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <title><?php echo getwebtitle($_W['uniacid']);?></title>
+  <link rel="stylesheet" href="{MODULE_URL}template/mobile/style/message.css">
+
+ </head>
+ <body>
+    <script type="text/Javascript">
+  function showmessage(){
+	  var xhr = new XMLHttpRequest();
+	  xhr.onreadystatechange = function(){
+		  if(xhr.readyState==4){
+			  eval("var jn_info="+xhr.responseText);			 
+			  var s="";
+			  for(var i=0;i<jn_info.length;i++){
+				  s+="<div id='message_content_style' style='width:96%;height:auto;margin:10px auto;'><div class='message_content_a' style='float:left;width:25%;height:50px;'><div class='message_content_a_img' style='width:50px;height:50px;margin:10px auto;'><img style='width:50px;height:50px;border-radius:50%;' src='"+jn_info[i].openid+"'/></div></div><div class='message_content_b' style='float:right;width:75%;height:auto;background-color:#0098F0;margin:10px auto;text-align:left;line-height:30px;font-size:14px;color:#FFF;overflow:hidden;'>"+jn_info[i].news_content+"</div></div>";
+
+			  }
+			  //document.getElementById('message_content').innerHTML = s;
+			  var showmsg = document.getElementById('message_content');
+showmsg.innerHTML += s;
+ document.body.scrollTop =  document.body.scrollHeight;
+
+
+		  }
+	  }
+	  xhr.open('get','{php echo $this->createMobileUrl('message_receive',array('news_openid'=>$_GPC['news_openid']));}');
+	  xhr.send(null);
+  }
+  window.onload = function(){
+	  showmessage();
+  }
+  </script>
+
+  <!--聊天内容顶部广告开始-->
+  <a href="{$moreads2['moreads_link']}">
+<div id="news_ads1"><img src="{$_W['attachurl']}{$moreads2['moreads_pic']}"/></div>
+</a>
+  <!--聊天内容顶部广告结束-->
+
+  <!--聊天内容开始-->
+<div id="message_content">
+<p>你好</p>
+</div>
+  <!--聊天内容结束-->
+
+<!--发布消息开始-->
+
+<div id="message_add">
+
+<div id="message_add_a"><input type="text" name="news_content" placeholder="我想说..." required="required"/></div>
+<div id="message_add_b"><div onclick="sendmsg()" class="message_add_b_p">发送</div></div>
+<input type="hidden" name="news_openid" value="{$_GPC['news_openid']}"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+
+</div>
+<!--发布消息结束-->
+ </body>
+</html>
+
+<script type="text/javascript">
+function sendmsg(){
+	var fm=document.getElementsByTagName('form')[0];
+	var fd=new FormData(fm);
+
+	var xhr=new XMLHttpRequest();
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4){
+			document.getElementById('message_add_a').value="";
+			alert(xhr.responseText);
+		}
+	}
+	xhr.open('post',"{php echo $this->createMobileUrl('message_send');}");
+	xhr.send(fd);
+
+}
+
+</script>
+

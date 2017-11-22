@@ -1,0 +1,80 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+<script type="text/javascript" src="{MODULE_URL}template/web/js.js"></script>
+
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">待审核照片</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">所有照片</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">已通过照片</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">已屏蔽照片</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+<!---->
+	<div class="panel panel-info">
+<div class="panel-heading">待审核照片</div>
+<div id="love_pic">
+
+{loop $photos2 $key $photos}
+{template 'web/page/photos_list'}
+{/loop}
+</div>
+</div>
+<!---->
+	</div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+
+	<!---->
+	<div class="panel panel-info">
+<div class="panel-heading">所有照片</div>
+<div id="love_pic">
+
+{loop $photos $key $photos}
+{template 'web/page/photos_list'}
+{/loop}
+</div>
+</div>
+<!---->
+
+	</div>
+    <div role="tabpanel" class="tab-pane" id="messages">
+
+	<!---->
+	<div class="panel panel-info">
+<div class="panel-heading">已通过照片</div>
+<div id="love_pic">
+
+{loop $photos3 $key $photos}
+{template 'web/page/photos_list'}
+{/loop}
+</div>
+</div>
+<!---->
+
+	</div>
+    <div role="tabpanel" class="tab-pane" id="settings">
+
+	<!---->
+	<div class="panel panel-info">
+<div class="panel-heading">已屏蔽核照片</div>
+<div id="love_pic">
+
+{loop $photos1 $key $photos}
+{template 'web/page/photos_list'}
+{/loop}
+</div>
+</div>
+<!---->
+
+	</div>
+  </div>
+
+</div>
+
+{template 'common/footer'}

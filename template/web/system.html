@@ -1,0 +1,98 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+
+<div class="panel panel-info">
+<div class="panel-heading">系统统计</div>
+<div id="love_system">
+
+<div id="love_system_style">
+<div class="love_system_a">{php echo(round($nowsystemget,2));}</div>
+<div class="love_system_b">总收益</div>
+</div>
+
+
+<div id="love_system_style">
+<div class="love_system_a">{php echo(round($nowsystempay,2));}</div>
+<div class="love_system_b">预计总支出</div>
+</div>
+<!--
+<div id="love_system_style">
+<div class="love_system_a">{$nowsystem}</div>
+<div class="love_system_b">预计支出</div>
+</div>
+
+<div id="love_system_style">
+<div class="love_system_a">{$nowsystem}</div>
+<div class="love_system_b">本月预计收益</div>
+</div>
+-->
+</div>
+</div>
+
+<!---->
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">系统收益</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">系统预支出</a></li>
+	<!--
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+	-->
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+
+	<!--循环开始-->
+<div class="panel panel-info">
+<div class="panel-heading">系统收益</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/system'}
+</thead>
+<tbody>
+{loop $systemget $key $system}
+{template 'web/page/system_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+<!--循环结束-->
+
+	</div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+
+	<!--循环开始-->
+<div class="panel panel-info">
+<div class="panel-heading">系统预支出</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/system'}
+</thead>
+<tbody>
+{loop $systempay $key $system}
+{template 'web/page/system_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+<!--循环结束-->
+
+	</div>
+	<!--
+    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+	-->
+  </div>
+
+</div>
+
+<!---->
+
+{template 'common/footer'}

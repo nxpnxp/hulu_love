@@ -1,0 +1,36 @@
+<div class="panel panel-info">
+<div class="panel-heading">择偶要求</div>
+<div id="love_two">
+
+<div id="love_two_style">
+<div class="love_two_a">年龄范围：</div>
+<div class="love_two_b">{$request['request_age_small']}岁→{$request['request_age_big']}岁</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">身高范围：</div>
+<div class="love_two_b">{$request['request_height_small']}厘米→{$request['request_height_big']}厘米</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">体重范围：</div>
+<div class="love_two_b">{$request['request_weight_small']}千克→{$request['request_weight_big']}千克</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">薪资范围：</div>
+<div class="love_two_b"><?php echo getsalary($request['request_salary']);?></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">学历：</div>
+<div class="love_two_b"><?php echo geteducation($request['request_education']);?></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">地域：</div>
+<div class="love_two_b"><?php echo getarea($request['request_area']);?></div>
+</div>
+
+</div>
+</div>

@@ -1,0 +1,27 @@
+{template 'top'}
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/share.css">
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">分享推广</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+<div id="share_one">
+<div class="share_one_title">如何分享？</div>
+<div class="share_one_p">①：点击进入“<a href="{php echo $this->createMobileUrl('view',array('share'=>$user['openid'],'uid'=>$user['uid']));}">个人主页</a>”，把你的个人主页分享到朋友圈，微信群。</div>
+<div class="share_one_p">②：你的好友通过你的分享链接进入，并注册成为本站会员，即分享成功。</div>
+<div class="share_one_title">分享成功会有什么好处？</div>
+<div class="share_one_p">分享成功之后，你将会获得现金收益。</div>
+<div class="share_one_title">现金收益在哪儿？</div>
+<div class="share_one_p">点击进入“<a href="{php echo $this->createMobileUrl('getmoney');}">收益记录</a>”，即可查看所有的收益，可用于提现，消费。</div>
+</div>
+
+{template 'bottom'}
+

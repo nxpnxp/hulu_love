@@ -1,0 +1,99 @@
+{template 'common/header'}
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">所有活动报名</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">已支付报名</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">未支付报名</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">已取消报名</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+
+			<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">所有活动报名</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/join'}
+<thead>
+<tbody>
+{loop $join $key $join}
+{template 'web/page/join_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+
+				<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">已支付报名</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/join'}
+<thead>
+<tbody>
+{loop $join3 $key $join}
+{template 'web/page/join_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+    <div role="tabpanel" class="tab-pane" id="messages">
+
+				<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">未支付报名</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/join'}
+<thead>
+<tbody>
+{loop $join2 $key $join}
+{template 'web/page/join_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+    <div role="tabpanel" class="tab-pane" id="settings">
+
+				<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">已取消报名</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/join'}
+<thead>
+<tbody>
+{loop $join1 $key $join}
+{template 'web/page/join_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->
+
+	</div>
+  </div>
+
+</div>
+
+{template 'common/footer'}

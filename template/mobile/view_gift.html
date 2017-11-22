@@ -1,0 +1,12 @@
+  <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{"animation":"slide","animationLoop":false,"itemWidth":80,"itemMargin":5}' >
+  <ul class="am-slides" style="width:80px;height:80px;">
+  {loop $gift $key $gift}
+      <li>
+        	<img style="width:60px;height:60px;margin:10px;border-radius:50%;" src="<?php echo getgiftpic($gift['gift_id'],$_W['uniacid'],$_W['attachurl']);?>"/>
+         
+      </li>
+	  {/loop}
+      
+      
+  </ul>
+</div>

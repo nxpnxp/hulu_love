@@ -1,0 +1,121 @@
+{template 'top'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/request.css">
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">择偶要求</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+<form action="" method="POST">
+<div id="request_one">
+
+<!--开始-->
+<div id="request_one_style">
+<div class="request_one_e">年龄范围</div>
+<div class="request_one_f">
+<input type="number" class="request_one_f_1" name="request_age_small" min="18" max="100" placeholder="最小年龄" required="required" value="{$request['request_age_small']}"/>
+<input type="number" class="request_one_f_2" name="request_age_big" min="18" max="100" placeholder="最大年龄" required="required" value="{$request['request_age_big']}"/>
+</div>
+</div>
+<!--结束-->
+
+
+<!--开始-->
+<div id="request_one_style">
+<div class="request_one_e">身高范围</div>
+<div class="request_one_f">
+<input type="number" class="request_one_f_1" name="request_height_small" min="120" max="220" placeholder="最低身高" required="required" value="{$request['request_height_small']}"/>
+<input type="number" class="request_one_f_2" name="request_height_big" min="120" max="220" placeholder="最高身高（厘米）" required="required" value="{$request['request_height_big']}"/>
+</div>
+</div>
+<!--结束-->
+
+
+<!--开始-->
+<div id="request_one_style">
+<div class="request_one_e">体重范围</div>
+<div class="request_one_f">
+<input type="number" class="request_one_f_1" name="request_weight_small" min="30" max="230" placeholder="最轻体重" required="required" value="{$request['request_weight_small']}"/>
+<input type="number" class="request_one_f_2" name="request_weight_big" min="30" max="230" placeholder="最重体重（千克）" required="required" value="{$request['request_weight_big']}"/>
+</div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="request_one_style">
+<div class="request_one_a">薪资范围</div>
+<div class="request_one_b">
+<select name="request_salary">
+<option value="1" {if $request['request_salary']=='1'}selected="selected"{else}{/if}>我不在乎对方薪资</option>
+<option value="2" {if $request['request_salary']=='2'}selected="selected"{else}{/if}>1K以下</option>
+<option value="3" {if $request['request_salary']=='3'}selected="selected"{else}{/if}>1K-2K元</option>
+<option value="4" {if $request['request_salary']=='4'}selected="selected"{else}{/if}>2K-3K元</option>
+<option value="5" {if $request['request_salary']=='5'}selected="selected"{else}{/if}>3K-4K元</option>
+<option value="6" {if $request['request_salary']=='6'}selected="selected"{else}{/if}>4K-5K元</option>
+<option value="7" {if $request['request_salary']=='7'}selected="selected"{else}{/if}>5K-6K元</option>
+<option value="8" {if $request['request_salary']=='8'}selected="selected"{else}{/if}>6K-7K元</option>
+<option value="9" {if $request['request_salary']=='9'}selected="selected"{else}{/if}>7K-8K元</option>
+<option value="10" {if $request['request_salary']=='10'}selected="selected"{else}{/if}>8K-9K元</option>
+<option value="11" {if $request['request_salary']=='11'}selected="selected"{else}{/if}>9K-10K元</option>
+<option value="12" {if $request['request_salary']=='12'}selected="selected"{else}{/if}>10K-15K元</option>
+<option value="13" {if $request['request_salary']=='13'}selected="selected"{else}{/if}>15K-20K元</option>
+<option value="14" {if $request['request_salary']=='14'}selected="selected"{else}{/if}>20K元以上</option>
+</select>
+</div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="request_one_style">
+<div class="request_one_a">学历</div>
+<div class="request_one_b">
+<select name="request_education">
+<option value="1" {if $request['request_education']=='1'}selected="selected"{else}{/if}>我不在乎对方学历</option>
+<option value="2" {if $request['request_education']=='2'}selected="selected"{else}{/if}>博士后</option>
+<option value="3" {if $request['request_education']=='3'}selected="selected"{else}{/if}>博士</option>
+<option value="4" {if $request['request_education']=='4'}selected="selected"{else}{/if}>硕士</option>
+<option value="5" {if $request['request_education']=='5'}selected="selected"{else}{/if}>研究生</option>
+<option value="6" {if $request['request_education']=='6'}selected="selected"{else}{/if}>大学本科</option>
+<option value="7" {if $request['request_education']=='7'}selected="selected"{else}{/if}>大专</option>
+<option value="8" {if $request['request_education']=='8'}selected="selected"{else}{/if}>高中</option>
+<option value="9" {if $request['request_education']=='9'}selected="selected"{else}{/if}>中专</option>
+<option value="10" {if $request['request_education']=='10'}selected="selected"{else}{/if}>初中</option>
+<option value="11" {if $request['request_education']=='11'}selected="selected"{else}{/if}>小学</option>
+</select>
+</div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="request_one_style">
+<div class="request_one_a">地域</div>
+<div class="request_one_b">
+<select name="request_area">
+<option value="1" {if $request['request_area']=='1'}selected="selected"{else}{/if}>我不在乎对方距离</option>
+<option value="2" {if $request['request_area']=='2'}selected="selected"{else}{/if}>同一乡镇</option>
+<option value="3" {if $request['request_area']=='3'}selected="selected"{else}{/if}>同一县城</option>
+<option value="4" {if $request['request_area']=='4'}selected="selected"{else}{/if}>同一市区</option>
+<option value="5" {if $request['request_area']=='5'}selected="selected"{else}{/if}>同一身份</option>
+<option value="6" {if $request['request_area']=='6'}selected="selected"{else}{/if}>同一国家</option>
+<option value="7" {if $request['request_area']=='7'}selected="selected"{else}{/if}>同一星球</option>
+</select>
+</div>
+</div>
+<!--结束-->
+
+</div>
+
+<div id="request_bottom">
+<input type="submit" name="submit" value="修 改"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</div>
+
+</form>
+
+{template 'foot'}

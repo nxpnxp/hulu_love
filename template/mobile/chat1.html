@@ -1,0 +1,50 @@
+{template 'header'}
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/style/public.css">
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/chat.css">
+<div id="chat_one">表白信箱</div>
+<div id="chat_two">
+	<ul>
+	{loop $news $k $new}
+	<li class="news_list" id="{$new['openid']}">
+	<a href="{php echo $this->createMobileUrl('news',array('news_openid'=>$new['openid']));}"  class="new">
+		<div id="chat_two_style">
+			<div class="chat_two_a"><img src="{$new['avatar']}"/></div>
+			<div class="chat_two_b">
+				<p class="chat_two_b_1">{$new['nickname']}</p>
+				<p class="chat_two_b_2">{php echo  strip_tags($new['news_content']);}</p>
+			</div>
+			<div class="chat_two_c">
+				<div class="chat_two_c_1"  id="{$k}">
+					{if $new['news_type']}
+					<div class="chat_two_c_1_1">
+						{$new['news_type']}
+					</div>
+					{/if}
+				</div>
+				<p class="chat_two_c_2">{$new['point']}</p>
+			</div>
+		</div>
+	</a>
+	</li>
+	{/loop}
+	</ul>
+</div>
+<script>
+	$(function(){
+		//长按删除
+		$(".news_list").mousedown(function() {  
+			var openid = $(this).attr('id');
+			timeout = setTimeout(function() {
+			    if(confirm("确定删除这个表白?")){
+			    	var url = "{php echo $this->createMobileUrl('DelNew');}";
+			    	$.post(url,{openid: openid},function(data){
+			    		if(data){
+			    			$("#"+openid).remove();
+			    		}
+			    	});
+			    }
+		    }, 2000);  
+		});
+	});
+</script>
+{template 'bottom'}

@@ -1,0 +1,73 @@
+{template 'top'}
+{template 'common/header'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/withdraw_edit.css">
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">提现资料</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+<form action="{php echo $this->createMobileUrl('withdraw_edit');}" method="POST">
+
+<div id="withdraw_edit">
+
+<div id="withdraw_edit_style">
+<div class="withdraw_edit_a">微信</div>
+<div class="withdraw_edit_b"><input type="text" name="more_withdraw_wechat" value="{$more['more_withdraw_wechat']}" placeholder="请输入提现的微信号" required="required"/></div>
+</div>
+
+<div id="withdraw_edit_pic">
+<div class="withdraw_edit_c">收款二维码</div>
+<div class="withdraw_edit_d">
+<input type="hidden" name="more_withdraw_wechat_qrcode" value="" class="form-control" autocomplete="off" readonly="readonly">
+<div class="withdraw_edit_d_img_1"><img src="{MODULE_URL}public/images/upload.png"/></div>
+</div>
+</div>
+
+<div id="withdraw_edit_style">
+<div class="withdraw_edit_a">支付宝</div>
+<div class="withdraw_edit_b"><input type="text" name="more_withdraw_alipay" value="{$more['more_withdraw_alipay']}" placeholder="请输入提现的支付宝账号" required="required"/></div>
+</div>
+
+<div id="withdraw_edit_pic">
+<div class="withdraw_edit_c">收款二维码</div>
+<div class="withdraw_edit_d">
+<input type="hidden" name="more_withdraw_alipay_qrcode" value="{$_W['attachurl']}{$more['more_withdraw_alipay_qrcode']}" class="form-control" autocomplete="off" readonly="readonly">
+<div class="withdraw_edit_d_img_2"><img src="{MODULE_URL}public/images/upload.png"/></div>
+</div>
+</div>
+
+
+
+</div>
+
+<div id="withdraw_edit_ok"><input type="submit" name="submit" value="提 交"/></div>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</form>
+
+  <script>
+	util.image($('.withdraw_edit_d_img_1'), function(url){
+		$('.withdraw_edit_d_img_1').prev().val(url.attachment);
+		$('.withdraw_edit_d_img_1').find('img').attr('src',url.url);
+	}, {
+		crop : false,
+		multiple : false
+	});
+</script>
+
+  <script>
+	util.image($('.withdraw_edit_d_img_2'), function(url){
+		$('.withdraw_edit_d_img_2').prev().val(url.attachment);
+		$('.withdraw_edit_d_img_2').find('img').attr('src',url.url);
+	}, {
+		crop : false,
+		multiple : false
+	});
+</script>
+{template 'bottom'}

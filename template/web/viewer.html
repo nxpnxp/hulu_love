@@ -1,0 +1,20 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+<script type="text/javascript" src="{MODULE_URL}template/web/js.js"></script>
+
+	<!--列表开始-->
+	<div class="panel panel-info">
+<div class="panel-heading">所有访客</div>
+<table class="table table-hover">
+<thead>
+{template 'web/banner/viewer'}
+<thead>
+<tbody>
+{loop $viewer $key $viewer}
+{template 'web/page/viewer_list'}
+{/loop}
+</tbody>
+</table>
+{template 'web/banner/page'}
+</div>
+	<!--列表结束-->

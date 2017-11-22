@@ -1,0 +1,42 @@
+
+<tr>
+
+<td><span class="label label-default">{$admin['admin_id']}</span></td>
+
+
+<td><?php echo gettrueorfalse($admin['admin_pid'],$_W['uniacid']);?></td>
+
+<td><?php echo getadmindid($admin['admin_did']);?></td>
+
+
+<td><img style="width:60px;height:60px;border-radius:50%;"src="<?php echo getavatar($admin['openid'],$_W['uniacid']);?>"/></td>
+
+<td><?php echo getnickname($admin['openid'],$_W['uniacid']);?></td>
+
+<td>{php echo date('Y-m-d H:i:s',$admin['admin_time']);}</td>
+
+<td>{$admin['admin_ip']}</td>
+
+<td>
+
+
+
+
+{if $admin['admin_pid']=='2'}
+<a class="btn btn-default" href="{php echo $this->createWebUrl('admin_update',array('admin_id'=>$admin['admin_id'],'admin_pid'=>'1'));}" role="button">开启</a>
+{elseif $admin['admin_pid']=='1'}
+<a class="btn btn-default" href="{php echo $this->createWebUrl('admin_update',array('admin_id'=>$admin['admin_id'],'admin_pid'=>'2'));}" role="button">关闭</a>
+{else}{/if}
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('admin_up',array('admin_id'=>$admin['admin_id']));}" role="button"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+
+
+
+<a onclick="delcfm()" class="btn btn-default" href="{php echo $this->createWebUrl('admin_del',array('admin_id'=>$admin['admin_id']));}" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+
+</td>
+
+</tr>
+
+
+

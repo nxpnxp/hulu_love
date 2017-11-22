@@ -1,0 +1,43 @@
+{template 'top'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/active_join.css">
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">活动报名</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+
+<form action="" method="POST">
+
+<div id="active_join">
+
+<div id="active_join_style">
+<div class="active_join_a">姓名</div>
+<div class="active_join_b"><input type="text" name="join_name" placeholder="请输入姓名" required="required"/></div>
+</div>
+
+<div id="active_join_style">
+<div class="active_join_a">微信号</div>
+<div class="active_join_b"><input type="text" name="join_wechat" placeholder="请输入微信号" required="required"/></div>
+</div>
+
+<div id="active_join_style">
+<div class="active_join_a">手机号码</div>
+<div class="active_join_b"><input type="text" name="join_tel" placeholder="请输入手机号码" required="required"/></div>
+</div>
+
+</div>
+
+<div id="active_join_ok">
+<input type="submit" name="submit" value="提 交"/>
+</div>
+
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</form>
+{template 'foot'}

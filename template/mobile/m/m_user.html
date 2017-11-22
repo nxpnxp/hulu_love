@@ -1,0 +1,39 @@
+{template 'm/m_header'}
+  <link rel="stylesheet" href="{MODULE_URL}template/mobile/m/style/user.css">
+
+
+<div id="m_user_one">
+
+{loop $user $key $user}
+<div id="m_user_one_style">
+<div id="m_user_one_style_style">
+
+<a href="{php echo $this->createMobileUrl('m_user_view',array('uid'=>$user['uid']));}">
+
+<div class="m_user_one_img"><div class="m_user_one_img_img"><img src="{$user['avatar']}"/></div></div>
+
+<div class="m_user_one_a">
+<div class="m_user_one_a_1">{$user['nickname']}</div>
+<div class="m_user_one_a_2">{php echo getsex($user['sex']);} {php echo date('Y-m-d H:i:s',$user['regtime']);}</div>
+</div>
+</a>
+
+<div class="m_user_one_b">
+{if $user['upid']=='2'}
+<a href="{php echo $this->createMobileUrl('m_user_update',array('openid'=>$user['openid'],'user_pid'=>'3'));}"><div style="background-color:green;" class="m_user_one_b_1">通过</div></a>
+{elseif $user['upid']=='3'}
+<a href="{php echo $this->createMobileUrl('m_user_update',array('openid'=>$user['openid'],'user_pid'=>'2'));}"><div style="background-color:red;" class="m_user_one_b_1">不通过</div></a>
+{else}{/if}
+
+<div class="m_user_one_b_2">{php $fans=mc_fetch($user['openid']);echo $fans['residecity'];}</div>
+
+</div>
+
+</div>
+</div>
+
+{/loop}
+</div>
+
+{template 'm/m_footer'}
+

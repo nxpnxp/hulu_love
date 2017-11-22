@@ -1,0 +1,31 @@
+
+<tr>
+
+<td><span class="label label-default">{$ads['ads_id']}</span> <span class="label label-info">{$ads['ads_did']}</span></td>
+
+<td><?php echo gettrueorfalse($ads['ads_pid']);?></td>
+
+<td><span class="label label-primary">{$ads['ads_title']}</span></td>
+
+<td><img style="width:320px;height:100px;" src="{$_W['attachurl']}{$ads['ads_pic']}"/></td>
+
+<td>{$ads['ads_link']}</td>
+
+<td>{php echo date('Y-m-d H:i:s',$ads['ads_time']);}</td>
+
+
+
+<td>
+{if $ads['ads_pid']=='1'}
+<a class="btn btn-default" href="{php echo $this->createWebUrl('ads_update',array('ads_id'=>$ads['ads_id'],'ads_pid'=>'2'));}" role="button">隐藏</a>
+{elseif $ads['ads_pid']=='2'}
+<a class="btn btn-default" href="{php echo $this->createWebUrl('ads_update',array('ads_id'=>$ads['ads_id'],'ads_pid'=>'1'));}" role="button">显示</a>
+{else}{/if}
+
+<a class="btn btn-default" href="{php echo $this->createWebUrl('ads_edit',array('ads_id'=>$ads['ads_id']));}" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+
+<a onclick="delcfm()" class="btn btn-default" href="{php echo $this->createWebUrl('ads_del',array('ads_id'=>$ads['ads_id']));}" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+
+</td>
+
+</tr>

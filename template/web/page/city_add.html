@@ -1,0 +1,56 @@
+<div class="panel panel-info">
+<div class="panel-heading">城市添加</div>
+<div id="love_one">
+
+<form action="" method="POST">
+<div id="love_one_style">
+<div class="love_one_a">城市名称</div>
+<div class="love_one_b"><input type="text" name="city_name" placeholder="请输入城市名称" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">城市状态</div>
+<div class="love_one_b">
+<select name="city_pid">
+<option value="1">显示</option>
+<option value="2">隐藏</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">城市排序</div>
+<div class="love_one_b"><input type="number" name="city_did" placeholder="请输入城市排序" required="required"/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">城市类型</div>
+<div class="love_one_b">
+<select name="city_type">
+<option value="1">省（包括直辖市）</option>
+<option value="2">市（包括地级市）</option>
+<option value="3">县（包括县级市）</option>
+<option value="4">镇</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">城市值</div>
+<div class="love_one_b">
+<select name="city_value">
+<?php for($x=1;$x<=34;$x++){
+echo "<option value='$x'>$x</option>";
+}?>
+</select>
+</div>
+</div>
+
+<div id="love_one_ok">
+<input type="submit" name="submit" value="添 加"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</div>
+
+</form>
+</div>
+</div>

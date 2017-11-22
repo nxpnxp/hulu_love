@@ -1,0 +1,70 @@
+<div class="panel panel-info">
+<div class="panel-heading">实名认证</div>
+<div id="love_two">
+
+<div id="love_two_style">
+<div class="love_two_a">手机认证：</div>
+<div class="love_two_b"><?php echo getrealtel($more['more_real_tel']);?></div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">身份证认证：</div>
+<div class="love_two_b"><?php echo getrealcard($more['more_real_card']);?>
+
+{if $more['more_real_card']=='4'}
+<a class="btn btn-default" href="{php echo $this->createWebUrl('real_card_update',array('real_openid'=>$_GPC['openid'],'real_pid'=>'2'));}" role="button">更改为未通过审核</a>
+{elseif $more['more_real_card']=='2'||$more['more_real_card']=='3'||$more['more_real_card']=='1'}
+<a class="btn btn-default" href="{php echo $this->createWebUrl('real_card_update',array('real_openid'=>$_GPC['openid'],'real_pid'=>'4'));}" role="button">更改为已认证</a>
+{else}{/if}
+
+</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">实地认证：</div>
+<div class="love_two_b"><?php echo getrealself($more['more_real_self']);?>
+{if $more['more_real_self']=='1'}
+<a class="btn btn-default" href="{php echo $this->createWebUrl('real_self_update',array('real_openid'=>$_GPC['openid'],'real_pid'=>'2'));}" role="button">更改为已认证</a>
+{elseif $more['more_real_self']=='2'}
+<a class="btn btn-default" href="{php echo $this->createWebUrl('real_self_update',array('real_openid'=>$_GPC['openid'],'real_pid'=>'1'));}" role="button">更改为未认证</a>
+{else}{/if}
+</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">手机号：</div>
+<div class="love_two_b">{$more['more_real_tel_num']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">验证码：</div>
+<div class="love_two_b">{$more['more_real_tel_authcode']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">姓名：</div>
+<div class="love_two_b">{$more['more_real_card_name']}</div>
+</div>
+
+<div id="love_two_style">
+<div class="love_two_a">身份证号码：</div>
+<div class="love_two_b">{$more['more_real_card_num']}</div>
+</div>
+
+<div id="love_two_style" style="height:200px;">
+<div class="love_two_a" style="height:200px;">身份证照片一：</div>
+<div class="love_two_b" style="height:200px;"><img style="width:200px;height:200px;" src="{$_W['attachurl']}{$more['more_real_card_pic1']}"/></div>
+</div>
+
+<div id="love_two_style" style="height:200px;">
+<div class="love_two_a" style="height:200px;">身份证照片二：</div>
+<div class="love_two_b" style="height:200px;"><img style="width:200px;height:200px;" src="{$_W['attachurl']}{$more['more_real_card_pic2']}"/></div>
+</div>
+
+<div id="love_two_style" style="height:200px;">
+<div class="love_two_a" style="height:200px;">身份证照片三：</div>
+<div class="love_two_b" style="height:200px;"><img style="width:200px;height:200px;" src="{$_W['attachurl']}{$more['more_real_card_pic3']}"/></div>
+</div>
+
+</div>
+</div>

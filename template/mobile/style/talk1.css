@@ -1,0 +1,48 @@
+/*talk_top*/
+#talk_top{width:100%;height:160px;margin:0px auto;position:relative;background-size:100% 100%;}
+
+.talk_top_a{width:30px;height:30px;position:absolute;top:10px;right:10px;z-index:100;}
+.talk_top_a img{width:100%;height:100%;}
+
+
+.talk_top_b{width:auto;height:40px;position:absolute;bottom:0px;right:120px;z-index:100;
+text-align:right;line-height:40px;font-size:14px;color:#FFF;overflow:hidden;}
+
+.talk_top_c{width:80px;height:80px;position:absolute;bottom:-40px;right:20px;z-index:100;}
+.talk_top_c img{width:100%;height:100%;}
+
+/*talk_list*/
+#talk_list{width:100%;height:auto;margin:50px auto 60px;}
+#talk_list_style{width:100%;height:auto;border-bottom:1px solid #EEE;}
+
+.talk_list_a{width:96%;height:50px;margin:10px auto 0px;}
+.talk_list_a_1{float:left;width:20%;height:50px;}
+.talk_list_a_1 img{width:50px;height:50px;display:block;margin:0px auto;}
+
+.talk_list_a_2{float:right;width:80%;height:50px;}
+.talk_list_a_2 p.talk_list_a_2_1{width:100%;height:30px;
+text-align:left;line-height:30px;font-size:16px;color:#0098F0;overflow:hidden;}
+
+.talk_list_a_2 p.talk_list_a_2_2{width:100%;height:20px;
+text-align:left;line-height:20px;font-size:12px;color:#999;overflow:hidden;}
+
+.talk_list_b{width:76%;height:auto;margin:0px 2% 0px 22%;
+text-align:left;line-height:26px;font-size:14px;color:#000;overflow:hidden;}
+
+.talk_list_c{width:76%;height:70px;margin:0px 2% 10px 22%;}
+.talk_list_c img{width:70px;height:70px;margin-right:10px;}
+
+.talk_list_d{width:76%;height:20px;margin:0px 2% 10px 22%;}
+.talk_list_d_1{float:left;width:25%;height:20px;
+text-align:left;line-height:20px;font-size:12px;color:#999;overflow:hidden;}
+
+.talk_list_d_2{float:left;width:25%;height:20px;}
+.talk_list_d_2 img{width:20px;height:20px;display:block;margin:0px 0px 0px auto;}
+
+.talk_list_d_3{float:left;width:25%;height:20px;
+text-align:left;line-height:20px;font-size:12px;color:#999;overflow:hidden;}
+
+.talk_list_d_4{float:left;width:25%;height:20px;}
+
+.talk_list_e{width:76%;height:auto;margin:0px 2% 10px 22%;
+text-align:left;line-height:20px;font-size:12px;color:#999;overflow:hidden;}

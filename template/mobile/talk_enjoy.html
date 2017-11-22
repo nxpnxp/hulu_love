@@ -1,0 +1,31 @@
+{template 'top'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/talk_enjoy.css">
+
+
+<div id="talk_enjoy_one">
+
+<div class="talk_enjoy_one_p">{php echo getnickname($_GPC['talk_openid'],$_W['uniacid']);}</div>
+
+<div class="talk_enjoy_one_img"><div class="talk_enjoy_one_img_img"><img src="{php echo getavatar($_GPC['talk_openid'],$_W['uniacid'],$_W['attachurl']);}"/></div></div>
+
+</div>
+
+<!---->
+
+<div id="talk_enjoy_two">
+<form action="{php echo $this->createMobileUrl('pay_nine');}" method="POST">
+
+<div class="talk_enjoy_two_a"><input type="number" name="order_money" min="1" placeholder="请输入赞赏金额" required="required"/></div>
+
+<div class="talk_enjoy_two_b">喜欢是赞，爱是打赏！</div>
+
+<div class="talk_enjoy_two_c"><input type="submit" name="submit" value="支 付"/></div>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+<input type="hidden" name="order_num" value="{$order_num}"/>
+<input type="hidden" name="talk_id" value="{$_GPC['talk_id']}"/>
+<input type="hidden" name="talk_openid" value="{$_GPC['talk_openid']}"/>
+
+</form>
+</div>
+<!---->
+{template 'bottom'}

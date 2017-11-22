@@ -1,0 +1,51 @@
+/*talk_view_one*/
+#talk_view_one{width:96%;height:auto;margin:0px auto;border-bottom:1px solid #DDD;}
+
+#talk_view_one_style{width:100%;height:50px;margin:10px auto;}
+.talk_view_one_a{float:left;width:25%;height:50px;}
+.talk_view_one_a_img{width:50px;height:50px;margin:0px auto;border-radius:50%;}
+.talk_view_one_a_img img{width:50px;height:50px;border-radius:50%;}
+
+.talk_view_one_b{float:left;width:50%;height:50px;}
+.talk_view_one_b_1{float:left;width:100%;height:30px;text-align:left;line-height:30px;font-size:16px;color:#000;overflow:hidden;}
+.talk_view_one_b_2{float:left;width:100%;height:20px;text-align:left;line-height:20px;font-size:12px;color:#999;overflow:hidden;}
+
+.talk_view_one_c{float:left;width:25%;height:50px;}
+.talk_view_one_c_p{width:80%;height:30px;margin:10px auto;
+text-align:center;line-height:30px;font-size:14px;color:#FFF;overflow:hidden;}
+
+#talk_view_one_content{width:100%;height:auto;margin:0px auto;
+text-align:left;line-height:20px;font-size:14px;color:#666;overflow:hidden;}
+
+#talk_view_one_pic{width:100%;height:90px;margin:10px auto;}
+.talk_view_one_pic_a{float:left;width:80px;height:80px;margin:5px;}
+.talk_view_one_pic_a img{width:100%;height:100%;}
+
+/*talk_view_two*/
+#talk_view_two{width:96%;height:160px;margin:10px auto;}
+.talk_view_two_text{width:100%;height:110px;margin:0px auto;}
+.talk_view_two_text textarea{width:96%;height:90px;margin:10px auto;border:1px solid #EEE;
+text-align:left;line-height:30px;font-size:14px;color:#666;overflow:hidden;}
+
+.talk_view_two_text{width:100%;height:110px;margin:0px auto;}
+.talk_view_two_text textarea{width:96%;height:90px;margin:10px auto;border:1px solid #EEE;
+text-align:left;line-height:30px;font-size:14px;color:#666;overflow:hidden;}
+
+.talk_view_two_ok{width:100%;height:50px;margin:0px auto;}
+.talk_view_two_ok input{width:20%;height:30px;margin:10px 0px 10px 76%;border:none;background-color:#FC5488;
+text-align:center;line-height:30px;font-size:16px;color:#FFF;overflow:hidden;}
+
+/*talk_view_pinglun*/
+#talk_view_pinglun{width:100%;height:auto;margin:0px auto 50px;}
+#talk_view_pinglun_style{width:100%;height:auto;margin:10px auto;border-bottom:1px solid #DDD;}
+.talk_view_pinglin_style_style{width:100%;height:50px;}
+.talk_view_pinglun_img{float:left;width:20%;height:50px;}
+.talk_view_pinglun_img_img{width:50px;height:50px;margin:0px auto;border-radius:50%;}
+
+.talk_view_pinglun_img img{width:100%;height:100%;border-radius:50%;}
+.talk_view_pinglun_p{float:right;width:80%;height:50px;}
+.talk_view_pinglun_p_1{width:100%;height:30px;text-align:left;line-height:30px;font-size:16px;color:#000;overflow:hidden;}
+.talk_view_pinglun_p_2{width:100%;height:20px;text-align:left;line-height:20px;font-size:12px;color:#999;overflow:hidden;}
+
+.talk_view_pinglun_content{width:80%;height:auto;margin:10px 0px 10px 20%;
+text-align:left;line-height:30px;font-size:14px;color:#333;overflow:hidden;}

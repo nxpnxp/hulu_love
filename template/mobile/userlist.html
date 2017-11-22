@@ -1,0 +1,72 @@
+{loop $user $key $user}
+<!--用户开始-->
+<div id="loveuser_list" {if ($user['upid']=='4')&&($user['vip_endtime']>=$_W['timestamp'])}style="background-image:url('{MODULE_URL}/public/images/vip_bg.jpg');background-size:100% 100%;background-repeat:no-repeat;"{else}{/if}>
+<!--
+{if $user['ureal']=='2'}
+<div class="loveuser_list_renzheng"><img src="{MODULE_URL}public/images/renzheng.jpg"/></div>
+{else}{/if}
+-->
+<!---->
+<a href="{php echo $this->createMobileUrl('view',array('uid'=>$user['uid']));}">
+<div id="loveuser_list_a">
+<div class="loveuser_list_a_1">
+{if ($user['upid']=='4')&&($user['vip_endtime']>=$_W['timestamp'])}
+<img src="{MODULE_URL}public/images/vip.png"/>
+{else}{/if}
+</div>
+<div class="loveuser_list_a_2"{if $user['sex']=='1'}style="border:2px solid #0098F0;"{elseif $user['sex']=='2'}style="border:2px solid #FC5488;"{else}{/if}><img src="<?php echo getavatar($user['openid'],$_W['uniacid'],$_W['attachurl']);?>"/></div>
+</div>
+<!---->
+
+<!---->
+<div id="loveuser_list_b">
+
+<div class="loveuser_list_b_1">
+
+{if $user['ureal']=='2'}
+<div class="loveuser_list_b_1_1">
+<img src="{MODULE_URL}public/images/card.png"/>
+</div>
+{else}{/if}
+
+<div class="loveuser_list_b_1_2">{$user['nickname']}</div>
+</div>
+
+<div class="loveuser_list_b_2">
+<div class="loveuser_list_b_2_1"><?php echo getpurpose($user['purpose']);?></div>
+<div class="loveuser_list_b_2_2">{php echo getage($user['age'],$user['bornyear']);}岁 | {$user['height']}CM | {$user['weight']}KG</div>
+</div>
+<div class="loveuser_list_b_3">{$user['content']}</div>
+</div>
+</a>
+<!---->
+
+<!---->
+<div id="loveuser_list_c">
+
+<a href="{php echo $this->createMobileUrl('news',array('news_openid'=>$user['openid']));}">
+<div class="loveuser_list_c_1">
+<div class="loveuser_list_c_1_style">
+<div class="loveuser_list_c_1_style_img"><img src="{MODULE_URL}public/images/h1.png"/></div>
+<div class="loveuser_list_c_1_style_p">聊天</div>
+</div>
+</div>
+</a>
+
+<a href="{php echo $this->createMobileUrl('gift',array('gift_openid'=>$user['openid']));}">
+<div class="loveuser_list_c_2">
+<div class="loveuser_list_c_1_style">
+<div class="loveuser_list_c_1_style_img"><img src="{MODULE_URL}public/images/h2.png"/></div>
+<div class="loveuser_list_c_1_style_p">送礼</div>
+</div>
+</div>
+</a>
+
+<div class="loveuser_list_c_3"><?php echo gettimegap($user['logintime']);?></div>
+
+</div>
+<!---->
+
+</div>
+<!--用户结束-->
+{/loop}

@@ -1,0 +1,51 @@
+{template 'top'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/active.css">
+
+<!--top_banner开始-->
+<!--
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">线下活动</div>
+<a href="{php echo $this->createMobileUrl('active_add');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/add.png"/></div>
+</a>
+</div>
+-->
+<!--top_banner结束-->
+
+
+{template 'ads'}
+
+<a href="{php echo $this->createMobileUrl('active_add');}">
+<div id="top_banner_add"><img src="{MODULE_URL}public/images/add.png"/></div>
+</a>
+
+<div id="active_one">
+{loop $active $key $active}
+<a href="{php echo $this->createMobileUrl('active_view',array('vid'=>$active['active_id']));}">
+<div id="active_list">
+
+<div id="active_list_a"><img src="<?php echo getavatar($active['openid'],$_W['uniacid'],$_W['attachurl']);?>"/></div>
+
+<div id="active_list_b">
+<div class="active_list_b_1">{$active['active_title']}</div>
+<div class="active_list_b_2">活动人数：<span>{php echo($active['active_boy']+$active['active_girl']);}人</span></div>
+<div class="active_list_b_3">每人费用：<span>{$active['active_money']}元</span></div>
+<div class="active_list_b_4">活动地点：<span>{$active['active_address']}</span></div>
+<div class="active_list_b_5">开始时间：<span>{php echo date('m-d H:i',$active['active_starttime']);}</span></div>
+</div>
+
+<div id="active_list_c">
+{if $active['active_pid']=='4'}<img src="{MODULE_URL}public/images/active_1.png"/>
+{elseif $active['active_pid']=='5'}<img src="{MODULE_URL}public/images/active_2.png"/>
+{elseif $active['active_pid']=='6'}<img src="{MODULE_URL}public/images/active_3.png"/>
+{else}{/if}
+</div>
+
+</div>
+</a>
+{/loop}
+</div>
+{template 'bottom'}

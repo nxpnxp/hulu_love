@@ -1,0 +1,62 @@
+{template 'top'}
+{template 'common/header'}
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/photos.css">
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">上传照片</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+<!--引用开始-->
+
+<!--引用结束-->
+
+<form action="" method="POST">
+
+
+<div id="photos_title">
+<div class="photos_title_left">上传照片</div>
+<div class="photos_title_right"><input type="submit" name="submit" value="上传"/></div>
+</div>
+<div>
+<!--
+<input type="hidden" name="pic_url" value="" required="required" autocomplete="off" readonly="readonly">
+<div class="photos_one">
+<img src="{MODULE_URL}/public/images/upload.png"/>
+</div>
+
+
+<script>
+	util.image($('.photos_one'), function(url){
+		$('.photos_one').prev().val(url.attachment);
+		$('.photos_one').find('img').attr('src',url.url);
+	}, {
+		crop : false,
+		multiple : false
+	});
+</script>
+-->
+{php echo tpl_app_form_field_image('pic_url', $image);}
+
+
+
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</form>
+
+<div id="photos_title"><div class="photos_title_left">我的照片</div></div>
+
+<div id="photos_list">
+{loop $photos $key $photos}
+<div class="photos_list_a">
+<img src="{$_W['attachurl']}{$photos['pic_url']}"/>
+</div>
+{/loop}
+</div>
+
+{template 'bottom'}
