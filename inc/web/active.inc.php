@@ -23,6 +23,7 @@ if(checksubmit('submit')){
 			'active_ip'=>$_W['clientip'],
 			'active_container'=>$_W['container'],
 			'active_os'=>$_W['os'],
+			'image'=>$_GPC['image']
 			);
 
 		$res=pdo_insert('hulu_love_active',$activedata);

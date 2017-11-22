@@ -25,6 +25,7 @@ if($_W['ispost']){
 			'active_ip'=>$_W['clientip'],
 			'active_container'=>$_W['container'],
 			'active_os'=>$_W['os'],
+			'image'=>$_GPC['image']
 			
 			);
 		$res=pdo_update('hulu_love_active',$newactive,array('uniacid'=>$_W['uniacid'],'active_id'=>$_GPC['active_id']));

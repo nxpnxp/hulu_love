@@ -27,7 +27,9 @@
 <a href="{php echo $this->createMobileUrl('active_view',array('vid'=>$active['active_id']));}">
 <div id="active_list">
 
-<div id="active_list_a"><img src="<?php echo getavatar($active['openid'],$_W['uniacid'],$_W['attachurl']);?>"/></div>
+<!--<div id="active_list_a"><img src="<?php echo getavatar($active['openid'],$_W['uniacid'],$_W['attachurl']);?>"/></div>
+-->
+<div id="active_list_a"><img src="<?php echo '/attachment/'.$active['image'];?>"/></div>
 
 <div id="active_list_b">
 <div class="active_list_b_1">{$active['active_title']}</div>

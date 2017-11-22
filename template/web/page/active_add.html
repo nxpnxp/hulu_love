@@ -1,6 +1,6 @@
 <div class="panel panel-info">
 <div class="panel-heading">活动添加</div>
-<div id="love_one">
+<div id="love_one"  style="height: auto;">
 
 <form action="" method="POST">
 <div id="love_one_style">
@@ -68,9 +68,14 @@
 <div class="love_one_b"><input type="number" name="active_tel" placeholder="请输入联系电话" required="required"/></div>
 </div>
 
-<div id="love_one_style">
-<div class="love_one_a">详细说明</div>
-<div class="love_one_b"><input type="text" name="active_content" placeholder="请输入详细说明" required="required"/></div>
+<div id="love_one_style" style="height: auto;">
+<div class="love_one_a">图片</div>
+<div class="love_one_b">{php echo tpl_form_field_image('image');}</div>
+</div>
+
+<div id="love_one_style" style="height: auto;">
+<div class="love_one_a" style="margin-top: 200px;">详细说明</div>
+<div class="love_one_b">{php echo tpl_ueditor('active_content');}</div>
 </div>
 
 <div id="love_one_ok">
