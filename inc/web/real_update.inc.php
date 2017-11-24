@@ -17,6 +17,10 @@ if(!empty($_GPC['real_openid'])){
 		pdo_update('hulu_love_user',array('ureal'=>'2'),array('uniacid'=>$_W['uniacid'],'openid'=>$_GPC['real_openid']));
 
 			if(!empty($res)){
+				
+				//认证成功  修改会员等级  为  普通会员
+				pdo_update('hulu_love_user',array('upid'=>'3'),array('uniacid'=>$_W['uniacid'],'openid'=>$_GPC['real_openid']));
+				
 				message('恭喜，修改成功！',$this->createWebUrl('real'),'success');
 			}else{
 				message('抱歉，修改失败！',$this->createWebUrl('real'),'error');

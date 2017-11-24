@@ -14,6 +14,41 @@ $my_join=pdo_fetch("SELECT * FROM".tablename('hulu_love_join')."WHERE uniacid=:u
 
 	$user=pdo_fetch("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND openid=:openid",array(':uniacid'=>$_W['uniacid'],':openid'=>$_W['openid']));
 
+	//判断会员等级 
+	if($user['upid'] == '3'){
+		//普通会员   去支付
+	}elseif($user['upid'] == '4'){
+		//VIP会员   报名成功
+		$_data=array(
+			'uniacid'=>$_W['uniacid'],
+			'join_pid'=>'3',		
+			'openid'=>$_W['openid'],
+			'join_sex'=>$user['sex'],
+			'active_id'=>$_GPC['vid'],
+			'join_name'=>$user['nickname'],
+			'join_wechat'=>$user['wechat'],
+			'join_tel'=>$user['tel'],
+		
+			'join_time'=>$_W['timestamp'],
+			'join_ip'=>$_W['clientip'],
+			'join_container'=>$_W['container'],
+			'join_os'=>$_W['os'],
+			);
+
+		$_res=pdo_insert('hulu_love_join',$_data);
+		
+		if(!empty($_res)){
+			message('恭喜！报名成功！',$this->createMobileUrl('active'),'success');
+		}else{
+			message('抱歉！报名失败！请重试...',$this->createMobileUrl('active'),'error');
+		}
+		die();
+		
+	}else{
+		//其他 游客  去认证完善资料
+		message('抱歉！您是游客！请先前往认证并完善资料！',$this->createMobileUrl('real'),'error');die;
+	}
+
 $make=pdo_fetch("SELECT * FROM".tablename('hulu_love_make')."WHERE uniacid=:uniacid",array(':uniacid'=>$_W['uniacid']));
 
 $order_num=date('YmdHis').substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
@@ -43,7 +78,7 @@ if($_W['ispost']){
 		
 		if(!empty($res)){
 			$join_id = pdo_insertid();
-			message('恭喜！报名成功！请支付活动定金',$this->createMobileUrl('pay_seven',array('join_id'=>$join_id,'order_num'=>$order_num,'order_price'=>$order_price)),'success');
+			message('恭喜！报名成功！请支付活动金',$this->createMobileUrl('pay_seven',array('join_id'=>$join_id,'order_num'=>$order_num,'order_price'=>$order_price)),'success');
 		}else{
 			message('抱歉！报名失败！请重试...',$this->createMobileUrl('active'),'error');
 		}
