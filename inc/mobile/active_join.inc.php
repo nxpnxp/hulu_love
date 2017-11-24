@@ -10,6 +10,10 @@ if($_W['container']=='wechat'){
 
 $active=pdo_fetch("SELECT * FROM".tablename('hulu_love_active')."WHERE uniacid=:uniacid AND active_id=:active_id",array(':uniacid'=>$_W['uniacid'],':active_id'=>$_GPC['vid']));
 
+if($active['active_pid'] != 4){
+	message('抱歉，当前活动状态不可报名！',$this->createMobileUrl('active'),'error');die;
+}
+
 $my_join=pdo_fetch("SELECT * FROM".tablename('hulu_love_join')."WHERE uniacid=:uniacid AND active_id=:active_id AND openid=:openid",array(':uniacid'=>$_W['uniacid'],':active_id'=>$_GPC['vid'],':openid'=>$_W['openid']));
 
 	$user=pdo_fetch("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND openid=:openid",array(':uniacid'=>$_W['uniacid'],':openid'=>$_W['openid']));
