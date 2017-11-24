@@ -1,10 +1,25 @@
 {template 'top'}
 
-
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.7.0/css/zui.min.css">
 <link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/home.css">
-	<script type="text/javascript" src="{MODULE_URL}public/jquery.js"></script>
+<script type="text/javascript" src="{MODULE_URL}public/jquery.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/userlist.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.7.0/js/zui.min.js"></script>
+<style>
+#logo,#moreads{ width:100%; text-align:center;}
+#logo img{ margin:0 auto; height:30px;}
+#moreads img{ margin:0 auto; height:60px; width:100%}
+.nav-tabs a{ font-size:13px;}
+.nav-tabs li.active a{ color:#F09;}
+#piclist{ font-size:12px;}
+.signuptitle{ text-align:center;padding:10px 0;}
+</style>
 
-	<script type="text/javascript" src="{MODULE_URL}template/mobile/style/userlist.js"></script>
+
+<div id="logo"><img src="{MODULE_URL}public/images/logo.jpg" class="img-responsive" ></div>
+
+{template 'ads'}
+
 
 {if (!empty($guanli['guanli_fengmian_marquee']))}
 <div id="home_marquee">
@@ -72,12 +87,79 @@
 
 </div>
 
-{template 'ads'}
 
 
-<div id="home_user">
 
-{template 'userlist'}
-
+<div class="container"><div class="row">
+<div class="col-xs-12" id="piclist">
+<ul class="nav nav-tabs">
+  <li class="active"><a href="###" data-target="#tab2Content1" data-toggle="tab">推荐</a></li>
+  <li><a href="###" data-target="#tab2Content2" data-toggle="tab">最新</a></li>
+  <li><a href="###" data-target="#tab2Content3" data-toggle="tab">男神</a></li>
+  <li><a href="###" data-target="#tab2Content4" data-toggle="tab">女神</a></li>
+</ul>
+<div class="tab-content" style="margin-top:5px;">
+  <div class="tab-pane fade active in" id="tab2Content1">
+    
+   <div class="cards cards-borderless">
+   {loop $vipuser $key $user}
+  <div class="col-xs-6 col-sm-6 col-lg-3">
+   <a class="card" href="{php echo $this->createMobileUrl('view',array('uid'=>$user['uid']));}">
+  <img src="{$_W['attachurl']}{$user['photo']['pic_url']}" alt="" style=" height:160px; width:100%" >
+  <div class="card-heading" style="padding:3px 10px 3px 10px;"><strong>{$user['nickname']}</strong></div>
+  <div class="card-content text-muted"  style="padding:0 10px 3px 10px;">22 <span class="text-danger">vip</span></div>
+  <!--    <div class="card-actions" style="padding:0 10px;">
+    
+<div class="pull-right text-danger"><i class="icon-heart-empty"></i> 520 人喜欢</div>
+  </div>-->
+	</a>
+  </div>
+{/loop}
+ 
+</div> 
+    
+    
+  </div>
+  <div class="tab-pane fade" id="tab2Content2">
+    <p>标签2的内容。</p>
+  </div>
+  <div class="tab-pane fade" id="tab2Content3">
+    <p>这是标签3的内容。</p>
+  </div>
+  <div class="tab-pane fade" id="tab2Content4">
+    <p>这是标签4的内容。</p>
+  </div>
 </div>
+
+</div></div></div>
+
+<div id="moreads"><img src="{$_W['attachurl']}{$moreads['moreads_pic']}" class="img-responsive" ></div>
+
+<div class="container"><div class="row">
+<div class="col-xs-12">
+<h2 class="signuptitle">活动报名</h2>
+
+<div class="item">
+    <div class="item-heading">
+      <div class="pull-right label label-danger">报名</div>
+      <h4><a href="###">{$signup['active_title']}</a></h4>
+    </div>
+    <div class="item-content">
+      <div class="media"><img src="{$_W['attachurl']}{$signup['image']}" alt=""></div>
+      <div class="text">
+      <p>活动时间：</p>
+      <p>参加人数: 男士 {$signup['active_boy']}； 女士 {$signup['active_girl']}</p>
+      <p>联系电话：{$signup['active_tel']}</p>
+      </div>
+    </div>
+    <div class="item-footer">
+      <a href="#" class="text-muted"><i class="icon-comments"></i> 243</a> &nbsp; <span class="text-muted">2013-11-11 16:14:37</span>
+    </div>
+  </div>
+</div>
+
+</div></div></div>
+
+<div style="padding-bottom:60px; margin-bottom:60px;"></div>
+
 {template 'bottom'}
