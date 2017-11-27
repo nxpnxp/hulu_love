@@ -6,8 +6,8 @@
 <script type="text/javascript" src="{MODULE_URL}template/mobile/style/userlist.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.7.0/js/zui.min.js"></script>
 <style>
-#logo,#moreads{ width:100%; text-align:center;}
-#logo img{ margin:0 auto; height:30px;}
+#logo{ padding:5px 0; line-height:30px;}
+#moreads{ width:100%; text-align:center;}
 #moreads img{ margin:0 auto; height:60px; width:100%}
 .nav-tabs a{ font-size:13px;}
 .nav-tabs li.active a{ color:#F09;}
@@ -16,9 +16,15 @@
 </style>
 
 
-<div id="logo"><img src="{MODULE_URL}public/images/logo.jpg" class="img-responsive" ></div>
 
-{template 'ads'}
+<div class="container"><div class="row clearfix">
+<div class="col-xs-10" style="text-align:left; text-indent:5px;line-height:30px; height:30px;">
+<img src="{MODULE_URL}public/images/logo.png" style=" display:inline-block; width:25px;"> <span style="font-size:15px">幸福工程婚恋平台</span>
+</div>
+<div class="col-xs-2"><img src="{MODULE_URL}public/images/feedback.png" style="width:25px;line-height:30px; height:30px;"></div>
+</div></div>
+
+
 
 
 {if (!empty($guanli['guanli_fengmian_marquee']))}
@@ -27,14 +33,27 @@
 </div>
 {else}{/if}
 
+{template 'ads'}
+
+
 <div id="home_top">
 
+<!--
 <a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'1'));}')">
 <div id="home_top_style">
 <div class="home_top_a"><img src="{MODULE_URL}public/images/d1.png"/></div>
 <div class="home_top_b">最新</div>
 </div>
 </a>
+-->
+
+<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'1'));}')">
+<div id="home_top_style">
+<div class="home_top_a"><img src="{MODULE_URL}public/images/e1.png"/></div>
+<div class="home_top_b">签到</div>
+</div>
+</a>
+
 
 <a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'2'));}')">
 <div id="home_top_style">
@@ -50,12 +69,29 @@
 </div>
 </a>
 
-<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'4'));}')">
+
+<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'3'));}')">
+<div id="home_top_style">
+<div class="home_top_a"><img src="{MODULE_URL}public/images/e2.png"/></div>
+<div class="home_top_b">速配</div>
+</div>
+</a>
+
+
+<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'1'));}')">
+<div id="home_top_style">
+<div class="home_top_a"><img src="{MODULE_URL}public/images/e6.png"/></div>
+<div class="home_top_b">活动</div>
+</div>
+</a>
+
+
+<!--<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'4'));}')">
 <div id="home_top_style">
 <div class="home_top_a"><img src="{MODULE_URL}public/images/d4.png"/></div>
 <div class="home_top_b">认证会员</div>
 </div>
-</a>
+</a>-->
 
 <a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'5'));}')">
 <div id="home_top_style">
@@ -66,28 +102,42 @@
 
 <a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'6'));}')">
 <div id="home_top_style">
-<div class="home_top_a"><img src="{MODULE_URL}public/images/d6.png"/></div>
-<div class="home_top_b">排行榜</div>
+<div class="home_top_a"><img src="{MODULE_URL}public/images/e5.png"/></div>
+<div class="home_top_b">商城</div>
 </div>
 </a>
 
-<a href="{php echo $this->createMobileUrl('talk');}">
+<!--<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'6'));}')">
+<div id="home_top_style">
+<div class="home_top_a"><img src="{MODULE_URL}public/images/d6.png"/></div>
+<div class="home_top_b">排行榜</div>
+</div>
+</a>-->
+
+<!--<a href="{php echo $this->createMobileUrl('talk');}">
 <div id="home_top_style">
 <div class="home_top_a"><img src="{MODULE_URL}public/images/d7.png"/></div>
 <div class="home_top_b">说说</div>
 </div>
-</a>
+</a>-->
 
-<a href="{php echo $this->createMobileUrl('my');}">
+<!--<a href="{php echo $this->createMobileUrl('my');}">
 <div id="home_top_style">
 <div class="home_top_a"><img src="{MODULE_URL}public/images/d8.png"/></div>
 <div class="home_top_b">个人中心</div>
 </div>
+</a>-->
+
+<a href="{php echo $this->createMobileUrl('my');}">
+<div id="home_top_style">
+<div class="home_top_a"><img src="{MODULE_URL}public/images/e3.png"/></div>
+<div class="home_top_b">基地</div>
+</div>
 </a>
 
 </div>
 
-
+<div style="background-color:#eaeaea; height:3px; width:100%; margin-bottom:10px;"></div>
 
 
 <div class="container"><div class="row">
@@ -101,17 +151,24 @@
 <div class="tab-content" style="margin-top:5px;">
   <div class="tab-pane fade active in" id="tab2Content1">
     
-   <div class="cards cards-borderless">
+   <div class="cards">
    {loop $vipuser $key $user}
   <div class="col-xs-6 col-sm-6 col-lg-3">
    <a class="card" href="{php echo $this->createMobileUrl('view',array('uid'=>$user['uid']));}">
   <img src="{$_W['attachurl']}{$user['photo']['pic_url']}" alt="" style=" height:160px; width:100%" >
-  <div class="card-heading" style="padding:3px 10px 3px 10px;"><strong>{$user['nickname']}</strong></div>
-  <div class="card-content text-muted"  style="padding:0 10px 3px 10px;">22 <span class="text-danger">vip</span></div>
-  <!--    <div class="card-actions" style="padding:0 10px;">
-    
-<div class="pull-right text-danger"><i class="icon-heart-empty"></i> 520 人喜欢</div>
-  </div>-->
+  <div class="card-heading" style="padding:3px 10px 3px 10px;"><strong>{$user['nickname']}</strong> <span class="text-muted">{$user['age']}岁</span>
+  {if $user['sex']==1}
+     <img src="{MODULE_URL}public/images/boy2.png" style=" display:inline-block; width:12px;">
+  {else}
+     <img src="{MODULE_URL}public/images/girl2.png" style=" display:inline-block; width:12px;">
+  {/if}
+  </div>
+  <div class="card-content text-muted"  style="padding:0 10px 3px 10px;">
+  <img src="{MODULE_URL}public/images/VIP1.png" style=" display:inline-block; width:15px;">
+   <img src="{MODULE_URL}public/images/car.png" style=" display:inline-block; width:15px;">
+   <img src="{MODULE_URL}public/images/house.png" style=" display:inline-block; width:12px;">
+  
+  </div>
 	</a>
   </div>
 {/loop}
@@ -121,39 +178,95 @@
     
   </div>
   <div class="tab-pane fade" id="tab2Content2">
-    <p>标签2的内容。</p>
+       <div class="cards">
+   {loop $newuser $key $user}
+  <div class="col-xs-6 col-sm-6 col-lg-3">
+   <a class="card" href="{php echo $this->createMobileUrl('view',array('uid'=>$user['uid']));}">
+  <img src="{$_W['attachurl']}{$user['photo']['pic_url']}" alt="" style=" height:160px; width:100%" >
+  <div class="card-heading" style="padding:3px 10px 3px 10px;"><strong>{$user['nickname']}</strong> <span class="text-muted">{$user['age']}岁</span>
+  {if $user['sex']==1}
+     <img src="{MODULE_URL}public/images/boy2.png" style=" display:inline-block; width:12px;">
+  {else}
+     <img src="{MODULE_URL}public/images/girl2.png" style=" display:inline-block; width:12px;">
+  {/if}
+  </div>
+  <div class="card-content text-muted"  style="padding:0 10px 3px 10px;">
+  <img src="{MODULE_URL}public/images/VIP1.png" style=" display:inline-block; width:15px;">
+   <img src="{MODULE_URL}public/images/car.png" style=" display:inline-block; width:15px;">
+   <img src="{MODULE_URL}public/images/house.png" style=" display:inline-block; width:12px;">
+  
+  </div>
+	</a>
+  </div>
+{/loop}
+ 
+</div> 
   </div>
   <div class="tab-pane fade" id="tab2Content3">
-    <p>这是标签3的内容。</p>
+     {loop $boy $key $user}
+  <div class="col-xs-6 col-sm-6 col-lg-3">
+   <a class="card" href="{php echo $this->createMobileUrl('view',array('uid'=>$user['uid']));}">
+  <img src="{$_W['attachurl']}{$user['photo']['pic_url']}" alt="" style=" height:160px; width:100%" >
+  <div class="card-heading" style="padding:3px 10px 3px 10px;"><strong>{$user['nickname']}</strong> <span class="text-muted">{$user['age']}岁</span>
+  {if $user['sex']==1}
+     <img src="{MODULE_URL}public/images/boy2.png" style=" display:inline-block; width:12px;">
+  {else}
+     <img src="{MODULE_URL}public/images/girl2.png" style=" display:inline-block; width:12px;">
+  {/if}
+  </div>
+  <div class="card-content text-muted"  style="padding:0 10px 3px 10px;">
+  <img src="{MODULE_URL}public/images/VIP1.png" style=" display:inline-block; width:15px;">
+   <img src="{MODULE_URL}public/images/car.png" style=" display:inline-block; width:15px;">
+   <img src="{MODULE_URL}public/images/house.png" style=" display:inline-block; width:12px;">
+  
+  </div>
+	</a>
+  </div>
+{/loop}
   </div>
   <div class="tab-pane fade" id="tab2Content4">
-    <p>这是标签4的内容。</p>
+     {loop $girl $key $user}
+  <div class="col-xs-6 col-sm-6 col-lg-3">
+   <a class="card" href="{php echo $this->createMobileUrl('view',array('uid'=>$user['uid']));}">
+  <img src="{$_W['attachurl']}{$user['photo']['pic_url']}" alt="" style=" height:160px; width:100%" >
+  <div class="card-heading" style="padding:3px 10px 3px 10px;"><strong>{$user['nickname']}</strong> <span class="text-muted">{$user['age']}岁</span>
+  {if $user['sex']==1}
+     <img src="{MODULE_URL}public/images/boy2.png" style=" display:inline-block; width:12px;">
+  {else}
+     <img src="{MODULE_URL}public/images/girl2.png" style=" display:inline-block; width:12px;">
+  {/if}
+  </div>
+  <div class="card-content text-muted"  style="padding:0 10px 3px 10px;">
+  <img src="{MODULE_URL}public/images/VIP1.png" style=" display:inline-block; width:15px;">
+   <img src="{MODULE_URL}public/images/car.png" style=" display:inline-block; width:15px;">
+   <img src="{MODULE_URL}public/images/house.png" style=" display:inline-block; width:12px;">
+  
+  </div>
+	</a>
+  </div>
+{/loop}
   </div>
 </div>
 
 </div></div></div>
 
+<div class="container"><div class="row">
+<div class="col-xs-12">
 <div id="moreads"><img src="{$_W['attachurl']}{$moreads['moreads_pic']}" class="img-responsive" ></div>
+</div></div></div>
 
 <div class="container"><div class="row">
 <div class="col-xs-12">
-<h2 class="signuptitle">活动报名</h2>
 
 <div class="item">
     <div class="item-heading">
-      <div class="pull-right label label-danger">报名</div>
+      <div class="pull-right label label-danger">报名中</div>
       <h4><a href="###">{$signup['active_title']}</a></h4>
     </div>
     <div class="item-content">
       <div class="media"><img src="{$_W['attachurl']}{$signup['image']}" alt=""></div>
       <div class="text">
-      <p>活动时间：</p>
-      <p>参加人数: 男士 {$signup['active_boy']}； 女士 {$signup['active_girl']}</p>
-      <p>联系电话：{$signup['active_tel']}</p>
       </div>
-    </div>
-    <div class="item-footer">
-      <a href="#" class="text-muted"><i class="icon-comments"></i> 243</a> &nbsp; <span class="text-muted">2013-11-11 16:14:37</span>
     </div>
   </div>
 </div>
