@@ -1,0 +1,41 @@
+{template 'top'}
+
+<style>
+	.nn{padding:20px;}
+	.nn img{width:50px;height:50px;margin-right: 20px;border-radius: 50%;}
+	.nn .item{line-height: 50px;height:50px;font-size: 16px;clear: both;}
+	.nn .item .left{float: left;}
+	.nn .item .right{float: right;}
+</style>
+
+<div style="padding: 10px 20px;background-color: #ff3366;color:#fff;position: absolute;top: 0;right: 0;z-index:10000;" onclick="openlist()">地图模式</div>
+<script>
+	function openlist(){
+		var url = "{php echo $this->createMobileUrl('fujin');}";
+		window.location.href=url;
+	}
+</script>
+
+<div class="nn">
+	
+	<div class="item">
+		<div class="left">我：</div>
+		<div class="left"><img src="{$user['avatar']}" /></div>
+		<div class="left">{$user['nickname']}</div>
+	</div>
+	
+	<hr style="margin: 10px 0;clear: both;"/>
+	
+	{loop $users $key $value}
+	<div class="item" onclick="location='http://vp.vipin.net.cn/app/index.php?i=8&c=entry&uid={$value['uid']}&do=view&m=hulu_love'">
+		<div class="left"><img src="{$value['avatar']}" /></div>
+		<div class="right">
+		{$value['nickname']} &nbsp;&nbsp;&nbsp;&nbsp;
+		{$value['jvli']} km
+		</div>
+	</div>
+	{/loop}
+
+</div>
+
+{template 'bottom'}
