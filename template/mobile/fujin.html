@@ -1,0 +1,209 @@
+{template 'top'}
+
+<!--
+<img src="{$user['avatar']}" style="width:50px;height:50px;" />{$user['lon']},{$user['lat']},{$user['uid']}
+<hr/>
+
+{loop $users $key $value}
+<img src="{$value['avatar']}" style="width:50px;height:50px;" />{$value['lon']},{$value['lat']},{$value['uid']}<br/>
+{/loop}
+</br/>-->
+<?php
+	//foreach($users as $k => $v){
+	//	if($v['lon'] == 'undefined'){
+	//		unset($users[$k]);
+	//	}
+	//}
+	//$users = json_encode($users);
+?>
+
+<div id="map" style="width:100%;"></div>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=2d91c93f3322cc37c798dc6f9d806f38"></script>
+<script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+
+<style>
+	 .info {
+            border: solid 1px silver;
+        }
+        div.info-top {
+            position: relative;
+            background: none repeat scroll 0 0 #F9F9F9;
+            border-bottom: 1px solid #CCC;
+            border-radius: 5px 5px 0 0;
+        }
+        div.info-top div {
+            display: inline-block;
+            color: #333333;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 31px;
+            padding: 0 10px;
+        }
+        div.info-top img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            transition-duration: 0.25s;
+        }
+        div.info-top img:hover {
+            box-shadow: 0px 0px 5px #000;
+        }
+        div.info-middle {
+            font-size: 12px;
+            padding: 6px;
+            line-height: 20px;
+        }
+        div.info-bottom {
+            height: 0px;
+            width: 100%;
+            clear: both;
+            text-align: center;
+        }
+        div.info-bottom img {
+            position: relative;
+            z-index: 104;
+        }
+        span {
+            margin-left: 5px;
+            font-size: 11px;
+        }
+        .info-middle img {
+        	width: 100px;
+        	height: 100px;
+        }
+</style>
+	  
+<script>
+	AMapUI.loadUI(['misc/PositionPicker'], function(PositionPicker) {
+		
+		var winh = window.screen.availHeight;
+		document.getElementById('map').style.height = winh+'px';
+		
+		
+		var markers = [{
+        position: ["{$user['lon']}", "{$user['lat']}"],
+        uid: "{$user['uid']}",
+        nickname: "{$user['nickname']}",
+        avatar: "{$user['avatar']}",
+    }];
+        
+    <?php
+    	foreach($users as $k => $v){
+				if($v['lon'] == 'undefined'){
+					unset($users[$k]);
+				}else{
+					echo ' var lat='.$v['lat'].';';
+					echo ' var lon='.$v['lon'].';';
+					echo ' var uid='.$v['uid'].';';
+					echo ' var nickname="'.$v['nickname'].'";';
+					echo ' var avatar="'.$v['avatar'].'";';
+					echo ' var obj={};';
+					echo ' obj.position = [lon,lat];';
+					echo ' obj.uid = uid;';
+					echo ' obj.nickname = nickname;';
+					echo ' obj.avatar = avatar;';
+					echo ' markers.push(obj);';
+				}				
+			}
+    ?>
+        
+    var map = new AMap.Map('map',{
+        resizeEnable: true,
+        zoom: 16,
+        center: [markers[0].position[0], markers[0].position[1]]
+    });
+    
+    var infoWindow = new AMap.InfoWindow();
+    
+    for(var i=0;i<markers.length;i++){    	
+			var marker = new AMap.Marker({
+				position: [markers[i].position[0], markers[i].position[1]],
+				//icon: markers[i].avatar,
+				map: map
+	    });
+	    
+	    marker.content = JSON.stringify(markers[i]);
+	    //给Marker绑定单击事件
+	    marker.on('click', markerClick);						    
+    }
+    map.setFitView();
+    function markerClick(e){
+    		var obj = e.target.content;
+    		obj = JSON.parse(obj);
+    		avatar = obj.avatar;
+    		nickname = obj.nickname;
+    		uid = obj.uid;
+    		var str = '<div onclick="location=\'http://vp.vipin.net.cn/app/index.php?i=8&c=entry&uid='+uid+'&do=view&m=hulu_love\'">';    		
+    		str += '<div style="text-align:center;"><img src="'+avatar+'" style="width:100px;height:100px;border-radius:50%;"/></div>';
+    		str += '<div style="font-size:16px;text-align:center;">'+nickname+'</div>';
+    		str += '</div>';
+		    infoWindow.setContent(str);
+		    infoWindow.open(map, e.target.getPosition());
+		}
+       
+//	  //鼠标点击marker弹出自定义的信息窗体
+//  AMap.event.addListener(marker, 'click', function() {
+//      infoWindow.open(map, marker.getPosition());
+//  });
+    
+    
+//		//实例化信息窗体
+//  var title = "{$user['nickname']}",content = [];
+//  content.push("<a href='http://vp.vipin.net.cn/app/index.php?i=8&c=entry&uid={$user['uid']}&do=view&m=hulu_love'><img src='{$user['avatar']}'></a>");
+//  var infoWindow = new AMap.InfoWindow({
+//      isCustom: true,  //使用自定义窗体
+//      content: createInfoWindow(title, content.join("<br/>")),
+//      offset: new AMap.Pixel(16, -45)
+//  });
+//
+//  //构建自定义信息窗体
+//  function createInfoWindow(title, content) {
+//      var info = document.createElement("div");
+//      info.className = "info";
+//
+//      //可以通过下面的方式修改自定义窗体的宽高
+//      //info.style.width = "400px";
+//      // 定义顶部标题
+//      var top = document.createElement("div");
+//      var titleD = document.createElement("div");
+//      var closeX = document.createElement("img");
+//      top.className = "info-top";
+//      titleD.innerHTML = title;
+//      closeX.src = "http://webapi.amap.com/images/close2.gif";
+//      closeX.onclick = closeInfoWindow;
+//
+//      top.appendChild(titleD);
+//      top.appendChild(closeX);
+//      info.appendChild(top);
+//
+//      // 定义中部内容
+//      var middle = document.createElement("div");
+//      middle.className = "info-middle";
+//      middle.style.backgroundColor = 'white';
+//      middle.innerHTML = content;
+//      info.appendChild(middle);
+//
+//      // 定义底部内容
+//      var bottom = document.createElement("div");
+//      bottom.className = "info-bottom";
+//      bottom.style.position = 'relative';
+//      bottom.style.top = '0px';
+//      bottom.style.margin = '0 auto';
+//      var sharp = document.createElement("img");
+//      sharp.src = "http://webapi.amap.com/images/sharp.png";
+//      bottom.appendChild(sharp);
+//      info.appendChild(bottom);
+//      return info;
+//  }
+//
+//  //关闭信息窗体
+//  function closeInfoWindow() {
+//      map.clearInfoWindow();
+//  }
+		
+	});
+	
+</script>
+
+
+{template 'bottom'}
