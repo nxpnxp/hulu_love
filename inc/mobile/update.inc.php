@@ -31,6 +31,8 @@ if($_W['ispost']){
 			'city'=>$_GPC['city'],
 			'address'=>$_GPC['address'],
 			'content'=>$_GPC['content'],
+			'xinzi'=>$_GPC['xinzi'],
+			'xueli'=>$_GPC['xueli'],
 			);
 		$res=pdo_update('hulu_love_user',$userdata,array('uniacid'=>$_W['uniacid'],'openid'=>$_W['openid']));
 		if(!empty($res)){

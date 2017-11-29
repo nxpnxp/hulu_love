@@ -1,3 +1,16 @@
+{template 'top'}
+
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/home.css">
+<script type="text/javascript" src="{MODULE_URL}public/jquery.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/userlist.js"></script>
+
+<div style="width: 100%;padding: 10px 0;text-align: center;background-color: #FC5488;color: #fff;" >{$title}</div>
+
+<?php if($_GPC['vid']=='7'){
+	echo '<div style="padding:20px;font-size:20px;line-height:30px;">抱歉，您的择偶要求未匹配成功！可适当放宽点哟~~</div>';
+} ?>
+
 {loop $user $key $user}
 <!--用户开始-->
 <div id="loveuser_list" {if ($user['upid']=='4')&&($user['vip_endtime']>=$_W['timestamp'])}style="background-image:url('{MODULE_URL}/public/images/vip_bg.jpg');background-size:100% 100%;background-repeat:no-repeat;"{else}{/if}>
@@ -70,3 +83,6 @@
 </div>
 <!--用户结束-->
 {/loop}
+
+
+{template 'bottom'}
