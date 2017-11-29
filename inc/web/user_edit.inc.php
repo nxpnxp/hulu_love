@@ -14,6 +14,8 @@ if($_W['ispost']){
 				'ureal'=>$_GPC['ureal'],
 
 		'sex'=>$_GPC['sex'],
+		'car'=>$_GPC['car'],
+		'house'=>$_GPC['house'],
 		'age'=>$_GPC['age'],
 		'bornyear'=>strtotime($_GPC['bornyear']),
 			'height'=>$_GPC['height'],

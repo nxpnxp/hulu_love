@@ -17,6 +17,8 @@ if($_W['ispost']){
 
 
 		$userdata=array(
+		'house'=>$_GPC['house'],
+		'car'=>$_GPC['car'],
 		'sex'=>$sex,
 		'bornyear'=>strtotime($_GPC['bornyear']),
 			'height'=>$_GPC['height'],

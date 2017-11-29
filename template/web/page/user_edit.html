@@ -8,7 +8,7 @@
 <form action="" method="POST">
 <div id="love_one_style">
 <div class="love_one_a">会员昵称</div>
-<div class="love_one_b"><input type="text" name="nickname" value="{$user['nickname']}" placeholder="请输入会员昵称" required="required"/></div>
+<div class="love_one_b"><input type="text" name="nickname" value="{$user['nickname']}" placeholder="请输入会员昵称" required/></div>
 </div>
 
 <div id="love_one_style">
@@ -30,7 +30,7 @@
 
 <div id="love_one_style">
 <div class="love_one_a">查看联系方式价格</div>
-<div class="love_one_b"><input type="number" name="contact_money" value="{$user['contact_money']}" placeholder="请输入查看会员联系方式价格" required="required"/></div>
+<div class="love_one_b"><input type="number" name="contact_money" value="{$user['contact_money']}" placeholder="请输入查看会员联系方式价格" required/></div>
 </div>
 
 <div id="love_one_style">
@@ -56,7 +56,7 @@
 
 <div id="love_one_style">
 <div class="love_one_a">年龄</div>
-<div class="love_one_b"><input type="number" name="age" value="{$user['age']}" placeholder="请输入会员年龄" required="required"/></div>
+<div class="love_one_b"><input type="number" name="age" value="{$user['age']}" placeholder="请输入会员年龄" required/></div>
 </div>
 
 <div id="love_one_style">
@@ -66,13 +66,35 @@
 
 <div id="love_one_style">
 <div class="love_one_a">身高</div>
-<div class="love_one_b"><input type="number" name="height" value="{$user['height']}" placeholder="请输入会员身高" required="required"/></div>
+<div class="love_one_b"><input type="number" name="height" value="{$user['height']}" placeholder="请输入会员身高" required/></div>
 </div>
 
 <div id="love_one_style">
 <div class="love_one_a">体重</div>
-<div class="love_one_b"><input type="number" name="weight" value="{$user['weight']}" placeholder="请输入会员体重" required="required"/></div>
+<div class="love_one_b"><input type="number" name="weight" value="{$user['weight']}" placeholder="请输入会员体重" required/></div>
 </div>
+
+
+<div id="love_one_style">
+<div class="love_one_a">房</div>
+<div class="love_one_b">
+<select name="house">
+<option value="1" {if $user['house']=='1'}selected="selected"{else}{/if}>有</option>
+<option value="0" {if $user['house']=='0'}selected="selected"{else}{/if}>无</option>
+</select>
+</div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">车</div>
+<div class="love_one_b">
+<select name="car">
+<option value="1" {if $user['car']=='1'}selected="selected"{else}{/if}>有</option>
+<option value="0" {if $user['car']=='0'}selected="selected"{else}{/if}>无</option>
+</select>
+</div>
+</div>
+
 
 <div id="love_one_style">
 <div class="love_one_a">交友目的</div>
@@ -112,17 +134,17 @@
 
 <div id="love_one_style">
 <div class="love_one_a">微信</div>
-<div class="love_one_b"><input type="text" name="wechat" value="{$user['wechat']}" placeholder="请输入会员微信" required="required"/></div>
+<div class="love_one_b"><input type="text" name="wechat" value="{$user['wechat']}" placeholder="请输入会员微信" required/></div>
 </div>
 
 <div id="love_one_style">
 <div class="love_one_a">手机</div>
-<div class="love_one_b"><input type="text" name="tel" value="{$user['tel']}" placeholder="请输入会员手机" required="required"/></div>
+<div class="love_one_b"><input type="text" name="tel" value="{$user['tel']}" placeholder="请输入会员手机" required/></div>
 </div>
 
 <div id="love_one_style">
 <div class="love_one_a">交友宣言</div>
-<div class="love_one_b"><input type="text" name="content" value="{$user['content']}" placeholder="请输入会员交友宣言" required="required"/></div>
+<div class="love_one_b"><input type="text" name="content" value="{$user['content']}" placeholder="请输入会员交友宣言" required/></div>
 </div>
 
 <div id="love_one_style">
@@ -138,17 +160,17 @@
 
 <div id="love_one_style">
 <div class="love_one_a">地址</div>
-<div class="love_one_b"><input type="text" name="address" value="{$user['address']}" placeholder="请输入会员地址" required="required"/></div>
+<div class="love_one_b"><input type="text" name="address" value="{$user['address']}" placeholder="请输入会员地址" required/></div>
 </div>
 
 <div id="love_one_style">
 <div class="love_one_a">经度</div>
-<div class="love_one_b"><input type="number" name="lon" value="{$user['lon']}" placeholder="请输入会员位置经度" required="required"/></div>
+<div class="love_one_b"><input type="number" name="lon" value="{$user['lon']}" placeholder="请输入会员位置经度" required/></div>
 </div>
 
 <div id="love_one_style">
 <div class="love_one_a">纬度</div>
-<div class="love_one_b"><input type="number" name="lat" value="{$user['lat']}" placeholder="请输入会员位置纬度" required="required"/></div>
+<div class="love_one_b"><input type="number" name="lat" value="{$user['lat']}" placeholder="请输入会员位置纬度" required/></div>
 </div>
 
 <!--
