@@ -38,8 +38,77 @@ $user=pdo_fetchall("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:u
 //速配
 }elseif($_GPC['vid']=='7'){
 	$title = '速配';
-	$user=pdo_fetchall("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND upid!=1&&upid!=2 ORDER BY view DESC",array(':uniacid'=>$_W['uniacid']));
-	include $this->template('userlist');
+	$request = pdo_fetch('select * from'.tablename('hulu_love_request').'where uniacid=:uniacid and openid=:openid',array(':uniacid'=>$_W['uniacid'],':openid'=>$_W['openid']));
+	$flag = true;
+	if( empty($request['request_age_small']) || empty($request['request_age_big']) ){ $flag = false; }
+	if( empty($request['request_height_small']) || empty($request['request_height_big']) ){ $flag = false; }
+	if( empty($request['request_weight_small']) || empty($request['request_weight_big']) ){ $flag = false; }
+	if( empty($request['request_salary']) ){ $flag = false; }
+	if( empty($request['request_education']) ){ $flag = false; }
+	if(!$flag){
+		message('抱歉！速配请先完善择偶要求！',$this->createMobileUrl('request'),'error');die;
+	}
 	
+	$user=pdo_fetchall("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND upid!=1&&upid!=2 ORDER BY view DESC",array(':uniacid'=>$_W['uniacid']));
+	
+	$me = pdo_fetch("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND openid=:openid ",array(':uniacid'=>$_W['uniacid'],':openid'=>$_W['openid']));
+		
+	foreach ($user as $k => $v) {
+		
+		//去除本人
+		if($v['openid'] == $_W['openid']){
+			unset($user[$k]);continue;
+		}
+		//去除同性别
+		if($v['sex'] == $me['sex']){
+			unset($user[$k]);continue;
+		}
+		
+		$this_flag = false;
+		if( ($request['request_age_small'] <= $v['age']) && ($request['request_age_big'] >= $v['age']) ){
+				$this_flag = true;
+		}else{ unset($user[$k]);continue; }
+		
+		if( ($request['request_height_small'] <= $v['height']) && ($request['request_height_big'] >= $v['height']) ){			
+				$this_flag = true;
+		}else{ unset($user[$k]);continue; }
+		
+		if( ($request['request_weight_small'] <= $v['weight']) && ($request['request_weight_big'] >= $v['weight']) ){			
+				$this_flag = true;
+		}else{ unset($user[$k]);continue; }
+		
+		if($request['request_education'] == $v['xueli']){
+				$this_flag = true;
+		}else{ unset($user[$k]);continue; }
+		
+		if($request['request_salary'] == '1'){
+			//不在乎
+		}elseif($request['request_salary'] == '2'){
+			//0-10
+			if( (0<=$v['xinzi']) && ($v['xinzi']<10) ){
+					$this_flag = true;
+			}else{ unset($user[$k]);continue; }
+		}elseif($request['request_salary'] == '3'){
+			//10-20
+			if( (10<=$v['xinzi']) && ($v['xinzi']<20) ){
+					$this_flag = true;
+			}else{ unset($user[$k]);continue; }
+		}elseif($request['request_salary'] == '4'){
+			//20-50
+			if( (20<=$v['xinzi']) && ($v['xinzi']<50) ){
+					$this_flag = true;
+			}else{ unset($user[$k]);continue; }
+		}elseif($request['request_salary'] == '5'){
+			//50+
+			if( 50<=$v['xinzi'] ){
+					$this_flag = true;
+			}else{ unset($user[$k]);continue; }
+		}
+		
+		
+	}
+	
+	include $this->template('userlist');
+
 }else{}
 ?>

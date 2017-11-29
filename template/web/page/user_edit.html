@@ -74,6 +74,10 @@
 <div class="love_one_b"><input type="number" name="weight" value="{$user['weight']}" placeholder="请输入会员体重" required/></div>
 </div>
 
+<div id="love_one_style">
+<div class="love_one_a">薪资/万</div>
+<div class="love_one_b"><input type="number" name="xinzi" value="{$user['xinzi']}" placeholder="请输入会员薪资/万" required/></div>
+</div>
 
 <div id="love_one_style">
 <div class="love_one_a">房</div>
@@ -171,6 +175,25 @@
 <div id="love_one_style">
 <div class="love_one_a">纬度</div>
 <div class="love_one_b"><input type="number" name="lat" value="{$user['lat']}" placeholder="请输入会员位置纬度" required/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">学历</div>
+<div class="love_one_b">
+<select name="xueli">
+<option value="1" {if $user['xueli']=='1'}selected="selected"{else}{/if}>保密</option>
+<option value="2" {if $user['xueli']=='2'}selected="selected"{else}{/if}>博士后</option>
+<option value="3" {if $user['xueli']=='3'}selected="selected"{else}{/if}>博士</option>
+<option value="4" {if $user['xueli']=='4'}selected="selected"{else}{/if}>硕士</option>
+<option value="5" {if $user['xueli']=='5'}selected="selected"{else}{/if}>研究生</option>
+<option value="6" {if $user['xueli']=='6'}selected="selected"{else}{/if}>大学本科</option>
+<option value="7" {if $user['xueli']=='7'}selected="selected"{else}{/if}>大专</option>
+<option value="8" {if $user['xueli']=='8'}selected="selected"{else}{/if}>高中</option>
+<option value="9" {if $user['xueli']=='9'}selected="selected"{else}{/if}>中专</option>
+<option value="10" {if $user['xueli']=='10'}selected="selected"{else}{/if}>初中</option>
+<option value="11" {if $user['xueli']=='11'}selected="selected"{else}{/if}>小学</option>
+</select>
+</div>
 </div>
 
 <!--

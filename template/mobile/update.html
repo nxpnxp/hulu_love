@@ -54,6 +54,14 @@
 </div>
 <!--结束-->
 
+<!--开始-->
+<div id="update_one_style">
+<div class="update_one_a">年薪/万</div>
+<div class="update_one_b">
+<input type="number" name="xinzi" placeholder="请输入年薪（万）" required value="{$user['xinzi']}"/></div>
+</div>
+<!--结束-->
+
 <div id="update_one_style">
 <div class="update_one_a">房</div>
 <div class="update_one_b">
@@ -134,6 +142,29 @@
 
 <!--开始-->
 <div id="update_one_style">
+<div class="update_one_a">学历</div>
+<div class="update_one_b">
+<select name="xueli">
+
+<option value="1" {if $user['xueli']=='1'}selected="selected"{else}{/if}>保密</option>
+<option value="2" {if $user['xueli']=='2'}selected="selected"{else}{/if}>博士后</option>
+<option value="3" {if $user['xueli']=='3'}selected="selected"{else}{/if}>博士</option>
+<option value="4" {if $user['xueli']=='4'}selected="selected"{else}{/if}>硕士</option>
+<option value="5" {if $user['xueli']=='5'}selected="selected"{else}{/if}>研究生</option>
+<option value="6" {if $user['xueli']=='6'}selected="selected"{else}{/if}>大学本科</option>
+<option value="7" {if $user['xueli']=='7'}selected="selected"{else}{/if}>大专</option>
+<option value="8" {if $user['xueli']=='8'}selected="selected"{else}{/if}>高中</option>
+<option value="9" {if $user['xueli']=='9'}selected="selected"{else}{/if}>中专</option>
+<option value="10" {if $user['xueli']=='10'}selected="selected"{else}{/if}>初中</option>
+<option value="11" {if $user['xueli']=='11'}selected="selected"{else}{/if}>小学</option>
+
+</select>
+</div>
+</div>
+<!--结束-->
+
+<!--开始-->
+<div id="update_one_style">
 <div class="update_one_a">所在城市</div>
 <div class="update_one_b">
 <select name="city">
@@ -164,7 +195,7 @@
 
 </div>
 
-<div style="padding-bottom:60px; margin-bottom:60px;"></div>
+<div style="padding-bottom:100px; margin-bottom:100px;"></div>
 
 
 <div id="update_bottom">
