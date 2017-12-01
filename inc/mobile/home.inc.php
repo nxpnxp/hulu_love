@@ -23,8 +23,8 @@ $guanli = pdo_fetch('SELECT * FROM' . tablename('hulu_love_guanli') . 'WHERE uni
 $ads = pdo_fetchall('SELECT * FROM' . tablename('hulu_love_ads') . 'WHERE uniacid=:uniacid AND ads_pid=:ads_pid ORDER BY ads_did ASC', array(':uniacid' => $_W['uniacid'], ':ads_pid' => '1'));
 $moreads = pdo_fetch('SELECT * FROM' . tablename('hulu_love_moreads') . " where uniacid={$_W['uniacid']} and  moreads_id = 1");
 $signup = pdo_fetch('SELECT * FROM' . tablename('hulu_love_active') . " where uniacid={$_W['uniacid']} and  active_type = 2 and active_pid=4 order by active_time desc limit 1");
-$gnum = mt_rand(1,20);
-$bnum = mt_rand(1,20);
+$signup['active_starttime'] = date('Y-m-d H:i:s',$signup['active_starttime']);
+$signup['active_endtime'] = date('Y-m-d H:i:s',$signup['active_endtime']);
 include $this->template('home');
 
 ?>

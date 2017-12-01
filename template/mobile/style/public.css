@@ -6,7 +6,7 @@
 position:fixed;bottom:0px;left:0px;z-index:100;}
 #bottom_one_a{float:left;width:20%;height:46px; padding-top:4px;}
 #bottom_one_a img{width:20px;height:20px;display:block;margin:2px auto 0px auto;}
-#bottom_one_a{text-align:center;line-height:20px;font-size:12px;color:#999;overflow:hidden;}
+#bottom_one_a{text-align:center;line-height:20px;font-size:12px;color: #333;overflow:hidden;}
 
 /*top_banner*/
 #top_banner{width:100%;height:50px;background-color:#FC5488;}
