@@ -42,6 +42,24 @@ $my_join=pdo_fetch("SELECT * FROM".tablename('hulu_love_join')."WHERE uniacid=:u
 		$_res=pdo_insert('hulu_love_join',$_data);
 		
 		if(!empty($_res)){
+			
+			//大屏幕添加用户数据
+			$count = pdo_fetchcolumn('select count(*) from '.tablename('haoman_dpm_fans').' where uniacid=8');
+			$data = array(
+				'rid' => 309,
+				'uniacid' => 8,
+				'from_user' => $user['openid'],
+				'avatar' => $user['avatar'],
+				'nickname' => $user['nickname'],
+				'realname' => $user['nickname'],
+				'awardingid' => $count+1,
+				'createtime' => time(),
+				'isbaoming' => 1,
+				'sex' => $user['sex']
+			);
+			pdo_insert('haoman_dpm_fans',$data);
+			
+			
 			message('恭喜！报名成功！',$this->createMobileUrl('active'),'success');
 		}else{
 			message('抱歉！报名失败！请重试...',$this->createMobileUrl('active'),'error');
