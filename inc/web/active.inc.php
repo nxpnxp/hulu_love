@@ -9,6 +9,7 @@ if(checksubmit('submit')){
 			'uniacid'=>$_W['uniacid'],
 			'active_pid'=>$_GPC['active_pid'],
 			'openid'=>$_W['openid'],
+			'active_rec'=>$_GPC['active_rec'],
 			'active_title'=>$_GPC['active_title'],
 			'active_type'=>$_GPC['active_type'],
 			'active_boy'=>$_GPC['active_boy'],
