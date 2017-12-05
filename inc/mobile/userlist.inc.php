@@ -27,7 +27,9 @@ $user=pdo_fetchall("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:u
 
 //VIP
 }elseif($_GPC['vid']=='5'){
-$user=pdo_fetchall("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND upid=:upid AND vip_endtime>=".$_W['timestamp']." ORDER BY uid DESC",array(':uniacid'=>$_W['uniacid'],':upid'=>'4'));
+	$title = 'VIP';
+	//$user=pdo_fetchall("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND upid=:upid AND vip_endtime>=".$_W['timestamp']." ORDER BY uid DESC",array(':uniacid'=>$_W['uniacid'],':upid'=>'4'));
+	$user=pdo_fetchall("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND upid=:upid ORDER BY uid DESC",array(':uniacid'=>$_W['uniacid'],':upid'=>'4'));
 	include $this->template('userlist');
 
 //排行榜

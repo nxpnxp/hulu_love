@@ -51,28 +51,29 @@ if(empty($user)){
 			);
 		
 		$start_money=$make['make_no_money'];
-		}else{}
+	}else{}
 
-$userdata=array(
-		'uniacid'=>$_W['uniacid'],
-		'upid'=>$make['make_reg_upid'],
-		'openid'=>$_W['openid'],
-		'nickname'=>$_W['fans']['nickname'],
-		'avatar'=>$_W['fans']['tag']['avatar'],
-		'sex'=>$_W['fans']['tag']['sex'],
+		$userdata=array(
+			'uniacid'=>$_W['uniacid'],
+			'upid'=>$make['make_reg_upid'],
+			'openid'=>$_W['openid'],
+			'nickname'=>$_W['fans']['nickname'],
+			'avatar'=>$_W['fans']['tag']['avatar'],
+			'sex'=>$_W['fans']['tag']['sex'],
 
-		'logintime'=>$_W['timestamp'],
+			'logintime'=>$_W['timestamp'],
 			'loginip'=>$_W['clientip'],
 			'logincontainer'=>$_W['container'],
 			'loginos'=>$_W['os'],
 			'regtime'=>$_W['timestamp'],
 			'regip'=>$_W['clientip'],
 
-	);
+		);
 
 		pdo_insert('hulu_love_user',array_merge($userdata,$moreuser));
-//择偶要求
-			$newrequest=array(
+		
+		//择偶要求
+		$newrequest=array(
 			'uniacid'=>$_W['uniacid'],
 			'openid'=>$_W['openid'],
 			'request_time'=>$_W['timestamp'],
@@ -80,9 +81,10 @@ $userdata=array(
 			'request_container'=>$_W['container'],
 			'request_os'=>$_W['os'],
 
-			);
-pdo_insert('hulu_love_request',$newrequest);
-//更多资料
+		);
+		pdo_insert('hulu_love_request',$newrequest);
+		
+		//更多资料
 		$more=array(
 			'uniacid'=>$_W['uniacid'],
 			'openid'=>$_W['openid'],
@@ -91,11 +93,10 @@ pdo_insert('hulu_love_request',$newrequest);
 			'more_container'=>$_W['container'],
 			'more_os'=>$_W['os'],
 
-			);
-		
+			);		
 		pdo_insert('hulu_love_more',$more);
-//注册赠送
-
+		
+		//注册赠送
 		$moneydata=array(
 			'uniacid'=>$_W['uniacid'],
 			'money_pid'=>'1',
@@ -110,7 +111,7 @@ pdo_insert('hulu_love_request',$newrequest);
 			);
 		pdo_insert('hulu_love_money',$moneydata);
 
-	//系统预支出
+		//系统预支出
 		$system=array(
 				'uniacid'=>$_W['uniacid'],
 			'system_pid'=>'2',
@@ -126,54 +127,81 @@ pdo_insert('hulu_love_request',$newrequest);
 		pdo_insert('hulu_love_system',$system);
 
 		//分享推广分析
-
 		if($_SESSION['share']&&$_SESSION['share']!=$_W['openid']){
 
 			$newshare=array(
 				'uniacid'=>$_W['uniacid'],
 				'openid'=>$_W['openid'],
 				'share_openid'=>$_SESSION['share'],
-				'share_money'=>$make['make_share_money'],
-
+				//'share_money'=>$make['make_share_money'],
+				'share_money'=>0,
 				'share_time'=>$_W['timestamp'],
-			'share_ip'=>$_W['clientip'],
-			'share_container'=>$_W['container'],
-			'share_os'=>$_W['os'],
+				'share_ip'=>$_W['clientip'],
+				'share_container'=>$_W['container'],
+				'share_os'=>$_W['os'],
 
-				);
-				pdo_insert('hulu_love_share',$newshare);
-
-				$sharemoney=array(
-			'uniacid'=>$_W['uniacid'],
-			'money_pid'=>'2',
-			'money_type'=>'6',
-					'openid'=>$_SESSION['share'],
-			'money_openid'=>$_W['openid'],
+			);
+			pdo_insert('hulu_love_share',$newshare);
+			$n_res = pdo_insertid();
 			
-			'money_price'=>$make['make_share_money'],
-			'money_time'=>$_W['timestamp'],
-			'money_ip'=>$_W['clientip'],
-			'money_container'=>$_W['container'],
-			'money_os'=>$_W['os'],
-			);
-		pdo_insert('hulu_love_money',$sharemoney);
-
-		$sharesystem=array(
+			$count = pdo_fetchcolumn('select count(*) from '.tablename('hulu_love_share').' where uniacid='.$_W['uniacid'].' and share_openid="'.$_SESSION['share'].'" ');
+			$n_money = $make['make_share_money'];//返还金额  后台设置【分享获得收益金额】
+			if($count && ($count%2 == 0) ){
+				$is_back_money = pdo_fetchcolumn('select count(*) from '.tablename('hulu_love_share').' where uniacid='.$_W['uniacid'].' and share_openid="'.$_SESSION['share'].'" and share_money='.$n_money);
+				if($is_back_money > 0){
+					//已返过金额 返积分
+					$uid = pdo_fetchcolumn('select uid from '.tablename('mc_mapping_fans').' where uniacid='.$_W['uniacid'].' and openid="'.$_SESSION['share'].'" ');
+					if($uid){
+						$credit1 = pdo_fetchcolumn('select credit1 from '.tablename('mc_members').' where uid='.$uid);
+						$new_credit = $credit1 + 10;
+						pdo_update('mc_members',array(
+							'credit1' => $new_credit
+						),array(
+							'uid' => $uid
+						));
+					}
+					
+				}else{
+					//返金额
+					pdo_update('hulu_love_share',array(
+						'share_money' => $n_money
+					),array(
+						'share_id' => $n_res
+					));
+				}
+			}
+			
+			$sharemoney=array(
 				'uniacid'=>$_W['uniacid'],
-			'system_pid'=>'2',
-			'system_type'=>'6',
-			'openid'=>$_W['openid'],
-			'system_openid'=>$admin_openid,
-			'system_price'=>$make['make_share_money'],
-			'system_time'=>$_W['timestamp'],
-			'system_ip'=>$_W['clientip'],
-			'system_container'=>$_W['container'],
-			'system_os'=>$_W['os'],
+				'money_pid'=>'2',
+				'money_type'=>'6',
+				'openid'=>$_SESSION['share'],
+				'money_openid'=>$_W['openid'],
+				
+				'money_price'=>$make['make_share_money'],
+				'money_time'=>$_W['timestamp'],
+				'money_ip'=>$_W['clientip'],
+				'money_container'=>$_W['container'],
+				'money_os'=>$_W['os'],
 			);
-		pdo_insert('hulu_love_system',$sharesystem);
+			pdo_insert('hulu_love_money',$sharemoney);
 
-		unset($_SESSION['share']);
-session_destroy();
+			$sharesystem=array(
+				'uniacid'=>$_W['uniacid'],
+				'system_pid'=>'2',
+				'system_type'=>'6',
+				'openid'=>$_W['openid'],
+				'system_openid'=>$admin_openid,
+				'system_price'=>$make['make_share_money'],
+				'system_time'=>$_W['timestamp'],
+				'system_ip'=>$_W['clientip'],
+				'system_container'=>$_W['container'],
+				'system_os'=>$_W['os'],
+			);
+			pdo_insert('hulu_love_system',$sharesystem);
+
+			unset($_SESSION['share']);
+			session_destroy();
 		}
 
 
