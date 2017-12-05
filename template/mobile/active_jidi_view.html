@@ -1,0 +1,39 @@
+{template 'top'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/active_view.css">
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">基地详情</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+<img src="/attachment/{$active['image']}" style="width: 100%;height: 300px;" />
+
+<div id="active_view">
+
+<div id="active_view_style">
+<div class="active_view_a">基地名称</div>
+<div class="active_view_b">{$active['active_title']}</div>
+</div>
+
+<div id="active_view_style">
+<div class="active_view_a">基地地址</div>
+<div class="active_view_b">{$active['active_address']}</div>
+</div>
+
+<div id="active_view_style">
+<div class="active_view_a">联系电话</div>
+<div class="active_view_b">{$active['active_tel']}</div>
+</div>
+
+
+<div style="width: 100%;height: auto;">{php echo htmlspecialchars_decode($active['active_content']);}</div>
+
+</div>
+
+{template 'foot'}

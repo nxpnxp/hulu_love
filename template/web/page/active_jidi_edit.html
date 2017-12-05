@@ -1,0 +1,44 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}template/web/public.css">
+
+<div class="panel panel-info">
+<div class="panel-heading">编辑基地</div>
+<div id="love_one" style="height: auto;">
+
+<form action="" method="POST">
+<div id="love_one_style">
+<div class="love_one_a">标题</div>
+<div class="love_one_b"><input type="text" name="active_title" value="{$active['active_title']}" placeholder="请输入标题" required/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">地址</div>
+<div class="love_one_b"><input type="text" name="active_address" value="{$active['active_address']}" placeholder="请输入地址" required/></div>
+</div>
+
+<div id="love_one_style">
+<div class="love_one_a">联系电话</div>
+<div class="love_one_b"><input type="number" name="active_tel" value="{$active['active_tel']}" placeholder="请输入联系电话" required/></div>
+</div>
+
+<div id="love_one_style" style="height: auto;">
+<div class="love_one_a">图片</div>
+<div class="love_one_b">{php echo tpl_form_field_image('image',$active['image']);}</div>
+</div>
+
+<div id="love_one_style" style="height: auto;">
+<div class="love_one_a" style="margin-top: 200px;">详细说明</div>
+<div class="love_one_b">{php echo tpl_ueditor('active_content',$active['active_content']);}</div>
+</div>
+
+
+<div id="love_one_ok">
+<input type="submit" name="submit" value="修 改"/>
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</div>
+
+</form>
+</div>
+</div>
+
+{template 'common/footer'}
