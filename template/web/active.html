@@ -14,6 +14,8 @@
 	<li role="presentation"><a href="#one" aria-controls="one" role="tab" data-toggle="tab">已屏蔽活动</a></li>
 	<li role="presentation"><a href="#two" aria-controls="two" role="tab" data-toggle="tab">已取消活动</a></li>
 	<li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab">添加</a></li>
+  <li role="presentation"><a href="#jidi" aria-controls="jidi" role="tab" data-toggle="tab">基地列表</a></li>
+  <li role="presentation"><a href="{php echo $this->createWebUrl('jidi_add');}">添加基地</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -160,8 +162,29 @@
 	</div>
 
 	<div role="tabpanel" class="tab-pane" id="three">{template 'web/page/active_add'}</div>
-
+	
+  <div role="tabpanel" class="tab-pane" id="jidi">  	
+  	<!--列表开始-->
+		<div class="panel panel-info">
+			<div class="panel-heading">基地列表</div>
+			<table class="table table-hover">
+			<thead>
+			{template 'web/banner/jidi'}
+			<thead>
+			<tbody>
+			{loop $jidi $key $active}
+			{template 'web/page/active_jidi_list'}
+			{/loop}
+			</tbody>
+			</table>
+			{template 'web/banner/page'}
+		</div>
+		<!--列表结束-->  	
   </div>
+  
+  </div>
+  
+ 
 
 </div>
 

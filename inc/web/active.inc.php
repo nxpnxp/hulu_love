@@ -56,6 +56,8 @@ $active5=pdo_fetchall("SELECT * FROM".tablename('hulu_love_active')."WHERE uniac
 
 $active6=pdo_fetchall("SELECT * FROM".tablename('hulu_love_active')."WHERE uniacid=:uniacid AND active_pid=:active_pid ORDER BY active_id DESC",array(':uniacid'=>$_W['uniacid'],':active_pid'=>'6'));
 
+$jidi=pdo_fetchall("SELECT * FROM".tablename('hulu_love_active_jidi')."WHERE uniacid=:uniacid ORDER BY active_id DESC",array(':uniacid'=>$_W['uniacid']));
+
 	include $this->template('web/active');
 }
 ?>
