@@ -138,17 +138,17 @@
 
 <div id="love_one_style">
 <div class="love_one_a">微信</div>
-<div class="love_one_b"><input type="text" name="wechat" value="{$user['wechat']}" placeholder="请输入会员微信" required/></div>
+<div class="love_one_b"><input type="text" name="wechat" value="{$user['wechat']}" placeholder="请输入会员微信" /></div>
 </div>
 
 <div id="love_one_style">
 <div class="love_one_a">手机</div>
-<div class="love_one_b"><input type="text" name="tel" value="{$user['tel']}" placeholder="请输入会员手机" required/></div>
+<div class="love_one_b"><input type="text" name="tel" value="{$user['tel']}" placeholder="请输入会员手机" /></div>
 </div>
 
 <div id="love_one_style">
 <div class="love_one_a">交友宣言</div>
-<div class="love_one_b"><input type="text" name="content" value="{$user['content']}" placeholder="请输入会员交友宣言" required/></div>
+<div class="love_one_b"><input type="text" name="content" value="{$user['content']}" placeholder="请输入会员交友宣言" /></div>
 </div>
 
 <div id="love_one_style">
@@ -164,7 +164,7 @@
 
 <div id="love_one_style">
 <div class="love_one_a">地址</div>
-<div class="love_one_b"><input type="text" name="address" value="{$user['address']}" placeholder="请输入会员地址" required/></div>
+<div class="love_one_b"><input type="text" name="address" value="{$user['address']}" placeholder="请输入会员地址" /></div>
 </div>
 
 <div id="love_one_style">
@@ -202,6 +202,16 @@
 <div class="love_one_d">{php echo tpl_form_field_image('avatar',$ads['avatar']);}</div>
 </div>
 -->
+
+<div id="love_one_style">
+<div class="love_one_a">添加活动权限</div>
+<div class="love_one_b">
+<select name="isadd">
+<option value="0" {if $user['isadd']=='0'}selected="selected"{else}{/if}>否</option>
+<option value="1" {if $user['isadd']=='1'}selected="selected"{else}{/if}>是</option>
+</select>
+</div>
+</div>
 
 <div id="love_one_ok">
 <input type="submit" name="submit" value="修 改"/>

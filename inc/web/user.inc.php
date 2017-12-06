@@ -26,6 +26,10 @@ $pagesize=3;
 $pager=pagination($total,$pageindex,$pagesize);
 */
 
+//前台可添加活动会员
+$usertwo=pdo_fetchall("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND isadd=1 ORDER BY uid DESC",array(':uniacid'=>$_W['uniacid']));
+
+
 load()->func('tpl');
 include $this->template('web/user');
 ?>

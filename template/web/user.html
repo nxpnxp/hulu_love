@@ -8,7 +8,8 @@
     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">待审核会员</a></li>
     <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">普通会员</a></li>
     <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">VIP会员</a></li>
-	<li role="presentation"><a href="#one" aria-controls="one" role="tab" data-toggle="tab">黑名单</a></li>
+		<li role="presentation"><a href="#one" aria-controls="one" role="tab" data-toggle="tab">黑名单</a></li>
+		<li role="presentation"><a href="#two" aria-controls="two" role="tab" data-toggle="tab">前台可添加活动的会员</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -117,6 +118,28 @@
 	<!--列表结束-->
 
 	</div>
+	
+	
+	<div role="tabpanel" class="tab-pane" id="two">
+		<!--列表开始-->
+		<div class="panel panel-info">
+			<div class="panel-heading">前台可添加活动会员</div>
+			<table class="table table-hover">
+			<thead>
+			{template 'web/banner/user'}
+			<thead>
+			<tbody>
+			{loop $usertwo $key $user}
+			{template 'web/page/user_list'}
+			{/loop}
+			</tbody>
+			</table>
+			{template 'web/banner/page'}
+		</div>
+		<!--列表结束-->
+	</div>
+	
+	
   </div>
 
 </div>

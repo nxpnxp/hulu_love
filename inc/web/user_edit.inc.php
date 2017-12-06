@@ -32,6 +32,7 @@ if($_W['ispost']){
 				'lat'=>$_GPC['lat'],
 				'xinzi'=>$_GPC['xinzi'],
 				'xueli'=>$_GPC['xueli'],
+				'isadd'=>$_GPC['isadd'],
 			);
 	
 		

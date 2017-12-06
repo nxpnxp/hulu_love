@@ -8,6 +8,12 @@ if($_W['container']=='wechat'){
 	if($_W['fans']['follow']=='1'){
 //判断头部结束
 
+	//判断是否可添加活动权限 
+	$search = pdo_fetch('SELECT * FROM' . tablename('hulu_love_user') . 'WHERE uniacid=:uniacid and openid=:openid', array(':uniacid' => $_W['uniacid'],':openid'=>$_W['openid']));
+	if(!$search['isadd']){
+		message('抱歉！您没有权限。',$this->createMobileUrl('home'),'error');die;
+	}
+	
 if($_W['ispost']){
 
 	if(checksubmit('submit')){
