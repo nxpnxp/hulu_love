@@ -17,6 +17,50 @@ if($_W['container']=='wechat'){
 if($_W['ispost']){
 
 	if(checksubmit('submit')){
+		if (is_uploaded_file($_FILES["thumb"][tmp_name])) {
+		  $uptypes=array(  
+			'image/jpg',  
+			'image/jpeg',  
+			'image/png',  
+			'image/pjpeg',  
+			'image/gif',  
+			'image/bmp',  
+			'image/x-png'  
+		  );  
+		  $destination_folder="./attachment/";
+		  $file = $_FILES["thumb"];  
+		  if(4000000 < $file["size"])  
+		  //检查文件大小  
+		  {  
+			  message('图片不能超过4m'); 
+		  }  
+		  if(!in_array($file["type"], $uptypes))  
+		  //检查文件类型  
+		  {  
+			  message('文件类型不正确');   
+		  }  
+		  if(!is_dir($destination_folder))  
+	      {  
+	        mkdir($destination_folder); 
+			//message('上传路径不存在');  
+	     }  
+		$filename=$file["tmp_name"];  
+	    $pinfo=pathinfo($file["name"]);  
+	    $ftype=$pinfo['extension'];  
+	    $destination = $destination_folder.time().".".$ftype;  
+	    if (file_exists($destination))  
+	    {  
+	        message('同名文件已经存在');
+	    }  
+	  
+	    if(!move_uploaded_file ($filename, $destination))  
+	    {  
+	        echo "移动文件出错";  
+	        exit;  
+	    }  
+		$thumb = '/app/attachment/'.time().".".$ftype; 
+		}
+		
 		$activedata=array(
 			'uniacid'=>$_W['uniacid'],
 			'active_pid'=>'3',
@@ -35,6 +79,7 @@ if($_W['ispost']){
 			'active_ip'=>$_W['clientip'],
 			'active_container'=>$_W['container'],
 			'active_os'=>$_W['os'],
+			'image'=>$thumb,
 			);
 
 		$res=pdo_insert('hulu_love_active',$activedata);
