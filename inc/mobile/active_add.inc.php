@@ -27,7 +27,7 @@ if($_W['ispost']){
 			'image/bmp',  
 			'image/x-png'  
 		  );  
-		  $destination_folder="./attachment/";
+		  $destination_folder="../attachment/images/".$_W['uniacid'].'/'.date('Y',time()).'/'.date('m',time()).'/';
 		  $file = $_FILES["thumb"];  
 		  if(4000000 < $file["size"])  
 		  //检查文件大小  
@@ -58,7 +58,7 @@ if($_W['ispost']){
 	        echo "移动文件出错";  
 	        exit;  
 	    }  
-		$thumb = '/app/attachment/'.time().".".$ftype; 
+		$thumb = 'images/'.$_W['uniacid'].'/'.date('Y',time()).'/'.date('m',time()).'/'.time().".".$ftype; 
 		}
 		
 		$activedata=array(
