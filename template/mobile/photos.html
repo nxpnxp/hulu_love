@@ -20,36 +20,17 @@
 <form action="" method="POST">
 
 
-<div id="photos_title">
-<div class="photos_title_left">上传照片</div>
-<div class="photos_title_right"><input type="submit" name="submit" value="上传"/></div>
+<div id="photos_title" style="float: left;padding-bottom: 0;margin-bottom: 0;">
+<div class="photos_title_left">选择照片</div>
 </div>
-<div>
-<!--
-<input type="hidden" name="pic_url" value="" required="required" autocomplete="off" readonly="readonly">
-<div class="photos_one">
-<img src="{MODULE_URL}/public/images/upload.png"/>
-</div>
-
-
-<script>
-	util.image($('.photos_one'), function(url){
-		$('.photos_one').prev().val(url.attachment);
-		$('.photos_one').find('img').attr('src',url.url);
-	}, {
-		crop : false,
-		multiple : false
-	});
-</script>
--->
+<div style="float: left;">
 {php echo tpl_app_form_field_image('pic_url', $image);}
-
-
-
+</div>
+<input type="submit" name="submit" value="上传" style="background-color: #FC5488;border:1px solid #FC5488;border-radius: 5px;line-height: 26px;color: #fff;height: 36px;float: right;margin: 10px 10px 0 0;padding: 5px 20px;"/>
 <input type="hidden" name="token" value="{$_W['token']}"/>
 </form>
 
-<div id="photos_title"><div class="photos_title_left">我的照片</div></div>
+<div id="photos_title" style="clear: both;"><div class="photos_title_left">我的照片</div></div>
 
 <div id="photos_list">
 {loop $photos $key $photos}
