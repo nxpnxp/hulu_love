@@ -27,6 +27,31 @@ foreach($signup as $k=>$v){
 $signup[$k]['active_starttime'] = date('Y-m-d H:i:s',$v['active_starttime']);
 $signup[$k]['active_endtime'] = date('Y-m-d H:i:s',$v['active_endtime']);	
 }
+
+//保存用户头像 生成海报用
+function _request($url, $https=true, $method='get', $data=null){
+	$ch = curl_init();
+	curl_setopt($ch,CURLOPT_URL,$url); //设置URL
+	curl_setopt($ch,CURLOPT_HEADER,false); //不返回网页URL的头信息
+	curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);//不直接输出返回一个字符串
+	if($https){
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);//服务器端的证书不验证
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);//客户端证书不验证
+	}
+	if($method == 'post'){
+		curl_setopt($ch, CURLOPT_POST, true); //设置为POST提交方式
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);//设置提交数据$data
+	}
+	$str = curl_exec($ch);//执行访问
+	curl_close($ch);//关闭curl释放资源
+	return $str;
+}
+$avatar = pdo_fetch('select * from '.tablename('hulu_love_user').' where uniacid=:uniacid and openid=:openid',array(':uniacid'=>$_W['uniacid'],':openid'=>$_W['openid']));
+if($avatar){
+	$name = $_W['uniacid'].'_'.$avatar['uid'];
+	_request('http://vp.vipin.net.cn/saveAvatar.php',false,'post',array('avatar'=>$avatar['avatar'],'name'=>$name));
+}
+
 include $this->template('home');
 
 ?>

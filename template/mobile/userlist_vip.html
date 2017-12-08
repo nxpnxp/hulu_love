@@ -1,0 +1,117 @@
+{template 'top'}
+
+
+<script type="text/javascript" src="{MODULE_URL}public/jquery.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/userlist.js"></script>
+
+<style>
+/*loveuser_list*/
+#loveuser_list{width:100%;position:relative;}
+
+#loveuser_list_a{float:left;width:100%;}
+.loveuser_list_a_2 img{width:100%;height:auto;border-top:1px solid #DDD;}
+
+#loveuser_list_b{float:left;width:50%;height:80px;margin-left: 10px;}
+.loveuser_list_b_1{width:100%;height:20px;margin:10px auto 0px;}
+.loveuser_list_b_1_1{float:left;width:10%;height:16px;margin:2px auto 2px 0px;}
+.loveuser_list_b_1_1 img{width:16px;height:16px;display:block;}
+.loveuser_list_b_1_2{float:left;width:90%;height:20px;
+text-align:left;line-height:20px;font-size:16px;color:#333;overflow:hidden;}
+
+.loveuser_list_b_2{width:100%;height:20px;margin:0px auto 0px;}
+
+.loveuser_list_b_2_1{float:left;width:20%;height:16px;margin:2px auto;background-color:#FC5488;border-radius:4px;
+text-align:center;line-height:16px;font-size:12px;color:#FFF;overflow:hidden;}
+.loveuser_list_b_2_2{float:right;width:75%;height:20px;margin:0px auto;
+text-align:left;line-height:20px;font-size:12px;color:#666;overflow:hidden;}
+
+.loveuser_list_b_3{width:100%;height:20px;margin:0px auto 10px;
+text-align:left;line-height:20px;font-size:12px;color:#999;overflow:hidden;}
+
+#loveuser_list_c{float:right;width:25%;height:80px;}
+.loveuser_list_c_1{width:70%;height:20px;margin:5px auto 5px;border-radius:10px;border:1px solid #EEE;}
+.loveuser_list_c_2{width:70%;height:20px;margin:8px auto 0px;border-radius:10px;border:1px solid #EEE;}
+
+.loveuser_list_c_1_style{width:40px;height:16px;margin:2px auto;}
+.loveuser_list_c_1_style_img{float:left;width:16px;height:16px;}
+.loveuser_list_c_1_style_img img{width:16px;height:16px;display:block;}
+.loveuser_list_c_1_style_p{float:right;width:24px;height:16px;
+text-align:center;line-height:16px;font-size:12px;color:#666;overflow:hidden;}
+
+.loveuser_list_c_3{width:70%;height:30px;margin:0px auto 0px;
+text-align:right;line-height:30px;font-size:12px;color:#999;overflow:hidden;}
+
+</style>
+
+
+<div style="width: 100%;padding: 10px 0;text-align: center;background-color: #FC5488;color: #fff;" >{$title}</div>
+
+
+{loop $user $key $user}
+<!--用户开始-->
+<div id="loveuser_list">
+
+<a href="{php echo $this->createMobileUrl('view',array('uid'=>$user['uid']));}">
+	<div id="loveuser_list_a">
+		<div class="loveuser_list_a_2">
+			<!--<img src="<?php echo getavatar($user['openid'],$_W['uniacid'],$_W['attachurl']);?>"/>-->
+			<img src="/attachment/{$user['realimg']}"/>
+		</div>
+	</div>
+	<br />
+	<!---->
+
+	<!---->
+	<div id="loveuser_list_b">
+	
+		<div class="loveuser_list_b_1">
+			{if $user['ureal']=='2'}
+			<div class="loveuser_list_b_1_1">
+			<img src="{MODULE_URL}public/images/card.png"/>
+			</div>
+			{else}{/if}
+			<div class="loveuser_list_b_1_2">{$user['nickname']}</div>
+		</div>
+		
+		<div class="loveuser_list_b_2">
+			<div class="loveuser_list_b_2_1"><?php echo getpurpose($user['purpose']);?></div>
+			<div class="loveuser_list_b_2_2">{php echo getage($user['age'],$user['bornyear']);}岁 | {$user['height']}CM | {$user['weight']}KG</div>
+		</div>
+		<div class="loveuser_list_b_3">{$user['content']}</div>
+	</div>
+</a>
+<!---->
+
+<!---->
+<div id="loveuser_list_c">
+
+<a href="{php echo $this->createMobileUrl('news',array('news_openid'=>$user['openid']));}">
+<div class="loveuser_list_c_1">
+<div class="loveuser_list_c_1_style">
+<div class="loveuser_list_c_1_style_img"><img src="{MODULE_URL}public/images/h1.png"/></div>
+<div class="loveuser_list_c_1_style_p">聊天</div>
+</div>
+</div>
+</a>
+
+<a href="{php echo $this->createMobileUrl('gift',array('gift_openid'=>$user['openid']));}">
+<div class="loveuser_list_c_2">
+<div class="loveuser_list_c_1_style">
+<div class="loveuser_list_c_1_style_img"><img src="{MODULE_URL}public/images/h2.png"/></div>
+<div class="loveuser_list_c_1_style_p">送礼</div>
+</div>
+</div>
+</a>
+
+<div class="loveuser_list_c_3"><?php echo gettimegap($user['logintime']);?></div>
+
+</div>
+<!---->
+
+</div>
+<!--用户结束-->
+{/loop}
+
+<div style="height: 100px;clear: both;"> </div>
+
+{template 'bottom'}

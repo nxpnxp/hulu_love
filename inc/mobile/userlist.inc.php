@@ -30,7 +30,17 @@ $user=pdo_fetchall("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:u
 	$title = 'VIP';
 	//$user=pdo_fetchall("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND upid=:upid AND vip_endtime>=".$_W['timestamp']." ORDER BY uid DESC",array(':uniacid'=>$_W['uniacid'],':upid'=>'4'));
 	$user=pdo_fetchall("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND upid=:upid ORDER BY uid DESC",array(':uniacid'=>$_W['uniacid'],':upid'=>'4'));
-	include $this->template('userlist');
+	
+	foreach ($user as $k => $v) {
+		$img = pdo_fetchcolumn("SELECT pic_url FROM".tablename('hulu_love_photos')."WHERE uniacid=:uniacid AND openid=:openid ORDER BY pic_time ASC limit 1",array(':uniacid'=>$_W['uniacid'],':openid'=>$v['openid']));
+		if($img){
+			$user[$k]['realimg'] = $img;
+		}else{
+			$user[$k]['realimg'] = 'images/global/noavatar_middle.gif';
+		}
+	}
+	
+	include $this->template('userlist_vip');
 
 //排行榜
 }elseif($_GPC['vid']=='6'){
