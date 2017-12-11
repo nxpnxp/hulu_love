@@ -2,6 +2,11 @@
 {template 'common/header'}
 
 <link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/photos.css">
+<style>
+	#uploads_imgs{margin: 20px 10px;}
+	#uploads_imgs img{width: 30%;height: auto;float: left;margin:10px 10px 0 0;}
+</style>
+
 <!--top_banner开始-->
 <div id="top_banner">
 <a href="javascript:history.go(-1);">
@@ -13,9 +18,9 @@
 </a>
 </div>
 <!--top_banner结束-->
-<!--引用开始-->
+<!--
 
-<!--引用结束-->
+
 
 <form action="" method="POST">
 
@@ -29,6 +34,98 @@
 <input type="submit" name="submit" value="上传" style="background-color: #FC5488;border:1px solid #FC5488;border-radius: 5px;line-height: 26px;color: #fff;height: 36px;float: right;margin: 10px 10px 0 0;padding: 5px 20px;"/>
 <input type="hidden" name="token" value="{$_W['token']}"/>
 </form>
+-->
+
+<input id="uploads" type="button" value="多图上传" style="background-color: #FC5488;border:1px solid #FC5488;border-radius: 5px;line-height: 26px;color: #fff;height: 36px;float: right;margin: 10px 10px 0 0;padding: 5px 20px;"/>
+<div class="layui-form-item" id="imgs" style="display: none;">
+    <label class="layui-form-label"> </label>
+    <div class="layui-input-block" id="uploads_imgs">		     	
+					
+    </div>
+</div> 
+
+<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+	// 微信JSSDK异常处理
+	wx.error(function(e){
+    	alert('wxjssdk_error');
+    });
+    // 注入JSSDK配置参数，默认开启所有接口权限
+    wx.config('{$options}');
+    // 当JSSDK初始化完成后，再执行相关操作
+    wx.ready(function(){
+        
+       	var images = {
+	       localId: [],
+	       serverId: []
+	    };
+       	document.getElementById('uploads').onclick=function(){
+       		//初始化
+       		images.localId = [];
+       		images.serverId = [];
+       		document.getElementById('uploads_imgs').innerHTML = '';
+       		document.getElementById('imgs').style.display="none";
+       		
+       		wx.chooseImage({
+			    count: 9, // 默认9
+			    sizeType: ['compressed'], //压缩图
+			    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+			    success: function (res) {
+			        var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+			    	images.localId = localIds;
+			    	
+			    	document.getElementById('imgs').style.display="block";
+			    	
+			    	var str = '';
+			    	var srcs = [];
+			    	for (var i=0;i<localIds.length;i++) {
+			    		str += '<img src="'+localIds[i]+'" />';	
+			    	}
+			    	
+			    	document.getElementById('uploads_imgs').innerHTML = str;
+			    	upl();
+			    	
+			    }
+			});
+       	}
+       	
+       	function upl(){
+			var i = 0, length = images.localId.length;
+			upload(i,length);
+		}
+       	function upload(i,length) {
+			wx.uploadImage({
+			    localId: images.localId[i],
+			    isShowProgressTips: 0, 
+			    success: function (res) {
+			    	i++; 
+				    images.serverId.push(res.serverId);
+
+				    if (i < length) {
+					  upload(i,length); 
+				    } else {
+						var srcs = JSON.stringify(images.serverId);
+						alert(srcs);
+	  					$.ajax({
+	  						type:"post",
+	  						url:"{$_W['siteurl']}",
+	  						data:{srcs:srcs},
+	  						success: function(data){
+	  							alert(data);	  							
+	  						}
+	  					});
+				    }
+
+			    }
+
+			});
+
+		}
+       
+        
+    });
+</script>
+
 
 <div id="photos_title" style="clear: both;"><div class="photos_title_left">我的照片</div></div>
 
