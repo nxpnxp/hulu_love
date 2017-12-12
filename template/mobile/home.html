@@ -198,7 +198,7 @@
   <div class="col-xs-4 col-sm-4 col-lg-3">
    <a class="card" href="{php echo $this->createMobileUrl('view',array('uid'=>$user['uid']));}">
      {if $user['photo']['pic_url']}
-  <img src="{$_W['attachurl']}{$user['photo']['pic_url']}" alt="" style=" height:160px; width:100%" >
+  <img src="{$_W['attachurl']}{$user['photo']['pic_url']}" alt="" style=" height:120px; width:100%" >
   {else}
   {if $user['sex']==1}
     <img src="{MODULE_URL}public/boy.png"  style=" height:120px; width:100%">
@@ -214,13 +214,12 @@
   {/if}
   </div>
   <div class="card-content text-muted"  style="padding:0 10px 3px 10px;">
-<!--  <img src="{MODULE_URL}public/images/VIP1.png" style=" display:inline-block; width:15px;">-->
+ <img src="{MODULE_URL}public/images/bottom9.png" style=" display:inline-block; width:15px;"> 
   {if $user['car'] == 1}
    <img src="{MODULE_URL}public/images/car.png" style=" display:inline-block; width:15px;">
    {/if}{if $user['house'] == 1}
    <img src="{MODULE_URL}public/images/house.png" style=" display:inline-block; width:12px;">
   {/if}
-  
   </div>
 	</a>
   </div>
@@ -235,7 +234,7 @@
   <div class="col-xs-4 col-sm-4 col-lg-3">
    <a class="card" href="{php echo $this->createMobileUrl('view',array('uid'=>$user['uid']));}">
      {if $user['photo']['pic_url']}
-  <img src="{$_W['attachurl']}{$user['photo']['pic_url']}" alt="" style=" height:160px; width:100%" >
+  <img src="{$_W['attachurl']}{$user['photo']['pic_url']}" alt="" style=" height:120px; width:100%" >
   {else}
   {if $user['sex']==1}
      <img src="{MODULE_URL}public/boy.png"  style=" height:120px; width:100%">
@@ -251,7 +250,7 @@
   {/if}
   </div>
   <div class="card-content text-muted"  style="padding:0 10px 3px 10px;">
-<!--  <img src="{MODULE_URL}public/images/VIP1.png" style=" display:inline-block; width:15px;">-->
+  <img src="{MODULE_URL}public/images/bottom9.png" style=" display:inline-block; width:15px;"> 
   {if $user['car'] == 1}
    <img src="{MODULE_URL}public/images/car.png" style=" display:inline-block; width:15px;">
    {/if}{if $user['house'] == 1}
@@ -259,9 +258,9 @@
   {/if}
   
   </div>
-	</a>
+  </a>
   </div>
-{/loop}
+  {/loop}
   </div>
   <a href="{php echo $this->createMobileUrl('userlist',array('vid'=>'3'));}" class="pull-right">更多...</a>
   </div>
@@ -272,7 +271,7 @@
   <div class="col-xs-4 col-sm-4 col-lg-3">
    <a class="card" href="{php echo $this->createMobileUrl('view',array('uid'=>$user['uid']));}">
        {if $user['photo']['pic_url']}
-  <img src="{$_W['attachurl']}{$user['photo']['pic_url']}" alt="" style=" height:160px; width:100%" >
+  <img src="{$_W['attachurl']}{$user['photo']['pic_url']}" alt="" style=" height:120px; width:100%" >
   {else}
   {if $user['sex']==1}
      <img src="{MODULE_URL}public/boy.png"  style=" height:120px; width:100%">
@@ -288,9 +287,12 @@
   {/if}
   </div>
   <div class="card-content text-muted"  style="padding:0 10px 3px 10px;">
-  <img src="{MODULE_URL}public/images/VIP1.png" style=" display:inline-block; width:15px;">
+   <img src="{MODULE_URL}public/images/bottom9.png" style=" display:inline-block; width:15px;"> 
+  {if $user['car'] == 1}
    <img src="{MODULE_URL}public/images/car.png" style=" display:inline-block; width:15px;">
-   <img src="{MODULE_URL}public/images/house.png" style=" display:inline-block; width:12px;"></div>
+   {/if}{if $user['house'] == 1}
+   <img src="{MODULE_URL}public/images/house.png" style=" display:inline-block; width:12px;">
+  {/if}</div>
 	</a>
   </div>
 {/loop}
@@ -317,6 +319,7 @@
 <div class="col-xs-7">
 <h4 style="padding:0;margin:0;font-size:15px;">{$v['active_title']}</h4>
 <div class="f13 mt10">时间：{$v['active_starttime']}</div>
+<div class="f13">地点：{$v['active_address']}</div>
 <div class="f13">男士：{$v['active_boy']}人 ; 女士：{$v['active_girl']}人</div>
 <div>
 {if $v['active_pid']==4}<div class="label label-danger">报名中</div>{/if}
