@@ -4,6 +4,10 @@
 <link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/view.css">
 <link rel="stylesheet" href="{MODULE_URL}template/mobile/style/ui/css/amazeui.min.css">
   <link rel="stylesheet" href="{MODULE_URL}template/mobile/style/ui/css/app.css">
+  <style>
+   #baseinfo,#reqinfo{ margin:10px auto; list-style:none;} 
+   #baseinfo li,#reqinfo li{ padding:5px; background-color:#fff; border:1px solid #eaeaea; float:left; margin:5px 5px; list-style:none; border-radius:5px;} 
+  </style>
   <script src="{MODULE_URL}template/mobile/style/ui/js/jquery.min.js"></script>
   <script src="{MODULE_URL}template/mobile/style/ui/js/amazeui.min.js"></script>
 
@@ -199,9 +203,21 @@ function look_contact(){
 {/if}
 <!---->
 <div id="view_title"><p class="view_title_1">基本资料</p></div>
-
+<ul id="baseinfo">
+{if $user['sex']}<li><?php echo getsex($user['sex']);?></li>{/if}
+{if $user['age']}<li><?php echo getage($user['age'],$user['bornyear']);?>岁</li>{/if}
+{if $user['bornyear']}<li>{php echo date('Y-m-d',$user['bornyear']);}</li>{/if}
+{if $user['height']}<li>{$user['height']}厘米</li>{/if}
+{if $user['weight']}<li>{$user['weight']}千克</li>{/if}
+{if $user['purpose']}<li><?php echo getpurpose($user['purpose']);?></li>{/if}
+{if $user['feeling']}<li><?php echo getfeeling($user['feeling']);?></li>{/if}
+{if $user['married']}<li><?php echo getmarried($user['married']);?></li>{/if}
+{if $user['city']}<li><?php echo getcityname($user['city'],$_W['uniacid']);?></li>{/if}
+{if $user['address']}<li>{$user['address']}</li>{/if}
+<div style="clear:both"></div>
+</ul><div style="clear:both"></div>
 <!---->
-<div id="view_update">
+<!--<div id="view_update">
 <div class="view_update_a">性别<span><?php echo getsex($user['sex']);?></span></div>
 <div class="view_update_a">年龄<span><?php echo getage($user['age'],$user['bornyear']);?>岁</span></div>
 <div class="view_update_a">出生日期<span>{php echo date('Y-m-d',$user['bornyear']);}</span></div>
@@ -212,18 +228,27 @@ function look_contact(){
 <div class="view_update_a">婚姻状态<span><?php echo getmarried($user['married']);?></span></div>
 <div class="view_update_a">城市<span><?php echo getcityname($user['city'],$_W['uniacid']);?></span></div>
 <div class="view_update_a">地址<span>{$user['address']}</span></div>
-</div>
-
+</div>-->
 <!---->
 <div id="view_title"><p class="view_title_1">择偶要求</p></div>
-
-<div id="view_request">
+<ul id="reqinfo">
+{if $request['request_age_small']}<li>{$request['request_age_small']}→{$request['request_age_big']}岁</li>{/if}
+{if $request['request_height_small']}<li>{$request['request_height_small']}→{$request['request_height_big']}厘米</li>{/if}
+{if $request['request_weight_small']}<li>{$request['request_weight_small']}→{$request['request_weight_big']}千克{/if}
+{if $request['request_salary']}<li><?php echo getsalary($request['request_salary']);?></li>{/if}
+{if $request['request_education']}<li><?php echo geteducation($request['request_education']);?></li>{/if}
+{if $request['request_area']}<li><?php echo geteducation($request['request_area']);?></li>{/if}
+<div style="clear:both"></div>
+</ul>
+<div style="clear:both"></div>
+<div style="padding-bottom:100px"></div>
+<!--<div id="view_request">
 <div class="view_update_a">年龄范围<span>{$request['request_age_small']}→{$request['request_age_big']}岁</span></div>
 <div class="view_update_a">身高范围<span>{$request['request_height_small']}→{$request['request_height_big']}厘米</span></div>
 <div class="view_update_a">体重范围<span>{$request['request_weight_small']}→{$request['request_weight_big']}千克</span></div>
 <div class="view_update_a">薪资范围<span><?php echo getsalary($request['request_salary']);?></span></div>
 <div class="view_update_a">学历<span><?php echo geteducation($request['request_education']);?></span></div>
 <div class="view_update_a">地域<span><?php echo getarea($request['request_area']);?></span></div>
-</div>
+</div>-->
 {template 'bottom'}
 {template 'view_share'}
