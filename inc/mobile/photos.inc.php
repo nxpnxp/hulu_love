@@ -115,7 +115,8 @@ if($_W['ispost']){
 			$picdata=array(
 				'uniacid'=>$_W['uniacid'],
 				'openid'=>$_W['openid'],
-				'pic_pid'=>'2',
+				//'pic_pid'=>'2',//待审核
+				'pic_pid'=>'3',//已审核
 				'pic_name'=>'',
 				'pic_url'=>$imgurl,
 				'pic_time'=>$_W['timestamp'],

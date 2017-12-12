@@ -36,13 +36,16 @@
 </form>
 -->
 
-<input id="uploads" type="button" value="多图上传" style="background-color: #FC5488;border:1px solid #FC5488;border-radius: 5px;line-height: 26px;color: #fff;height: 36px;float: right;margin: 10px 10px 0 0;padding: 5px 20px;"/>
+<input id="uploads" type="button" value="选择图片" style="background-color: #FC5488;border:1px solid #FC5488;border-radius: 5px;line-height: 26px;color: #fff;height: 36px;margin: 10px ;padding: 5px 20px;"/>
+<button id="douploads" class="layui-btn" style="margin-top: 10px;">上传</button>
+
 <div class="layui-form-item" id="imgs" style="display: none;">
     <label class="layui-form-label"> </label>
     <div class="layui-input-block" id="uploads_imgs">		     	
 					
     </div>
 </div> 
+
 
 <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script>
@@ -83,11 +86,15 @@
 			    	}
 			    	
 			    	document.getElementById('uploads_imgs').innerHTML = str;
-			    	upl();
+			    	document.getElementById("douploads").onclick=function(){
+			    		upl();
+			    	};
+			    	
 			    	
 			    }
 			});
        	}
+       	     	
        	
        	function upl(){
 			var i = 0, length = images.localId.length;
@@ -105,13 +112,14 @@
 					  upload(i,length); 
 				    } else {
 						var srcs = JSON.stringify(images.serverId);
-						alert(srcs);
+						
 	  					$.ajax({
 	  						type:"post",
 	  						url:"{$_W['siteurl']}",
 	  						data:{srcs:srcs},
 	  						success: function(data){
-	  							alert(data);	  							
+	  							//alert(data);	  	
+	  							window.location.reload();
 	  						}
 	  					});
 				    }
