@@ -1,12 +1,19 @@
-<script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>
-<script type="text/javascript" src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<!--<script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>-->
+<!--<script type="text/javascript" src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>-->
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/dx/js/jquery.swipebox.js"></script>
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/style/dx/css/swipebox.css">
 
   <div id="layer-photos-demo" data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{"animation":"slide","animationLoop":false,"itemWidth":100,"itemMargin":5}' >
   <ul class="am-slides">
 
   {loop $photos $key $photos}
       <li>
-        	<img style="width:100px;height:150px;" layer-src="{$_W['attachurl']}{$photos['pic_url']}" src="{$_W['attachurl']}{$photos['pic_url']}">
+        	<!--<img style="width:100px;height:150px;" class="swipebox" layer-src="{$_W['attachurl']}{$photos['pic_url']}" src="{$_W['attachurl']}{$photos['pic_url']}">-->
+         
+          <a href="{$_W['attachurl']}{$photos['pic_url']}" class="swipebox" title="My Caption">
+					<img src="{$_W['attachurl']}{$photos['pic_url']}" alt="image" style="width:100px;height:150px;">
+					</a>
          
       </li>
 	  {/loop}
@@ -22,9 +29,16 @@
 
 <script>
 
-layer.ready(function(){ //ÎªÁËlayer.ext.js¼ÓÔØÍê±ÏÔÙÖ´ÐÐ
-  layer.photos({
-    photos: '#layer-photos-demo'
-  });
-});   
+//layer.ready(function(){ //Îªï¿½ï¿½layer.ext.jsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½
+//layer.photos({
+//  photos: '#layer-photos-demo'
+//});
+//});   
+
+$(function(){
+	$( '.swipebox' ).swipebox();
+});
+
+
+
 </script>
