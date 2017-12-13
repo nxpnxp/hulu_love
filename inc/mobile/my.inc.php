@@ -286,8 +286,11 @@ if(empty($store)){
 	pdo_insert('hulu_love_store',$newstore);
 
 }
-
-
+	
+	//我的积分
+	$uid = pdo_fetchcolumn('select uid from'.tablename('mc_mapping_fans').'where openid=:openid and uniacid=:uniacid',array(':uniacid'=>$_W['uniacid'],':openid'=>$_W['openid']));
+	$credit1 = pdo_fetchcolumn('select credit1 from'.tablename('mc_members').'where uid=:uid ',array(':uid'=>$uid));
+	
 	include $this->template('my');
 
 //判断尾部开始
