@@ -2,13 +2,14 @@
 
 <link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/my.css">
 
-<div id="my_one">
+<div id="my_one" style="height:120px;">
 <a href="{php echo $this->createMobileUrl('avatar');}">
 <div id="my_one_left"><img src="{$avatar}"/></div>
 </a>
 
 <div id="my_one_right">
 <div class="my_one_right_a">{$user['nickname']}<span> [<?php echo getupid($user['upid']);?>]</span></div>
+<div class="my_one_right_b"><span>余额：￥{$money} 积分：{$credit1}</span></div>
 <div class="my_one_right_b">会员号：{php echo ($make['make_uid_start']+$user['uid']);}</div>
 <div class="my_one_right_c">
 
@@ -88,11 +89,11 @@
 <div class="my_two_a"><a href="{php echo $this->createMobileUrl('qiandao');}"><p>签到</p></a></div>
 </div>
 
-<div id="my_two">
+<!--<div id="my_two">
 <div class="my_two_b">余额：￥{$money}</div>
 
 <div class="my_two_b">积分：{$credit1}</div>
-</div>
+</div>-->
 
 <div id="my_three">
 

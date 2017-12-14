@@ -86,7 +86,7 @@
 </a>
 
 
-<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'1'));}')" >
+<a href="{php echo $this->createMobileUrl('active');}">
 <div id="home_top_style" class="mt10">
 <div class="home_top_a"><img src="{MODULE_URL}public/images/gift.png"/></div>
 <div class="home_top_b">活动</div>
@@ -330,6 +330,7 @@
 </a>
 </div>
 {/loop}
+<a href="{php echo $this->createMobileUrl('active');}" class="pull-right" style="font-size:12px; padding-right:10px;">更多...</a>
 </div></div>
 
 <div class="container mt10"><div class="row">
