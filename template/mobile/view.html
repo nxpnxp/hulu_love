@@ -7,6 +7,12 @@
   <style>
    #baseinfo,#reqinfo{ margin:10px auto; list-style:none;} 
    #baseinfo li,#reqinfo li{ padding:5px; background-color:#fff; border:1px solid #eaeaea; float:left; margin:5px 5px; list-style:none; border-radius:5px;} 
+   #uhead{width:100%; height:240px; text-align:center; background:url({MODULE_URL}public/images/member_bg.jpg) repeat-x}
+   #headpic{ margin:10px auto; width:80px; height:80px; border-radius:50%;}
+  .view_one_c_1{width:64px;height:30px; background-color:#FFB459;border-radius:10px;
+text-align:center;line-height:30px;font-size:16px;color:#FFF;overflow:hidden; float:right;}
+.view_one_c_2_1,#view_one_c .view_one_c_2_2,#view_one_c .view_one_c_2_3{width:64px;height:30px;background-color:#FC5488;border-radius:10px;
+text-align:center;line-height:30px;font-size:16px;color:#FFF;overflow:hidden;}
   </style>
   <script src="{MODULE_URL}template/mobile/style/ui/js/jquery.min.js"></script>
   <script src="{MODULE_URL}template/mobile/style/ui/js/amazeui.min.js"></script>
@@ -14,7 +20,47 @@
 <script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>
 <script type="text/javascript" src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>
 <!---->
-<div id="view_one">
+<div id="uhead">
+<img src="<?php echo getavatar($user['openid'],$_W['uniacid'],$_W['attachurl']);?>" id="headpic"/>
+<p style="padding:0; margin:0;">{if $user['upid']=='4'}<img src="{MODULE_URL}public/images/vip.png" width="20" style="padding-bottom:10px;"/>{/if}{$user['nickname']} <span style="font-size:13px; color:#666;">会员号：{php echo ($make['make_uid_start']+$user['uid']);}</span></p>
+<p style="padding:0; margin:0;">{if $more['more_real_tel']=='2'}
+<img src="{MODULE_URL}public/images/r6.png" width="20"/>
+{else}
+<img src="{MODULE_URL}public/images/r5.png" width="20"/>
+{/if}
+
+{if $more['more_real_card']=='4'}
+<img src="{MODULE_URL}public/images/r4.png" width="20"/>
+{else}
+<img src="{MODULE_URL}public/images/r3.png" width="20"/>
+{/if}
+
+{if $more['more_real_self']=='3'}
+<img src="{MODULE_URL}public/images/r10.png" width="20"/>
+{else}
+<img src="{MODULE_URL}public/images/r9.png" width="20"/>
+{/if}</p>
+
+<table cellpadding="5" cellspacing="5" style="width:80%; text-align:center; margin:10px auto; margin-top:20px;">
+<tr>
+<td style="width:46%;text-align:center;"><a href="{php echo $this->createMobileUrl('enjoy',array('openid'=>$user['openid']));}" style="color:#FFF;margin:0 auto"><p class="view_one_c_1">赞赏</p></a></td>
+<td style="width:8%;text-align:center;"></td>
+<td style="width:46%;text-align:center;"><!--喜欢开始-->
+{if (empty($_W['openid']))||($_W['container']!='wechat')}
+<p onclick="alert('请在微信打开');" class="view_one_c_2_1" id="view_one_c_2_1">喜欢</p>
+{elseif (!empty($like))}
+<p class="view_one_c_2_2" id="view_one_c_2_2">已喜欢</p>
+{elseif (empty($like))}
+<p onclick="likethis();" class="view_one_c_2_3" id="view_one_c_2_3">喜欢</p>
+{else}{/if}
+<!--喜欢结束--></td>
+</tr>
+</table>
+
+
+</div>
+
+<!--<div id="view_one">
 
 <div id="view_one_a">
 
@@ -57,7 +103,7 @@
 </div>
 <div id="view_one_c">
 <a href="{php echo $this->createMobileUrl('enjoy',array('openid'=>$user['openid']));}"><p class="view_one_c_1">赞赏</p></a>
-<!--喜欢开始-->
+
 {if (empty($_W['openid']))||($_W['container']!='wechat')}
 <p onclick="alert('请在微信打开');" class="view_one_c_2_1" id="view_one_c_2_1">喜欢</p>
 {elseif (!empty($like))}
@@ -65,10 +111,10 @@
 {elseif (empty($like))}
 <p onclick="likethis();" class="view_one_c_2_3" id="view_one_c_2_3">喜欢</p>
 {else}{/if}
-<!--喜欢结束-->
-</div>
 
 </div>
+
+</div>-->
 <!---->
 <div id="view_title"><p class="view_title_1">照片（{$photos_num}张）</p></div>
 <!---->
