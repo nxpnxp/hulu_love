@@ -1,0 +1,292 @@
+{template 'top'}
+
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/store.css">
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">签到</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+<div id="store_one" class="up ub ub-ver bc-bg">
+
+	<link rel="stylesheet" href="{MODULE_URL}template/mobile/style/qiqi/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="{MODULE_URL}template/mobile/style/qiqi/ui-box.css">
+    <link rel="stylesheet" href="{MODULE_URL}template/mobile/style/qiqi/ui-base.css">
+    <link rel="stylesheet" href="{MODULE_URL}template/mobile/style/qiqi/ui-color.css">
+    <link rel="stylesheet" href="{MODULE_URL}template/mobile/style/qiqi/appcan.icon.css">
+    <link rel="stylesheet" href="{MODULE_URL}template/mobile/style/qiqi/appcan.control.css">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+	<style>
+	
+	    .tr{margin: .7em;}
+	
+	    .tr div{text-align: center;}
+	
+	    td{height: 3em;line-height: 3em;}
+	
+	    .tdon{
+	
+	        background-image: url('{MODULE_URL}template/mobile/style/qiqi/img/drx/qiandao1.png');
+	
+	        background-repeat: no-repeat;
+	
+	        background-position: center center;
+	
+	        background-size: 2.5em 2.5em;
+	
+	        color: #fff;
+	
+	    }
+	
+	</style>
+	
+	<div style="text-align: center;background-image: url('{MODULE_URL}template/mobile/style/qiqi/img/drx/5897cd8580ead_03.jpg');background-size: 100% 100%;">
+
+        <div class="ub" style="padding:.7em;">
+            
+            <div id="topl" class="ub-f1" style="text-align: center;color:#fff;">{$credit1}积分</div>
+            
+        </div>
+
+        <img id="tbtn" src="{MODULE_URL}template/mobile/style/qiqi/img/drx/qd_05.png" style="width: 8em;" />
+
+        <div id="tt" style="padding-bottom: .8em;"> </div>
+
+    </div>
+	<div id="content" class="ub-f1 tx-l" style="padding: 1em;">
+        <div id="qdtitle" style="padding: .5em 0;border-bottom: 1px solid #ccc;">签到表</div>
+        <div class="tr ub">
+            <div class="ub-f1">日</div>
+            <div class="ub-f1">一</div>
+            <div class="ub-f1">二</div>
+            <div class="ub-f1">三</div>
+            <div class="ub-f1">四</div>
+            <div class="ub-f1">五</div>
+            <div class="ub-f1">六</div>
+        </div> 
+    </div>
+    <script>
+
+        rili();
+        myqdlog();
+        checkisqd();
+        //myjf();
+
+        function is_leap(year) { 
+           return (year%100==0?res=(year%400==0?1:0):res=(year%4==0?1:0));
+        } //是否为闰年        
+
+        function rili(){
+            var nstr=new Date(); //当前Date资讯
+            var ynow=nstr.getFullYear(); //年份
+            var mnow=nstr.getMonth(); //月份
+            var dnow=nstr.getDate(); //今日日期
+            var n1str=new Date(ynow,mnow,1); //当月第一天Date资讯
+            var firstday=n1str.getDay(); //当月第一天星期几         
+            var m_days=new Array(31,28+is_leap(ynow),31,30,31,30,31,31,30,31,30,31); //各月份的总天数  
+            var tr_str=Math.ceil((m_days[mnow] + firstday)/7); //表格所需要行数
+            var str = "<table width='100%'>"; 
+            for(i=0;i<tr_str;i++) { //表格的行
+
+               str += "<tr>";
+
+               for(k=0;k<7;k++) { //表格每行的单元格
+
+                  idx=i*7+k; //单元格自然序列号
+
+                  date_str=idx-firstday+1; //计算日期
+
+                  (date_str<=0 || date_str>m_days[mnow]) ? date_str="&nbsp;" : date_str=idx-firstday+1; //过滤无效日期（小于等于零的、大于月总天数的）
+
+                  //打印日期：今天底色为红
+                  if(date_str==dnow){
+                      str += "<td align='center' class='tdon_pre'>" + date_str + "</td>";
+                  }else{
+                      str += "<td align='center'>" + date_str + "</td>";
+                  }
+               }
+               str += "</tr>"; //表格的行结束
+            }
+            str += "</table>"; //表格结束			
+            $('#content').append(str);
+
+            
+
+            var qdtitle = '';
+
+            if(mnow == 0){
+
+                qdtitle = '一月';
+
+            }else if(mnow == 1){
+
+                qdtitle = '二月';
+
+            }else if(mnow == 2){
+
+                qdtitle = '三月';
+
+            }else if(mnow == 3){
+
+                qdtitle = '四月';
+
+            }else if(mnow == 4){
+
+                qdtitle = '五月';
+
+            }else if(mnow == 5){
+
+                qdtitle = '六月';
+
+            }else if(mnow == 6){
+
+                qdtitle = '七月';
+
+            }else if(mnow == 7){
+
+                qdtitle = '八月';
+
+            }else if(mnow == 8){
+
+                qdtitle = '九月';
+
+            }else if(mnow == 9){
+
+                qdtitle = '十月';
+
+            }else if(mnow == 10){
+
+                qdtitle = '十一月';
+
+            }else if(mnow == 11){
+
+                qdtitle = '十二月';
+
+            }   
+
+            $('#qdtitle').prepend(qdtitle);
+
+
+
+        }
+
+        
+
+         function checkisqd(){
+
+            $.ajax({
+                url : "{php echo $this->createMobileUrl('qiandao',array('flag'=>'ifqd'));}",
+                type : 'GET',
+                data : {},
+                success : function(data) {
+                    if(data == '0'){
+                        $('#tbtn').attr('src','{MODULE_URL}template/mobile/style/qiqi/img/drx/qd_05.png');
+                    }else if(data == '1'){
+                        $('#tbtn').attr('src','{MODULE_URL}template/mobile/style/qiqi/img/drx/qd_051.png');
+                        qdjf();  
+                        $('#content .tdon_pre').removeClass('tdon_pre').addClass('tdon');  
+                    }
+                }
+            }); 
+
+         }
+
+        
+        $('#tbtn').click(function(){
+
+            var src = $('#tbtn').attr('src');
+
+            if(src == '{MODULE_URL}template/mobile/style/qiqi/img/drx/qd_051.png'){
+
+                alert('您已签到');
+
+                return false;
+
+            }
+            
+            $.ajax({
+                url : "{php echo $this->createMobileUrl('qiandao',array('flag'=>'doqd'));}",
+                type : 'GET',
+                data : {},
+                success : function(data) {
+                    if(data > 0){   
+                        qdover();    
+                    }else{
+                        alert('签到失败');
+                    }                
+                }
+            }); 
+
+            
+
+        });
+
+        function qdover(){
+
+            $('#tbtn').attr('src','{MODULE_URL}template/mobile/style/qiqi/img/drx/qd_051.png');
+
+            qdjf();            
+
+            $('#content .tdon_pre').removeClass('tdon_pre').addClass('tdon');
+
+            myjf();
+
+        }
+
+
+        function qdjf(){
+			$('#tt').html('今日已签到，获得积分10');
+        }
+
+        
+
+        function myjf(){
+
+            $.ajax({
+                url : "{php echo $this->createMobileUrl('qiandao',array('flag'=>'getc1'));}",
+                type : 'GET',
+                data : {},
+                success : function(data) {
+                    $('#topl').html(data+'积分');
+                }
+            });
+
+        }
+
+        function myqdlog(){
+
+            $.ajax({
+                url : "{php echo $this->createMobileUrl('qiandao',array('flag'=>'getqd'));}",
+                type : 'GET',
+                data : {},
+                success : function(data) {
+                    var data = JSON.parse(data);
+                    for (var i=0;i<data.length;i++) {
+                    	var _v = data[i].d;
+                    	$('#content td').each(function(i,o){
+                    		var _h = $(o).html();
+                    		if(_h == _v){
+                    			$(o).addClass('tdon');
+                    		}
+                    	});
+                    }
+                }
+            });
+
+        }
+
+        
+
+    </script>
+
+</div>
+
+{template 'bottom'}
+
