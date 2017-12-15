@@ -1,0 +1,9 @@
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/active_view.css">
+
+<div class="active_view_join_title" style="clear: both;">已报名的小伙伴：</div>
+<div id="active_view_join">
+{loop $join $key $join}
+<div class="active_view_join_a"><img src="<?php echo getavatar($join['openid'],$_W['uniacid'],$_W['attachurl']);?>"/></div>
+{/loop}
+</div>

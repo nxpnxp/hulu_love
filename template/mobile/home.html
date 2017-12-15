@@ -2,9 +2,11 @@
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.7.0/css/zui.min.css">
 <link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/home.css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <script type="text/javascript" src="{MODULE_URL}public/jquery.js"></script>
 <script type="text/javascript" src="{MODULE_URL}template/mobile/style/userlist.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.7.0/js/zui.min.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>
 <style>
 #logo{ padding:5px 0; line-height:30px;}
 #moreads{ width:100%; text-align:center;}
@@ -21,6 +23,8 @@
 .abg{ width:100%; height:50px; text-align:center; color:#FFF; padding-top:3px; background:url({MODULE_URL}public/images/abg.jpg) repeat-x}
 .abg h4{ padding:0; margin:0;}
 .abg p{ font-size:13px}
+#home_marquee{width:100%;height:30px;margin:0px auto;
+text-align:left;line-height:30px;font-size:13px;color:#333;overflow:hidden; border-top:1px solid #eaeaea;}
 </style>
 
 
@@ -32,15 +36,17 @@
 <div class="col-xs-2" style="line-height:50px; text-align:right;"><img src="{MODULE_URL}public/images/feedback.png" style="width:25px; height:30px;"></div>
 </div></div>
 
-
-
-
+<div>
+<div style="width:10%; float:left; text-align:center; border-top:1px solid #eaeaea; background-color:#fafafa; height:29px;"><i class="fa fa-volume-up" style="color:#F39;"></i></div>
+<div style="width:90%; float:right;">
 {if (!empty($guanli['guanli_fengmian_marquee']))}
 <div id="home_marquee">
 <marquee>{$guanli['guanli_fengmian_marquee']}</marquee>
 </div>
 {else}{/if}
-
+</div>
+<div style="clear:both"></div>
+</div><div style="clear:both"></div>
 {template 'ads'}
 
 
@@ -55,13 +61,24 @@
 </a>
 -->
 
-<a href="#" onclick="getmoreuser('{php echo $this->createMobileUrl('userlist',array('vid'=>'1'));}')">
+<a href="#" onclick="qiandao()">
 <div id="home_top_style">
 <div class="home_top_a"><img src="{MODULE_URL}public/images/pencil.png"/></div>
 <div class="home_top_b">签到</div>
 </div>
 </a>
-
+<script>
+function qiandao(){
+layer.open({
+  type: 2,
+  title: '签到',
+  shadeClose: true,
+  shade: 0.8,
+  area: ['300px', '80%'],
+  content: "{php echo $this->createMobileUrl('qiandao');}" //iframe的url
+}); 
+}
+</script>
 
 <a href="{php echo $this->createMobileUrl('userlist',array('vid'=>'2'));}" >
 <div id="home_top_style">
@@ -315,7 +332,7 @@
  {loop $signup $key $v}
 <div class="col-xs-12" style="margin-top:0; padding-top:0; margin-bottom:10px; padding-bottom:10px; border-bottom:1px solid #eaeaea;" class="activity">
 <a href="{php echo $this->createMobileUrl('active_view',array('vid'=>$v['active_id']));}" style="color:#333">
-<div class="col-xs-5"><img src="{$_W['attachurl']}{$v['image']}" alt="" style="height:80px; width:100%"></div>
+<div class="col-xs-5"><img src="{$_W['attachurl']}{$v['image']}" alt="" style="height:110px; width:100%"></div>
 <div class="col-xs-7">
 <h4 style="padding:0;margin:0;font-size:15px;">{$v['active_title']}</h4>
 <div class="f13 mt10">时间：{$v['active_starttime']}</div>
@@ -338,7 +355,8 @@
 <div id="moreads"><img src="{$_W['attachurl']}{$moreads['moreads_pic']}" class="img-responsive" ></div>
 </div></div></div>
 
+<div style="width:100%; text-align:center; font-size:12px; margin-top:20px;">版权所有：幸福工程婚恋平台</div>
 
-<div style="padding-bottom:60px; margin-bottom:60px;"></div>
+<div style="padding-bottom:50px; margin-bottom:50px;"></div>
 
 {template 'bottom'}
