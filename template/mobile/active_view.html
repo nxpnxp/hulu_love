@@ -135,7 +135,7 @@
 		var id = "{$active['active_id']}";
 		layer.open({
 		  type: 2,
-		  title: false,
+		  title: '{$active['active_title']}',
 		  shadeClose: true,
 		  shade: 0.8,
 		  area: ['300px', '80%'],
@@ -147,9 +147,26 @@
 {if $active['active_pid'] != 6 }
 
 	{if $my_join==array()}
-	<a href="{php echo $this->createMobileUrl('active_join',array('vid'=>$active['active_id']));}">
-	<div id="active_view_ok">报 名</div>
-	</a>
+	
+		{if $user['upid']==4}
+			<!-- VIP确认提示 -->
+			<a href="javascript:;" onclick="baomingss()">
+			<div id="active_view_ok">报 名</div>
+			</a>
+			<script>
+			function baomingss(){
+				var r=confirm("您是VIP用户,确认后直接报名成功,确认报名吗？")
+				if (r==true){
+					var url = "{php echo $this->createMobileUrl('active_join',array('vid'=>$active['active_id']));}";
+				    window.location.href=url;
+				}
+			}
+			</script>
+		{else}
+			<a href="{php echo $this->createMobileUrl('active_join',array('vid'=>$active['active_id']));}">
+			<div id="active_view_ok">报 名</div>
+			</a>
+		{/if}
 	{elseif $my_join['join_pid']=='1'}
 	
 	<div id="active_view_ok">已取消参加活动资格</div>
