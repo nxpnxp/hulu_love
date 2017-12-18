@@ -12,6 +12,43 @@
 </div>
 <!--top_banner结束-->
 
+
+{if $active['active_pid'] == 6 }
+<div style="height: 10px;"> </div>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.7.0/css/zui.min.css">
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/home.css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+ {loop $signup $key $v}
+<div class="col-xs-12" style="margin-top:0; padding-top:0; margin-bottom:10px; padding-bottom:10px; border-bottom:1px solid #eaeaea;" class="activity">
+<a href="{php echo $this->createMobileUrl('active_view',array('vid'=>$v['active_id']));}" style="color:#333">
+<div class="col-xs-5"><img src="{$_W['attachurl']}{$v['image']}" alt="" style="height:110px; width:100%"></div>
+<div class="col-xs-7">
+<h4 style="padding:0;margin:0;font-size:15px;">{$v['active_title']}</h4>
+<div class="f13 mt10">时间：{$v['active_starttime']}</div>
+<div class="f13">地点：{$v['active_address']}</div>
+<div class="f13">男士：{$v['active_boy']}人 ; 女士：{$v['active_girl']}人</div>
+<div>
+{if $v['active_pid']==4}<div class="label label-danger">报名中</div>{/if}
+{if $v['active_pid']==5}<div class="label label-success">进行中</div>{/if}
+{if $v['active_pid']==6}<div class="label label-default">已结束</div>{/if}
+</div>
+</div>
+</a>
+</div>
+{/loop}
+
+{else}
+
+
+
+<style>
+	#active_view{margin: 0;padding: 0;}
+	#active_view_style{line-height: 40px;height: 40px;}
+	.active_view_a{background-color: #f4f4f4;font-size: 13px;line-height: 40px;height: 40px;}
+	.active_view_b{line-height: 40px;height: 40px;width: 70%;padding-left: 10px;}
+</style>
+
 <img src="/attachment/{$active['image']}" style="width: 100%;height: 300px;" />
 
 <div id="active_view">
@@ -61,33 +98,88 @@
 <div class="active_view_b">{$active['active_tel']}</div>
 </div>
 
+{/if}
 
 <div style="width: 100%;height: auto;">{php echo htmlspecialchars_decode($active['active_content']);}</div>
 
 </div>
 
-<div class="active_view_join_title">已报名的小伙伴：</div>
+<!--<div class="active_view_join_title" style="clear: both;">已报名的小伙伴：</div>
 <div id="active_view_join">
 {loop $join $key $join}
 <div class="active_view_join_a"><img src="<?php echo getavatar($join['openid'],$_W['uniacid'],$_W['attachurl']);?>"/></div>
 {/loop}
+</div>-->
+
+<style>
+	.abc{
+		position: fixed;right: 0;bottom: 100px;
+		width: 30px;padding: 10px 0;
+		border: 1px solid #ccc;background-color: #eee;}
+	.abc div{width: 30px;text-align: center;}
+</style>
+<div class="abc">
+	<div>查</div>
+	<div>看</div>
+	<div>已</div>
+	<div>报</div>
+	<div>名</div>
+	<div>小</div>
+	<div>伙</div>
+	<div>伴</div>
 </div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>
+<script>
+	$('.abc').click(function(){
+		var id = "{$active['active_id']}";
+		layer.open({
+		  type: 2,
+		  title: '{$active['active_title']}',
+		  shadeClose: true,
+		  shade: 0.8,
+		  area: ['300px', '80%'],
+		  content: "{php echo $this->createMobileUrl('active_xhb',array('id'=>$active['active_id']));}"
+		}); 
+	});
+</script>
 
-{if $my_join==array()}
-<a href="{php echo $this->createMobileUrl('active_join',array('vid'=>$active['active_id']));}">
-<div id="active_view_ok">报 名</div>
-</a>
-{elseif $my_join['join_pid']=='1'}
+{if $active['active_pid'] != 6 }
 
-<div id="active_view_ok">已取消参加活动资格</div>
+	{if $my_join==array()}
+	
+		{if $user['upid']==4}
+			<!-- VIP确认提示 -->
+			<a href="javascript:;" onclick="baomingss()">
+			<div id="active_view_ok">报 名</div>
+			</a>
+			<script>
+			function baomingss(){
+				var r=confirm("您是VIP用户,确认后直接报名成功,确认报名吗？")
+				if (r==true){
+					var url = "{php echo $this->createMobileUrl('active_join',array('vid'=>$active['active_id']));}";
+				    window.location.href=url;
+				}
+			}
+			</script>
+		{else}
+			<a href="{php echo $this->createMobileUrl('active_join',array('vid'=>$active['active_id']));}">
+			<div id="active_view_ok">报 名</div>
+			</a>
+		{/if}
+	{elseif $my_join['join_pid']=='1'}
+	
+	<div id="active_view_ok">已取消参加活动资格</div>
+	
+	{elseif $my_join['join_pid']=='2'}
+	<a href="{php echo $this->createMobileUrl('pay_seven',array('join_id'=>$my_join['join_id'],'order_num'=>$order_num,'order_price'=>$order_price));}">
+	<div id="active_view_ok">报名成功，只差支付{$order_price}元活动金</div>
+	</a>
+	{elseif $my_join['join_pid']=='3'}
+	
+	<div id="active_view_ok">报名成功并完成支付，请等待活动开始！</div>
+	
+	{else}{/if}
 
-{elseif $my_join['join_pid']=='2'}
-<a href="{php echo $this->createMobileUrl('pay_seven',array('join_id'=>$my_join['join_id'],'order_num'=>$order_num,'order_price'=>$order_price));}">
-<div id="active_view_ok">报名成功，只差支付{$order_price}元活动金</div>
-</a>
-{elseif $my_join['join_pid']=='3'}
-
-<div id="active_view_ok">报名成功并完成支付，请等待活动开始！</div>
-
-{else}{/if}
+{/if}
 {template 'foot'}

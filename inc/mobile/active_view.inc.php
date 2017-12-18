@@ -18,5 +18,14 @@ $join_girl_num=count($join_girl);
 $make=pdo_fetch("SELECT * FROM".tablename('hulu_love_make')."WHERE uniacid=:uniacid",array(':uniacid'=>$_W['uniacid']));
 $order_num=date('YmdHis').substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
 $order_price=(($active['active_money'])*($make['make_active_pay']));
+
+$signup = pdo_fetchall('SELECT * FROM' . tablename('hulu_love_active') . " where uniacid={$_W['uniacid']} and  active_id={$_GPC['vid']}");
+foreach($signup as $k=>$v){
+$signup[$k]['active_starttime'] = date('Y-m-d H:i:s',$v['active_starttime']);
+$signup[$k]['active_endtime'] = date('Y-m-d H:i:s',$v['active_endtime']);	
+}
+
+$user=pdo_fetch("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND openid=:openid",array(':uniacid'=>$_W['uniacid'],':openid'=>$_W['openid']));
+
 include $this->template('active_view');
 ?>

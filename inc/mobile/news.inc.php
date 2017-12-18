@@ -2,10 +2,10 @@
 
 global $_W,$_GPC;
 include 'function.php';
-//ÅÐ¶ÏÍ·²¿¿ªÊ¼
+//åˆ¤æ–­å¤´éƒ¨å¼€å§‹
 if($_W['container']=='wechat'){
 	if($_W['fans']['follow']=='1'){
-//ÅÐ¶ÏÍ·²¿½áÊø
+//åˆ¤æ–­å¤´éƒ¨ç»“æŸ
 
 $moreads2=pdo_fetch("SELECT * FROM".tablename('hulu_love_moreads')."WHERE uniacid=:uniacid AND moreads_page=:moreads_page",array(':uniacid'=>$_W['uniacid'],':moreads_page'=>'2'));
 
@@ -18,6 +18,10 @@ foreach($weidu as $key=>$weidu){
 
 
 $user=pdo_fetch("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND openid=:openid",array(':uniacid'=>$_W['uniacid'],':openid'=>$_W['openid']));
+
+if($user['upid'] != 4){
+	message('æŠ±æ­‰ï¼æ‚¨è¿˜ä¸æ˜¯VIPä¼šå‘˜ï¼Œä¸å¯è¿›è¡Œæ­¤æ“ä½œã€‚',$this->createMobileUrl('home'),'error');die;
+}
 
 $ta=pdo_fetch("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND openid=:openid",array(':uniacid'=>$_W['uniacid'],':openid'=>$_GPC['news_openid']));
 
@@ -44,10 +48,10 @@ $today_allow='2';
 
 include $this->template('news');
 
-//ÅÐ¶ÏÎ²²¿¿ªÊ¼
+//åˆ¤æ–­å°¾éƒ¨å¼€å§‹
 	}else{ include $this->template('nofollow');}
 }else{ include $this->template('wechat');}
-//ÅÐ¶ÏÎ²²¿½áÊø
+//åˆ¤æ–­å°¾éƒ¨ç»“æŸ
 //include $this->template('news');
 
 ?>
