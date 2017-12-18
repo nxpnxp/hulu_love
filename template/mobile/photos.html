@@ -141,11 +141,22 @@
 
 <div id="photos_list">
 {loop $photos $key $photos}
-<div class="photos_list_a">
+<div class="photos_list_a" onclick="delimg({$photos['pic_id']})">
 <img src="{$_W['attachurl']}{$photos['pic_url']}"/>
 </div>
 {/loop}
 </div>
+
+<script>	
+			
+	function delimg(id){
+		var r=confirm("确认删除该图片吗？")
+		if (r==true){
+		    var url = "{php echo $this->createMobileUrl('photos_del')}"+'&xxx='+id;
+		    window.location.href=url;
+		}
+	}	
+</script>
 
 <!--template 'bottom'-->
 {template 'common/footer'}
