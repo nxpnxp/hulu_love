@@ -11,7 +11,7 @@
    #headpic{ margin:10px auto; width:80px; height:80px; border-radius:50%;}
   .view_one_c_1{width:64px;height:30px; background-color:#FFB459;border-radius:10px;
 text-align:center;line-height:30px;font-size:16px;color:#FFF;overflow:hidden; float:right;}
-.view_one_c_2_1,#view_one_c .view_one_c_2_2,#view_one_c .view_one_c_2_3{width:64px;height:30px;background-color:#FC5488;border-radius:10px;
+.view_one_c_2_1,.view_one_c_2_2,.view_one_c_2_3{width:64px;height:30px;background-color:#FC5488;border-radius:10px;
 text-align:center;line-height:30px;font-size:16px;color:#FFF;overflow:hidden;}
   </style>
   <script src="{MODULE_URL}template/mobile/style/ui/js/jquery.min.js"></script>
@@ -164,10 +164,11 @@ function gift(){
 layer.open({
   type: 1,
   skin: 'layui-layer-demo', //样式类名
-  closeBtn: 0, //不显示关闭按钮
+  closeBtn: 1, //不显示关闭按钮
   shift: 2,
+  title:'请选择礼物类型',
   shadeClose: false, //开启遮罩关闭
-  content: "<a href='{php echo $this->createMobileUrl('gift',array('gift_openid'=>$user['openid']));}'><div class='' style='width:100px;height:40px;margin:10px auto;border:1px solid #Fc5488;border-radius:4px;text-align:center;line-height:40px;font-size:16px;color:#000;;'>付费礼物</div></a><a href='{php echo $this->createMobileUrl('store',array('store_openid'=>$user['openid']));}'><div class='' style='width:100px;height:40px;margin:10px auto;border:1px solid #0098F0;border-radius:4px;text-align:center;line-height:40px;font-size:16px;color:#000;;'>背包礼物</div></a>"
+  content: "<a href='{php echo $this->createMobileUrl('gift',array('gift_openid'=>$user['openid']));}'><div class='' style='width:100px;height:40px;margin:10px auto;border:1px solid #Fc5488;border-radius:4px;text-align:center;line-height:40px;font-size:16px;color:#000;;'>付费礼物</div></a><a href='{php echo $this->createMobileUrl('store',array('store_openid'=>$user['openid']));}'><div class='' style='width:100px;height:40px;margin:10px auto;border:1px solid #0098F0;border-radius:4px;text-align:center;line-height:40px;font-size:16px;color:#000;;'>已有礼物</div></a>"
 });
 }
 </script>

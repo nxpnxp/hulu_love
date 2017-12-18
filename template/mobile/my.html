@@ -1,8 +1,11 @@
 {template 'top'}
 
 <link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/my.css">
+<style>
 
-<div id="my_one" style="height:120px;">
+.mybtn{background-color:#FC5488;border-radius:10px;text-align:center;line-height:30px;font-size:16px;color:#FFF;overflow:hidden;}
+</style>
+<div id="my_one" style="height:120px;background:url({MODULE_URL}public/images/member_bg1.png) repeat-x" >
 <a href="{php echo $this->createMobileUrl('avatar');}">
 <div id="my_one_left"><img src="{$avatar}"/></div>
 </a>
@@ -71,22 +74,15 @@
 
 
 <div id="my_two">
-<div class="my_two_a"><a href="{php echo $this->createMobileUrl('store');}"><p>我的背包</p></a></div>
-
+<div class="my_two_a" style=" margin-left:18%;"><a href="{php echo $this->createMobileUrl('store');}"><p class="mybtn" style="background-color:#F90">我的背包</p></a></div>
 <div class="my_two_c">
-
-
-{if (!empty($withdraw))}<a href="{php echo $this->createMobileUrl('withdraw');}"><p>提现记录</p></a>
-
-{elseif (empty($withdraw))&&$money>=$make['make_withdraw_money']&&$user['ureal']=='2'}<a href="{php echo $this->createMobileUrl('withdraw');}"><p>申请提现</p></a>
-{elseif (empty($withdraw))&&$money>=$make['make_withdraw_money']&&$user['ureal']=='1'}<p onclick="alert('请先完成任意一项实名认证才可提现！');">申请提现</p>
-{elseif (empty($withdraw))&&$money<$make['make_withdraw_money']}<p onclick="alert('你的余额还未达到最低提现额度！');">申请提现</p>
+{if (!empty($withdraw))}<a href="{php echo $this->createMobileUrl('withdraw');}"><p class="mybtn">提现记录</p></a>
+{elseif (empty($withdraw))&&$money>=$make['make_withdraw_money']&&$user['ureal']=='2'}<a href="{php echo $this->createMobileUrl('withdraw');}"><p class="mybtn">申请提现</p></a>
+{elseif (empty($withdraw))&&$money>=$make['make_withdraw_money']&&$user['ureal']=='1'}<p class="mybtn" onclick="alert('请先完成任意一项实名认证才可提现！');">申请提现</p>
+{elseif (empty($withdraw))&&$money<$make['make_withdraw_money']}<p class="mybtn" onclick="alert('你的余额还未达到最低提现额度！');">申请提现</p>
 {else}{/if}
-
-
-
 </div>
-<div class="my_two_a"><a href="{php echo $this->createMobileUrl('qiandao');}"><p>签到</p></a></div>
+<!--<div class="my_two_a"><a href="{php echo $this->createMobileUrl('qiandao');}"><p>签到</p></a></div>-->
 </div>
 
 <!--<div id="my_two">
@@ -176,7 +172,8 @@
 
 <!--A为无底结束-->
 <!--A为有底开始-->
-<a href="{php echo $this->createMobileUrl('my_gift');}">
+<!--<a href="{php echo $this->createMobileUrl('my_gift');}">-->
+<a href="{php echo $this->createMobileUrl('store');}">
 <div id="my_three_a">
 <div class="my_three_a_1"><img src="{MODULE_URL}public/images/e8.png"/></div>
 <div class="my_three_a_2">我的礼物</div>

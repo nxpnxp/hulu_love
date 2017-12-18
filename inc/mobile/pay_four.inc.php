@@ -29,17 +29,17 @@ if(empty($order_old)){
 	$order=array(
 	'uniacid'=>$_W['uniacid'],
 	'order_pid'=>'1',
-		'order_type'=>'4',
+	'order_type'=>'4',
 	'order_num'=>$_GPC['order_num'],
 	'order_price'=>$fee,
 	'order_openid'=>$_W['openid'],
 	'order_starttime'=>$_W['timestamp'],
 	
-		'order_ip'=>$_W['clientip'],
+	'order_ip'=>$_W['clientip'],
 	'order_container'=>$_W['container'],
 	'order_os'=>$_W['os'],
-		'order_four'=>$_GPC['gift_openid'],
-			'order_four_2'=>$_GPC['gift_id'],
+	'order_four'=>$_GPC['gift_openid'],
+	'order_four_2'=>$_GPC['gift_id'],
 	);
 	pdo_insert('hulu_love_order',$order);
 }
