@@ -8,17 +8,25 @@ $_SESSION['share']=$_GPC['share'];
 
 $user=pdo_fetch("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND uid=:uid",array(':uniacid'=>$_W['uniacid'],':uid'=>$_GPC['uid']));
 
-
 $viewer=pdo_fetchall("SELECT * FROM".tablename('hulu_love_viewer')."WHERE uniacid=:uniacid AND openid=:openid AND viewer_openid=:viewer_openid",array(':uniacid'=>$_W['uniacid'],':openid'=>$user['openid'],':viewer_openid'=>$_W['openid']));
 
-
-if(empty($viewer)&&($_W['openid'])){
+//被浏览人
+//var_dump($user);echo '<hr/>';
+//浏览人
+//var_dump($viewer);echo '<hr/>';
 
 $visitor=pdo_fetch("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND openid=:openid",array(':uniacid'=>$_W['uniacid'],':openid'=>$_W['openid']));
+//判断浏览人是否vip,有无权限查看详情
+$ischeckpayc1 = empty($_GPC['ischeckpayc1']) ? 'yes' : $_GPC['ischeckpayc1'];
+if( ($visitor['upid'] != 4) && ($ischeckpayc1=='yes') ){
+	message('抱歉！您不是VIP会员，若要查看该会员信息，请使用积分支付！',$this->createMobileUrl('paycredit1',array('flag'=>'view','uid'=>$_GPC['uid'])),'error');die;
+}
 
-$viewer_nickname=isset($visitor['nickname'])?$visitor['nickname']:$_W['fans']['nickname'];
-$viewer_avatar=isset($visitor['avatar'])?$visitor['avatar']:$_W['fans']['tag']['avatar'];
-$viewer_sex=isset($visitor['sex'])?$visitor['sex']:$_W['fans']['tag']['sex'];
+if(empty($viewer)&&($_W['openid'])){
+	
+	$viewer_nickname=isset($visitor['nickname'])?$visitor['nickname']:$_W['fans']['nickname'];
+	$viewer_avatar=isset($visitor['avatar'])?$visitor['avatar']:$_W['fans']['tag']['avatar'];
+	$viewer_sex=isset($visitor['sex'])?$visitor['sex']:$_W['fans']['tag']['sex'];
 
 	$newviewer=array(
 		'uniacid'=>$_W['uniacid'],
@@ -59,11 +67,11 @@ if($user['contact_money']>'0'){
 
 $order_num=date('YmdHis').substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
 
-//��Ƭ
+//照片
 $photos=pdo_fetchall("SELECT * FROM".tablename('hulu_love_photos')."WHERE uniacid=:uniacid AND openid=:openid AND pic_pid=:pic_pid ORDER BY pic_id DESC",array(':uniacid'=>$_W['uniacid'],':openid'=>$user['openid'],':pic_pid'=>'3'));
 
 $photos_num=count($photos);
-//����
+//礼物
 $gift1=pdo_fetchall("SELECT * FROM".tablename('hulu_love_receive')."WHERE uniacid=:uniacid AND openid=:openid ORDER BY receive_id DESC",array(':uniacid'=>$_W['uniacid'],':openid'=>$user['openid']));
 
 
@@ -72,7 +80,7 @@ $store=pdo_fetchall("SELECT * FROM".tablename('hulu_love_store')."WHERE uniacid=
 $gift=array_merge($gift1,$store);
 $gift_num=count($gift);
 
-//�Ƿ�����鿴��ϵ��ʽ
+//是否购买过查看联系方式
 
 $contact=pdo_fetchall("SELECT * FROM".tablename('hulu_love_contact')."WHERE uniacid=:uniacid AND openid=:openid AND contact_openid=:contact_openid",array(':uniacid'=>$_W['uniacid'],':openid'=>$user['openid'],':contact_openid'=>$_W['openid']));
 

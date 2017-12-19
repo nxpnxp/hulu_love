@@ -1,0 +1,32 @@
+{template 'top'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/real.css">
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">积分支付</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>
+
+<div id="real_one">
+
+<div onclick="real_one_a()" class="real_one_a">支付：5</div>
+
+</div>
+
+<script>
+	function real_one_a(){
+		var url = "{php echo $this->createMobileUrl('paycredit1',array('flag'=>'doview','uid'=>$uid))}";
+		window.location.href=url;
+	}
+</script>
+
+
+{template 'bottom'}
