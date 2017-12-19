@@ -7,6 +7,27 @@ if($_W['container']=='wechat'){
 	if($_W['fans']['follow']=='1'){
 //判断头部结束
 
+
+if($_GPC['up_vip']=='jifen'){
+$uid = pdo_fetchcolumn("select uid from ".tablename('mc_mapping_fans')." WHERE uniacid={$_W['uniacid']} and openid = '{$_W['openid']}'");
+$jifen = pdo_fetchcolumn("select credit1 from ".tablename('mc_members')." WHERE uid=$uid and uniacid={$_W['uniacid']}");
+if($jifen<2880){
+	message('积分不足，无法升级VIP');
+}else{
+	$jf = $jifen-2880;
+	pdo_update('mc_members', array('credit1'=>$jf), array('uniacid' => $_W['uniacid'], 'uid' => $uid));
+	$endtime = 86400*365 + time();
+	$endtime = date('Y-m-d H:i:s',$endtime);
+	$newuser = array('upid' => '4', 'vip_endtime' => $endtime);
+	pdo_update('hulu_love_user', $newuser, array('uniacid' => $_W['uniacid'], 'openid' => $_W['openid']));
+	message('支付成功！，您已经升级为VIP', $this->createMobileUrl('my'), 'success');
+}
+
+exit;
+}
+
+
+
 $fee = floatval($_GPC['up_vip']);
 	if($fee <= 0) {
 		message('支付错误, 金额小于0');

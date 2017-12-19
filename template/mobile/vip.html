@@ -22,16 +22,27 @@
 <p class="vip_one_b_1">{$make['make_vip_year']}元</p>
 <p class="vip_one_b_2">日均：{php echo round(($make['make_vip_year']/365),2);}元</p>
 </div>
-<div class="vip_one_a"><input type="radio" name="up_vip" value="{$make['make_vip_year']}" required="required"/></div>
+<div class="vip_one_a"><input type="radio" name="up_vip" value="{$make['make_vip_year']}" required/></div>
 </div>
 
+
 <div id="vip_one_style">
+<div class="vip_one_a">12个月</div>
+<div class="vip_one_b">
+<p class="vip_one_b_1">2880积分</p>
+<p class="vip_one_b_2">现有积分：{$jifen}</p>
+</div>
+<div class="vip_one_a"><input type="radio" name="up_vip" value="jifen" required/></div>
+</div>
+
+
+<!--<div id="vip_one_style">
 <div class="vip_one_a">3个月</div>
 <div class="vip_one_b">
 <p class="vip_one_b_1">{$make['make_vip_quarter']}元</p>
 <p class="vip_one_b_2">日均：{php echo round(($make['make_vip_quarter']/92),2);}元</p>
 </div>
-<div class="vip_one_a"><input type="radio" name="up_vip" value="{$make['make_vip_quarter']}" required="required"/></div>
+<div class="vip_one_a"><input type="radio" name="up_vip" value="{$make['make_vip_quarter']}" required/></div>
 </div>
 
 <div id="vip_one_style">
@@ -40,8 +51,8 @@
 <p class="vip_one_b_1">{$make['make_vip_month']}元</p>
 <p class="vip_one_b_2">日均：{php echo round(($make['make_vip_month']/31),2);}元</p>
 </div>
-<div class="vip_one_a"><input type="radio" name="up_vip" value="{$make['make_vip_month']}" required="required"/></div>
-</div>
+<div class="vip_one_a"><input type="radio" name="up_vip" value="{$make['make_vip_month']}" required/></div>
+</div>-->
 
 </div>
 

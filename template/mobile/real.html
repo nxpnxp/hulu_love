@@ -1,5 +1,21 @@
+
 {template 'top'}
 <link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/real.css">
+<style type="text/css">
+.popwindow{width:300px;height:450px;background-color:#ccc;padding:2px; position:absolute;top:0;left:0;z-index:2;}
+.popwindow h3{height:30px;line-height:30px; font-size:15px; text-align:left;float:left; margin-left:10px;}
+.popwindow .poptitle{background-color:#eaeaea;height:30px;width:300px; border-bottom:1px solid #ccc;}
+.popwindow  span{float:right; cursor:pointer; line-height:30px; margin-right:10px;}
+.popwindow  span:hover{color:#ff0000;}
+.popwindow .content{height:399px;padding:10px;background-color:#fff;width:280px; overflow:auto;}
+.mask{width:100px;height:100px;position:absolute;top:0;left:0; opacity: 0.8; background-color:#ccc;z-index:1;}
+.hide{display:none;}
+#show{display:block;margin:10px auto;}
+</style>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>
+
+
 <!--top_banner开始-->
 <div id="top_banner">
 <a href="javascript:history.go(-1);">
@@ -12,8 +28,7 @@
 </div>
 <!--top_banner结束-->
 
-<script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>
-<script type="text/javascript" src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>
+
 
 <div id="real_one">
 
@@ -25,6 +40,35 @@
 <div onclick="real_one_d()" class="real_one_a">实地认证</div>
 
 </div>
+
+
+<div class="mask hide"></div>
+<div class="popwindow hide">
+<div class="poptitle">
+<h3>幸福工程会员注册协议</h3><span>同意并关闭</span><div class="clear"></div></div>
+<div class="content">
+<h4 style="margin:10px auto;">会员信誉注册条款</h4>
+<p>幸福工程婚恋事业是由团市委、天津市青少年发展基金会支持下互联网+公益项目是一个严肃纯净的高端婚恋交友平台，在此注册为征友会员及在之后进行的征友活动中应遵守以下信誉会员注册条款：</p>
+<h4>1、信誉注册条款的接受</h4> 
+<p>一旦会员在注册页面点击或勾选“阅读并同意接受信誉注册条款”相关内容后，这就表示会员已经阅读并且同意与幸福工程婚恋事业部达成协议，并接受所有的信誉注册条款。</p> 
+<h4>2、会员注册条件（符合大学学历以上）</h4> 
+<p>1) 申请注册成为幸福工程婚恋事业平台的会员应同时满足下列全部条件：</p> 
+<p>在注册之日以及此后使用婚恋事业平台服务期间必须以恋爱或者婚姻为目的；</p> 
+<p>在注册之日以及此后使用婚恋事业平台服务期间必须是单身状态，包括未婚、离异或是丧偶；</p> 
+<p>在注册之日必须年满18周岁以上。</p> 
+<p>2) 为更好的享有幸福工程婚恋事业互联网+公益项目提供的服务，会员应：</p>  
+<p>向上级审核部门提供本人真实、正确、最新及完整的本人真实资料；</p>  
+<p>随时更新登记资料，保持其真实性及有效性； 提供真实有效的电子邮箱地址、微信等</p>  
+<p>征友过程中，务必保持征友帐号的唯一性。 </p> 
+<p>3) 若会员提供任何错误、不实或不完整的资料，有理由怀疑资料为错误、不实或不完整及违反会员注册条款的，或有理由怀疑其会员资料、言行等有悖于“严肃纯净的婚恋交友平台”主题的，幸福工程婚恋事业管理中心有权取消会员的注册，或暂停或终止该会员的帐号，或暂停或终止提供的全部或部分服务。在上述情形下，管理中心有权视情况决定是否退还会员并拒绝购买幸福有价值的服务，无论是否剩余及到期，情结严重者追究其法律责任。</p> 
+<h4>3、会员帐号、密码及安全</h4>  
+<p>1) 在完成会员注册程序之后，会员将收到一个密码及帐号。会员有义务保证密码及帐号的安全。会员应对利用该密码及帐号所进行的一切活动负全部责任，包括任何经由婚恋平台网站以上载、张贴、发送电子邮件或任何其它方式传送的资讯、资料、文字、软件、音乐、音讯、照片、图形、视讯、信息或其它资料，无论系公开还是私下传送，均由内容提供者承担责任。</p> 
+<p>2) 会员的密码或帐号遭到未获授权的使用，或者发生其它任何安全问题时，会员应立即通知管理中心尽快处理解决。</p>
+<p>3）联系邮箱：1335017220@qq.com  咨询13642003041</p>
+
+</div>
+</div>
+
 
 <script>
 function real_one_a(){
@@ -79,6 +123,68 @@ layer.open({
 </script>
 
 
+<script>
+	$(function(){
+	var obtn = $('#show');
+    var closebtn = $('.poptitle span');
+    var browserWidth = $(window).width();
+	var popWidth = $('.popwindow').outerWidth(true);
+    var browserHeight = $(window).height();
+    var popHeight = $('.popwindow').outerHeight(true);
+	var x = browserWidth/2 - popWidth/2;
+	var y = browserHeight/2 - popHeight/2;
+    var browserScrollTop = $(window).scrollTop();
+    var maskWdith = $(document).width();
+	var maskHeight = $(document).height();
 
+		
+	$('.popwindow').show().animate({
+	'left':x+'px',
+	'top':y+'px'
+	},0);
+
+	$('.mask').show().width(maskWdith).height(maskHeight);
+
+
+    $(window).resize(function(){
+	if($('.popwindow').is(':visible')){
+	browserWidth = $(window).width();
+	browserHeight = $(window).height();
+	x = browserWidth/2 - popWidth/2;
+	y = browserHeight/2 - popHeight/2 + browserScrollTop;
+	$('.popwindow').animate({
+	'left':x+'px',
+	'top':y+'px'
+	},0);
+	}
+
+	});
+
+    $(window).scroll(function(){
+	if($('.popwindow').is(':visible')){
+	browserScrollTop = $(window).scrollTop();
+	y = browserHeight/2 - popHeight/2 + browserScrollTop;
+	$('.popwindow').animate({
+	'left':x+'px',
+	'top':y+'px'
+	},0);
+	
+	}
+	
+    
+	});
+
+
+
+	closebtn.click(function(){
+	$('.popwindow').hide();
+	$('.mask').hide();
+	});
+	
+	})
+
+	
+	
+</script>
 
 {template 'bottom'}
