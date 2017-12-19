@@ -32,7 +32,7 @@ $user=pdo_fetchall("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:u
 	$user=pdo_fetchall("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND upid=:upid ORDER BY uid DESC",array(':uniacid'=>$_W['uniacid'],':upid'=>'4'));
 	
 	foreach ($user as $k => $v) {
-		$img = pdo_fetchcolumn("SELECT pic_url FROM".tablename('hulu_love_photos')."WHERE uniacid=:uniacid AND openid=:openid ORDER BY pic_time ASC limit 1",array(':uniacid'=>$_W['uniacid'],':openid'=>$v['openid']));
+		$img = pdo_fetchcolumn("SELECT pic_url FROM".tablename('hulu_love_photos')."WHERE uniacid=:uniacid AND openid=:openid ORDER BY pic_time desc limit 1",array(':uniacid'=>$_W['uniacid'],':openid'=>$v['openid']));
 		if($img){
 			$user[$k]['realimg'] = $img;
 		}else{

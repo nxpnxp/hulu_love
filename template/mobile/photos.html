@@ -13,6 +13,7 @@
 <div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
 </a>
 <div class="top_banner_b">上传照片</div>
+
 <a href="{php echo $this->createMobileUrl('fengmian');}">
 <div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
 </a>
@@ -138,6 +139,8 @@
 
 
 <div id="photos_title" style="clear: both;"><div class="photos_title_left">我的照片</div></div>
+
+<div style="padding-left: 20px;padding-bottom: 10px;color: red;">注：点击可删除图片</div>
 
 <div id="photos_list">
 {loop $photos $key $photos}
