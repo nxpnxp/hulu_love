@@ -216,7 +216,13 @@ layer.open({
 {if (empty($viewer))}<div onclick="alert('你还没有注册哦！')" class="view_contact_c">点击查看></div>;
 
 {elseif ((empty($contact))&&($viewer['upid']!='4'))}
-<a href="{php echo $this->createMobileUrl('pay_two',array('openid'=>$user['openid'],'order_num'=>$order_num,'order_price'=>$order_price));}"><div class="view_contact_c">付费查看></div></a>
+<!--<a href="{php echo $this->createMobileUrl('pay_two',array('openid'=>$user['openid'],'order_num'=>$order_num,'order_price'=>$order_price));}">
+	<div class="view_contact_c">付费查看></div>
+</a>-->
+
+<a href="{php echo $this->createMobileUrl('paycredit1',array('flag'=>'view_new','uid'=>$_GPC['uid'],'openid'=>$user['openid'],'order_num'=>$order_num,'order_price'=>$order_price));}">
+	<div class="view_contact_c">付费查看></div>
+</a>
 
 {elseif ((empty($contact))&&($viewer['upid']=='4')&&($today_contact<$make['make_vip_watch_oneday']))}
 
