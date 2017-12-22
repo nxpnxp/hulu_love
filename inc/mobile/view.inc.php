@@ -15,12 +15,12 @@ $viewer=pdo_fetchall("SELECT * FROM".tablename('hulu_love_viewer')."WHERE uniaci
 //浏览人
 //var_dump($viewer);echo '<hr/>';
 
-$visitor=pdo_fetch("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND openid=:openid",array(':uniacid'=>$_W['uniacid'],':openid'=>$_W['openid']));
-//判断浏览人是否vip,有无权限查看详情
-$ischeckpayc1 = empty($_GPC['ischeckpayc1']) ? 'yes' : $_GPC['ischeckpayc1'];
-if( ($visitor['upid'] != 4) && ($ischeckpayc1=='yes') ){
-	message('抱歉！您不是VIP会员，若要查看该会员信息，请使用积分支付！',$this->createMobileUrl('paycredit1',array('flag'=>'view','uid'=>$_GPC['uid'])),'error');die;
-}
+//$visitor=pdo_fetch("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND openid=:openid",array(':uniacid'=>$_W['uniacid'],':openid'=>$_W['openid']));
+////判断浏览人是否vip,有无权限查看详情
+//$ischeckpayc1 = empty($_GPC['ischeckpayc1']) ? 'yes' : $_GPC['ischeckpayc1'];
+//if( ($visitor['upid'] != 4) && ($ischeckpayc1=='yes') ){
+//	message('抱歉！您不是VIP会员，若要查看该会员信息，请使用积分支付！',$this->createMobileUrl('paycredit1',array('flag'=>'view','uid'=>$_GPC['uid'])),'error');die;
+//}
 
 if(empty($viewer)&&($_W['openid'])){
 	

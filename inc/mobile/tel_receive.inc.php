@@ -110,12 +110,20 @@ var_dump($demo);*/
 
 
  
-
+	var_dump($req);
+	var_dump($resp);
  
+<<<<<<< HEAD
 $teldata=array(
 'more_real_tel_num'=>$tel,
 'more_real_tel_authcode'=>$authcode,
 );		
+=======
+	$teldata=array(
+		'more_real_tel_num'=>$tel,
+		'more_real_tel_authcode'=>$authcode,
+	);		
+>>>>>>> 15ad7f005b0b32e87a149f3c1df213f71d4b2c45
 		
 $res=pdo_update('hulu_love_more',$teldata,array('uniacid'=>$_W['uniacid'],'openid'=>$_W['openid']));
 

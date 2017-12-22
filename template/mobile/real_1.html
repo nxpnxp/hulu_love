@@ -58,7 +58,7 @@ function tel_receive(){
 		if(xhr.readyState==4){
 			//document.getElementById('real_1_3').value="已发送";
 			document.getElementById("real_1_3").innerHTML="已发送";
-			//alert(xhr.responseText);
+			alert(xhr.responseText);
 		}
 	}
 	xhr.open('post',"{php echo $this->createMobileUrl('tel_receive');}");

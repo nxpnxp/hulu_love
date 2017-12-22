@@ -7,7 +7,7 @@ if($_W['container']=='wechat'){
 	if($_W['fans']['follow']=='1'){
 //判断头部结束
 
-$fee = floatval($_GPC['order_price']);
+	$fee = floatval($_GPC['order_price']);
 	if($fee <= 0) {
 		message('支付错误, 金额小于0');
 	}
@@ -21,27 +21,29 @@ $fee = floatval($_GPC['order_price']);
 		//'user' => $_W['member']['uid'],     //付款用户, 付款的用户名(选填项)
 	);
 
-		$order_old=pdo_fetchall("SELECT * FROM".tablename('hulu_love_order')."WHERE uniacid=:uniacid AND order_num=:order_num",array(':uniacid'=>$_W['uniacid'],':order_num'=>$_GPC['order_num']));
+	$order_old=pdo_fetchall("SELECT * FROM".tablename('hulu_love_order')."WHERE uniacid=:uniacid AND order_num=:order_num",array(':uniacid'=>$_W['uniacid'],':order_num'=>$_GPC['order_num']));
 
-if(empty($order_old)){
-
-$order=array(
-	'uniacid'=>$_W['uniacid'],
-	'order_pid'=>'1',
-		'order_type'=>'2',
-	'order_num'=>$_GPC['order_num'],
-	'order_price'=>$fee,
-	'order_openid'=>$_W['openid'],
-	'order_starttime'=>$_W['timestamp'],
+	if(empty($order_old)){
 	
-		'order_ip'=>$_W['clientip'],
-	'order_container'=>$_W['container'],
-	'order_os'=>$_W['os'],
-		'order_two'=>$_GPC['openid'],
-	);
-	pdo_insert('hulu_love_order',$order);
-}
+		$order=array(
+			'uniacid'=>$_W['uniacid'],
+			'order_pid'=>'1',
+			'order_type'=>'2',
+			'order_num'=>$_GPC['order_num'],
+			'order_price'=>$fee,
+			'order_openid'=>$_W['openid'],
+			'order_starttime'=>$_W['timestamp'],			
+			'order_ip'=>$_W['clientip'],
+			'order_container'=>$_W['container'],
+			'order_os'=>$_W['os'],
+			'order_two'=>$_GPC['openid'],
+		);
+		pdo_insert('hulu_love_order',$order);
+	}
 	//调用pay方法
+	
+	//var_dump($this);die;
+	
 	$this->pay($params);
 
 
