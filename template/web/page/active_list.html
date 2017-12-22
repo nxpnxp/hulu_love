@@ -20,7 +20,7 @@
 <td>{php echo date('Y-m-d H:i:s',$active['active_time']);}</td>
 
 <td>{if $active['active_rec'] == 1}是{else}否{/if}</td>
-
+<td><a class="btn btn-default" href="{php echo $this->createWebUrl('export',array('active_id'=>$active['active_id']));}" role="button"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></td>
 <td>
 
 

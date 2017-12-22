@@ -13,24 +13,34 @@
 <!--top_banner结束-->
 
 
-<form action="" method="POST">
+<form action="" method="POST" onSubmit="return confirm('您确定报名吗')">
 
-<div id="active_join">
+<!--<div id="active_join">
 
 <div id="active_join_style">
 <div class="active_join_a">姓名</div>
-<div class="active_join_b"><input type="text" name="join_name" placeholder="请输入姓名" required="required"/></div>
+<div class="active_join_b"><input type="text" name="join_name" placeholder="请输入姓名" required/></div>
 </div>
 
 <div id="active_join_style">
 <div class="active_join_a">微信号</div>
-<div class="active_join_b"><input type="text" name="join_wechat" placeholder="请输入微信号" required="required"/></div>
+<div class="active_join_b"><input type="text" name="join_wechat" placeholder="请输入微信号" required/></div>
 </div>
 
 <div id="active_join_style">
 <div class="active_join_a">手机号码</div>
-<div class="active_join_b"><input type="text" name="join_tel" placeholder="请输入手机号码" required="required"/></div>
+<div class="active_join_b"><input type="text" name="join_tel" placeholder="请输入手机号码" required/></div>
+</div>-->
+<div style="padding:10px; text-align:center; color:#F00; border-bottom:1px solid #eaeaea;">
+报名可通过微信或者积分支付
+<p style="color:#999">(现有积分：{$jifen})</p>
 </div>
+
+<div id="active_join_style">
+<div class="active_join_a">支付方式</div>
+<div style="line-height:50px;"><input type="radio" name="join_type" value="1"/> 微信支付 <input type="radio" name="join_type" value="2"/> 积分支付</div>
+</div>
+
 
 </div>
 

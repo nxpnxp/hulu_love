@@ -2,6 +2,28 @@
 
 global $_W,$_GPC;
 
+
+if($_GPC['join_type']==2){
+$aid = pdo_fetchcolumn("select active_id from " .tablename('hulu_love_join'). " where join_id={$_GPC['join_id']}");
+$uid = pdo_fetchcolumn("select uid from ".tablename('mc_mapping_fans')." WHERE uniacid={$_W['uniacid']} and openid = '{$_W['openid']}'");
+$jifen = pdo_fetchcolumn("select credit1 from ".tablename('mc_members')." WHERE uid=$uid and uniacid={$_W['uniacid']}");
+if($jifen<1000){
+	pdo_delete('hulu_love_join', array('join_id' => $_GPC['join_id']));
+	message('报名需要1000积分，您的积分不足',$this->createMobileUrl('active_view',array('vid'=>$aid)),'error');
+}else{
+	$jf = $jifen-1000;
+	pdo_update('mc_members', array('credit1'=>$jf), array('uniacid' => $_W['uniacid'], 'uid' => $uid));
+	$newuser = array('join_pid' => 3);
+	pdo_update('hulu_love_join', $newuser, array('join_id' =>$_GPC['join_id']));
+	
+	message('报名成功！', $this->createMobileUrl('active_view',array('vid'=>$aid)), 'success');
+}
+
+exit;
+}
+
+
+
 $fee = floatval($_GPC['order_price']);
 	if($fee <= 0) {
 		message('支付错误, 金额小于0');

@@ -162,7 +162,20 @@
 				}
 			}
 			</script>
-		{else}
+		{elseif $user['upid']==2}
+			<a href="javascript:;" onclick="baomingss1()">
+			<div id="active_view_ok">报 名</div>
+			</a>
+            <script>
+			function baomingss1(){
+				var r=confirm("您还没有实名认证，请先实名认证才能报名！")
+				if (r==true){
+					var url = "{php echo $this->createMobileUrl('real');}";
+				    window.location.href=url;
+				}
+			}
+			</script>
+        {else}
 			<a href="{php echo $this->createMobileUrl('active_join',array('vid'=>$active['active_id']));}">
 			<div id="active_view_ok">报 名</div>
 			</a>

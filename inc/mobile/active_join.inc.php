@@ -8,6 +8,10 @@ if($_W['container']=='wechat'){
 	if($_W['fans']['follow']=='1'){
 //判断头部结束
 
+
+$uid = pdo_fetchcolumn("select uid from ".tablename('mc_mapping_fans')." WHERE uniacid={$_W['uniacid']} and openid = '{$_W['openid']}'");
+$jifen = pdo_fetchcolumn("select credit1 from ".tablename('mc_members')." WHERE uid=$uid and uniacid={$_W['uniacid']}");
+
 $active=pdo_fetch("SELECT * FROM".tablename('hulu_love_active')."WHERE uniacid=:uniacid AND active_id=:active_id",array(':uniacid'=>$_W['uniacid'],':active_id'=>$_GPC['vid']));
 
 if($active['active_pid'] != 4){
@@ -17,7 +21,7 @@ if($active['active_pid'] != 4){
 $my_join=pdo_fetch("SELECT * FROM".tablename('hulu_love_join')."WHERE uniacid=:uniacid AND active_id=:active_id AND openid=:openid",array(':uniacid'=>$_W['uniacid'],':active_id'=>$_GPC['vid'],':openid'=>$_W['openid']));
 
 	$user=pdo_fetch("SELECT * FROM".tablename('hulu_love_user')."WHERE uniacid=:uniacid AND openid=:openid",array(':uniacid'=>$_W['uniacid'],':openid'=>$_W['openid']));
-
+    $usermore = pdo_fetch("select * from ".tablename('hulu_love_more')." where openid='{$user['openid']}' and uniacid={$_W['uniacid']}");
 	//判断会员等级 
 	if($user['upid'] == '3'){
 		//普通会员   去支付
@@ -29,9 +33,9 @@ $my_join=pdo_fetch("SELECT * FROM".tablename('hulu_love_join')."WHERE uniacid=:u
 			'openid'=>$_W['openid'],
 			'join_sex'=>$user['sex'],
 			'active_id'=>$_GPC['vid'],
-			'join_name'=>$user['nickname'],
+			'join_name'=>$usermore['more_real_card_name'],
 			'join_wechat'=>$user['wechat'],
-			'join_tel'=>$user['tel'],
+			'join_tel'=>$usermore['more_real_tel_num'],
 		
 			'join_time'=>$_W['timestamp'],
 			'join_ip'=>$_W['clientip'],
@@ -84,7 +88,7 @@ if($_W['ispost']){
 			'join_pid'=>'2',
 		
 			'openid'=>$_W['openid'],
-				'join_sex'=>$user['sex'],
+			'join_sex'=>$user['sex'],
 			'active_id'=>$_GPC['vid'],
 			'join_name'=>$_GPC['join_name'],
 			'join_wechat'=>$_GPC['join_wechat'],
@@ -100,7 +104,10 @@ if($_W['ispost']){
 		
 		if(!empty($res)){
 			$join_id = pdo_insertid();
-			message('恭喜！报名成功！请支付活动金',$this->createMobileUrl('pay_seven',array('join_id'=>$join_id,'order_num'=>$order_num,'order_price'=>$order_price)),'success');
+			
+			message('正在跳转支付，请等待',$this->createMobileUrl('pay_seven',array('join_type'=>$_GPC['join_type'],'join_id'=>$join_id,'order_num'=>$order_num,'order_price'=>$order_price)),'success');
+		
+		
 		}else{
 			message('抱歉！报名失败！请重试...',$this->createMobileUrl('active'),'error');
 		}

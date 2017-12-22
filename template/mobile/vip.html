@@ -12,29 +12,34 @@
 </div>
 <!--top_banner结束-->
 
-<form action="{php echo $this->createMobileUrl('pay_one',array('order_num'=>$order_num))}" method="POST">
 
+
+
+<!--
 <div id="vip_one">
-
 <div id="vip_one_style">
 <div class="vip_one_a">12个月</div>
 <div class="vip_one_b">
 <p class="vip_one_b_1">{$make['make_vip_year']}元</p>
-<p class="vip_one_b_2">日均：{php echo round(($make['make_vip_year']/365),2);}元</p>
+<p class="vip_one_b_2">微信支付</p>
 </div>
 <div class="vip_one_a"><input type="radio" name="up_vip" value="{$make['make_vip_year']}" required/></div>
-</div>
+</div>-->
 
 
-<div id="vip_one_style">
+<!--<div id="vip_one_style">
 <div class="vip_one_a">12个月</div>
 <div class="vip_one_b">
 <p class="vip_one_b_1">2880积分</p>
 <p class="vip_one_b_2">现有积分：{$jifen}</p>
 </div>
-<div class="vip_one_a"><input type="radio" name="up_vip" value="jifen" required/></div>
-</div>
+<div class="vip_one_a">
 
+<input type="radio" name="up_vip" value="jifen" required/>
+
+</div>
+</div>
+-->
 
 <!--<div id="vip_one_style">
 <div class="vip_one_a">3个月</div>
@@ -52,13 +57,40 @@
 <p class="vip_one_b_2">日均：{php echo round(($make['make_vip_month']/31),2);}元</p>
 </div>
 <div class="vip_one_a"><input type="radio" name="up_vip" value="{$make['make_vip_month']}" required/></div>
-</div>-->
+</div>
+</div>
+-->
+
+{if $user['upid']!=4}
+<div style="padding:10px; text-align:center; color:#F00; border-bottom:1px solid #eaeaea;">
+VIP会员费用：288元/年或2880积分/年
+<p style="color:#999">(现有积分：{$jifen})</p>
+</div>
+<div id="vip_two">
+
+<form action="{php echo $this->createMobileUrl('pay_one',array('order_num'=>$order_num))}" method="POST">
+<input type="hidden" name="up_vip" value="{$make['make_vip_year']}"/>
+<input type="submit" name="submit" id="wx" value="微信支付" style="background-color:#0C0;">
+</form>
+<form action="{php echo $this->createMobileUrl('pay_one',array('order_num'=>$order_num))}" method="POST" onSubmit="return confirm('确定支付吗?')">
+<input type="hidden" name="up_vip" value="jifen"/>
+<input type="submit" name="submit" id="jf" value="积分支付">
+</form>
 
 </div>
 
-<div id="vip_two"><input type="submit" name="submit" value="确认购买"></div>
-
 </form>
+{else}
+<div style="text-align:center; width:100%;">
+<img src="{MODULE_URL}public/images/vip11.png" style="margin:10px auto; width:80px;"/>
+<p>当前等级：VIP</p>
+</div>
+{/if}
+<br>
+<br>
+<br>
+
+
 
 <p class="vip_three_a">特权说明：</p>
 <p class="vip_three_b">①：解锁表白信箱</p>
