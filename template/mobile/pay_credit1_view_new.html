@@ -24,8 +24,11 @@
 
 <script>
 	function real_one_a(){
-		var url = "{php echo $this->createMobileUrl('paycredit1',array('flag'=>'doviewnew','uid'=>$uid,'openid'=>$openid,'order_num'=>$order_num,'order_price'=>$order_price))}";
-		window.location.href=url;
+		var r=confirm("确认支付积分 {$order_price} 吗？")
+		if (r==true){
+		    var url = "{php echo $this->createMobileUrl('paycredit1',array('flag'=>'doviewnew','uid'=>$uid,'openid'=>$openid,'order_num'=>$order_num,'order_price'=>$order_price))}";
+			window.location.href=url;
+		}		
 	}
 	
 	function real_one_b(){

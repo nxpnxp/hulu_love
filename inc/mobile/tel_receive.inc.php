@@ -32,11 +32,12 @@ $req ->setRecNum("$tel");
 $req ->setSmsTemplateCode( "$msgtemplate" );
 $resp = $c ->execute( $req );
  
-
+	var_dump($req);
+	var_dump($resp);
  
-		$teldata=array(
-'more_real_tel_num'=>$tel,
-			'more_real_tel_authcode'=>$authcode,
+	$teldata=array(
+		'more_real_tel_num'=>$tel,
+		'more_real_tel_authcode'=>$authcode,
 	);		
 		
 $res=pdo_update('hulu_love_more',$teldata,array('uniacid'=>$_W['uniacid'],'openid'=>$_W['openid']));

@@ -1,0 +1,121 @@
+{template 'top'}
+{template 'common/header'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/active_add.css">
+<style type="text/css">
+#real_2{width:100%;height:390px;margin:0px auto;}
+#real_2_style{width:100%;height:70px;margin:0px auto;}
+.real_2_a{width:100%;height:30px;text-align:left;line-height:30px;font-size:16px;color:#000;overflow:hidden;}
+.real_2_b{width:100%;height:40px;}
+.real_2_b input{width:98%;height:38px;margin:1px 1%;
+text-align:left;line-height:38px;font-size:14px;color:#666;overflow:hidden;}
+
+#real_2_pic{width:100%;height:80px;margin:10px auto 50px;}
+#real_2_pic_style{float:left;width:33%;height:80px;}
+#real_2_pic_style img{width:80px;height:80px;}
+
+#real_2_ok{width:100%;height:40px;margin:0px auto;}
+#real_2_ok input{width:80%;height:38px;margin:1px 10%;background-color:#FC5488;border:none;border-radius:10px;
+text-align:center;line-height:38px;font-size:16px;color:#FFF;}
+</style>
+
+<!--top_banner开始-->
+<div id="top_banner">
+<a href="javascript:history.go(-1);">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_1.png"/></div>
+</a>
+<div class="top_banner_b">申请添加活动权限</div>
+<a href="{php echo $this->createMobileUrl('fengmian');}">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/top_2.png"/></div>
+</a>
+</div>
+<!--top_banner结束-->
+
+<form action="" method="POST" enctype="multipart/form-data">
+
+<div id="active_add_one">
+
+	<div id="active_add_one_style">
+	<div class="active_add_one_a">单位名称</div>
+	<div class="active_add_one_b"><input type="text" name="active_title1" placeholder="请输入单位名称" required="required"/></div>
+	</div>
+	<div id="active_add_one_style">
+	<div class="active_add_one_a">申请人姓名</div>
+	<div class="active_add_one_b"><input type="text" name="active_title2" placeholder="请输入申请人姓名" required="required"/></div>
+	</div>
+	<div id="active_add_one_style">
+	<div class="active_add_one_a">联系方式</div>
+	<div class="active_add_one_b"><input type="text" name="active_title3" placeholder="请输入联系方式" required="required"/></div>
+	</div>
+
+	<div id="active_add_one_style" style="display: none;">
+	<div class="active_add_one_a">申请理由</div>
+	<div class="active_add_one_b"><input type="text" value="hidden" name="active_title" placeholder="请输入申请理由" required="required"/></div>
+	</div>
+	
+	
+
+	<div class="real_2_a">
+		请上传资质证明（最多可以上传3张）
+	</div>
+	
+	<div id="real_2_pic">
+	
+	<div id="real_2_pic_style">
+	<input type="hidden" name="more_real_card_pic1" value="" class="form-control" autocomplete="off" readonly="readonly">
+	<div class="real_2_pic_1">
+	<img src="{MODULE_URL}public/images/upload.png"/>
+	</div>
+	</div>
+	
+	<div id="real_2_pic_style">
+	<input type="hidden" name="more_real_card_pic2" value="" class="form-control" autocomplete="off" readonly="readonly">
+	<div class="real_2_pic_2"><img src="{MODULE_URL}public/images/upload.png"/></div>
+	</div>
+	
+	<div id="real_2_pic_style">
+	<input type="hidden" name="more_real_card_pic3" value="" class="form-control" autocomplete="off" readonly="readonly">
+	<div class="real_2_pic_3"><img src="{MODULE_URL}public/images/upload.png"/></div>
+	</div>
+	
+	</div>
+	<script>
+		util.image($('.real_2_pic_1'), function(url){
+			$('.real_2_pic_1').prev().val(url.attachment);
+			$('.real_2_pic_1').find('img').attr('src',url.url);
+		}, {
+			crop : false,
+			multiple : false
+		});
+	</script>
+	
+	 <script>
+		util.image($('.real_2_pic_2'), function(url){
+			$('.real_2_pic_2').prev().val(url.attachment);
+			$('.real_2_pic_2').find('img').attr('src',url.url);
+		}, {
+			crop : false,
+			multiple : false
+		});
+	</script>
+	
+	 <script>
+		util.image($('.real_2_pic_3'), function(url){
+			$('.real_2_pic_3').prev().val(url.attachment);
+			$('.real_2_pic_3').find('img').attr('src',url.url);
+		}, {
+			crop : false,
+			multiple : false
+		});
+	</script>
+	
+	
+</div>
+
+<div id="active_add_ok">
+<input type="submit" name="submit" value="申请" />
+</div>
+
+<input type="hidden" name="token" value="{$_W['token']}"/>
+</form>
+
+{template 'foot'}

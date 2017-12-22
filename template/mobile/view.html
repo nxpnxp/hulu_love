@@ -220,9 +220,59 @@ layer.open({
 	<div class="view_contact_c">付费查看></div>
 </a>-->
 
-<a href="{php echo $this->createMobileUrl('paycredit1',array('flag'=>'view_new','uid'=>$_GPC['uid'],'openid'=>$user['openid'],'order_num'=>$order_num,'order_price'=>$order_price));}">
-	<div class="view_contact_c">付费查看></div>
+
+<!--<a href="{php echo $this->createMobileUrl('paycredit1',array('flag'=>'view_new','uid'=>$_GPC['uid'],'openid'=>$user['openid'],'order_num'=>$order_num,'order_price'=>$order_price));}">
+</a>-->
+<a href="javascript:;" onclick="real_one_a()">
+	<div class="view_contact_c" style="display: inline;width: 50%;text-align: right;background-color: #fff;border-bottom: 1px solid #ccc;margin-top: -20px;">
+		<span style="background-color: #FC5488;color: #fff;padding: 10px 30px;border-radius: 6px;margin-right: 5px;">积分支付</span>
+	</div>
 </a>
+<a href="{php echo $this->createMobileUrl('pay_two',array('openid'=>$user['openid'],'order_num'=>$order_num,'order_price'=>$order_price));}">
+	<div class="view_contact_c" style="display: inline;width: 50%;text-align: left;background-color: #fff;border-bottom: 1px solid #ccc;margin-top: -20px;">
+		<span style="background-color: #05af1c;color: #fff;padding: 10px 30px;border-radius: 6px;margin-left: 5px;">微信支付</span>
+	</div>
+</a>
+
+<!--<a href="javascript:;" onclick="nnnpay()">
+	<div class="view_contact_c">付费查看></div>
+</a>-->
+
+<script>
+	function real_one_a(){
+		var r=confirm("查看联系方式需消耗积分{$order_price}")
+		if (r==true){
+		    var url = "{php echo $this->createMobileUrl('paycredit1',array('flag'=>'doviewnew','uid'=>$_GPC['uid'],'openid'=>$user['openid'],'order_num'=>$order_num,'order_price'=>$order_price))}";
+				window.location.href=url;
+		}		
+	}
+//function nnnpay(){
+////	var str  = "<a href='{php echo $this->createMobileUrl('gift',array('gift_openid'=>$user['openid']));}'>";
+////		  str += "	<div class='' style='width:100px;height:40px;margin:10px auto;border:1px solid #Fc5488;border-radius:4px;text-align:center;line-height:40px;font-size:16px;color:#000;;'>付费礼物</div>";
+////		  str += "</a>";
+////		  str += "<a href='{php echo $this->createMobileUrl('store',array('store_openid'=>$user['openid']));}'>";
+////		  str += "	<div class='' style='width:100px;height:40px;margin:10px auto;border:1px solid #0098F0;border-radius:4px;text-align:center;line-height:40px;font-size:16px;color:#000;;'>已有礼物</div>";
+////			str += "</a>";
+////	layer.open({
+////	  type: 1,
+////	  skin: 'layui-layer-demo', //样式类名
+////	  closeBtn: 1, //不显示关闭按钮
+////	  shift: 2,
+////	  title:'请选择支付方式',
+////	  shadeClose: false, //开启遮罩关闭
+////	  content: str 
+////	});
+//
+//	layer.open({
+//	  type: 2,
+//	  title: '请选择支付方式',
+//	  shadeClose: true,
+//	  shade: 0.8,
+//	  area: ['300px', '80%'],
+//	  content: "{php echo $this->createMobileUrl('paycredit1',array('flag'=>'view_new','uid'=>$_GPC['uid'],'openid'=>$user['openid'],'order_num'=>$order_num,'order_price'=>$order_price));}"
+//	}); 
+//}
+</script>
 
 {elseif ((empty($contact))&&($viewer['upid']=='4')&&($today_contact<$make['make_vip_watch_oneday']))}
 
@@ -248,7 +298,7 @@ function look_contact(){
 </script>
 <!---->
 <!---->
-<div id="view_title"><p class="view_title_1">收到的礼物（{$gift_num}份）</p></div>
+<div id="view_title" style="clear: both;"><p class="view_title_1">收到的礼物（{$gift_num}份）</p></div>
 {if $gift==array()}
 <div id="view_no">没有收到礼物</div>
 {else}

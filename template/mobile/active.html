@@ -1,6 +1,9 @@
 {template 'top'}
 <link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/style/active.css">
 
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/jquery.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/style/layer/layer.js"></script>
+<!---->
 <!--top_banner开始-->
 
 <div id="top_banner">
@@ -12,7 +15,24 @@
 <a href="{php echo $this->createMobileUrl('active_add');}">
 <div class="top_banner_a"><img src="{MODULE_URL}public/images/add.png"/></div>
 </a>
+{else}
+<a href="javascript:;"  onclick="gift();">
+<div class="top_banner_a"><img src="{MODULE_URL}public/images/add.png"/></div>
+</a>
 {/if}
+<script>
+function gift(){
+layer.open({
+  type: 1,
+  skin: 'layui-layer-demo', //样式类名
+  closeBtn: 1, //不显示关闭按钮
+  shift: 2,
+  title:'您无添加权限',
+  shadeClose: false, //开启遮罩关闭
+  content: "<a href='{php echo $this->createMobileUrl('active_apply');}'><div class='' style='width:100px;height:40px;margin:10px auto;border:1px solid #Fc5488;border-radius:4px;text-align:center;line-height:40px;font-size:16px;color:#000;;'>前去申请</div></a>"
+});
+}
+</script>
 </div>
 
 <!--top_banner结束-->
