@@ -1,0 +1,132 @@
+{template 'common/header'}
+
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation"><a href="{php echo $this->createWebUrl('user');}">所有会员</a></li>
+    <li role="presentation"><a href="{php echo $this->createWebUrl('napply');}">申请添加活动权限</a></li>
+    <li role="presentation"><a href="{php echo $this->createWebUrl('napply1');}">通过列表</a></li>
+    <li role="presentation"><a href="{php echo $this->createWebUrl('napply2');}">拒绝列表</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+
+	
+			<!--列表开始-->
+			<div class="panel panel-info">
+			<div class="panel-heading">列表内容</div>
+			<table class="table table-hover">
+			<thead>
+				<tr>
+				<th>头像</th>
+				<th>昵称</th>
+				<th>单位名称</th>
+				<th>申请人姓名</th>
+				<th>联系方式</th>
+				<th>图片1</th>
+				<th>图片2</th>
+				<th>图片3</th>
+				<th>申请时间</th>
+				</tr>
+			<thead>
+			<tbody>
+			{loop $user $key $user}
+			
+				<tr>
+				<td><img style="width:60px;height:60px;border-radius:50%;" src="{$user['avatar']}"/></td>
+				<td>{$user['nickname']}</td>
+				<td>{$user['desc1']}</td>
+				<td>{$user['desc2']}</td>
+				<td>{$user['desc3']}</td>
+				<td>
+					{if empty($user['img1'])}
+					未上传
+					{else}
+					<img class="nimg" src="{$_W['attachurl']}{$user['img1']}" alt="" style=" height:80px; width:80px;" >
+					{/if}
+				</td>
+				<td>
+					{if empty($user['img2'])}
+					未上传
+					{else}
+					<img class="nimg" src="{$_W['attachurl']}{$user['img2']}" alt="" style=" height:80px; width:80px;" >
+					{/if}
+				</td>
+				<td>
+					{if empty($user['img3'])}
+					未上传
+					{else}
+					<img class="nimg" src="{$_W['attachurl']}{$user['img3']}" alt="" style=" height:80px; width:80px;" >
+					{/if}
+				</td>
+							
+				<td>{php echo date('Y-m-d',$user['time']);}<br/>{php echo date('H:i:s',$user['time']);}</td>
+				
+				
+				</tr>
+				
+
+			{/loop}
+			</tbody>
+			</table>
+			{template 'web/banner/page'}
+			</div>
+			<!--列表结束-->
+
+		</div>
+  </div>
+
+</div>
+
+<style>
+	.nimg_css_co>div>img{
+		width: auto;
+		height: 100%;
+	}
+	.nimg_css_co>div{
+		width: 100%;
+		height: 100%;
+		text-align: center;
+	}
+	.nimg_css_co{
+		position: fixed;
+		top: 5%;
+		left: 5%;
+		width: 90%;
+		height: 90%;
+		z-index: 99999;
+	}
+	.nimg_css_bg{	
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 99998;
+		background-color: #000000;
+		filter:alpha(opacity=70);
+		-moz-opacity:07;
+		-khtml-opacity:0.7;
+		opacity:0.7;
+	}
+</style>
+<script>
+	$('.nimg').click(function(){
+		var src = $(this).attr('src');
+	 	var str  = '<div class="nimg_css_bg"></div>';
+	 			str += '<div class="nimg_css_co"><div><img src="'+src+'" onclick="closenimg()"/></div></div>';
+	 	$('body').append(str);	 	
+	});
+	
+	function closenimg(){
+		$('.nimg_css_bg').remove();
+		$('.nimg_css_co').remove();
+	}
+		
+</script>
+
+{template 'common/footer'}
