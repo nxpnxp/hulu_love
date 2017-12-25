@@ -85,14 +85,20 @@ layer.open({
 
 <script>
 function real_one_b(){
-layer.open({
-  type: 2,
-  title: '[身份证|学历]认证',
-  shadeClose: true,
-  shade: 0.8,
-  area: ['300px', '80%'],
-  content: "{php echo $this->createMobileUrl('real_2');}" //iframe的url
-}); 
+	var isbind = "{$isbind}";
+	if(isbind == '1'){
+		layer.open({
+		  type: 2,
+		  title: '[身份证|学历]认证',
+		  shadeClose: true,
+		  shade: 0.8,
+		  area: ['300px', '80%'],
+		  content: "{php echo $this->createMobileUrl('real_2');}" //iframe的url
+		}); 
+	}else{
+		layer.msg('您还未手机认证，请先进行手机认证！');
+	}
+
 }
 </script>
 
